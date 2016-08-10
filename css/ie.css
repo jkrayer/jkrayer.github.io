@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+	/* Form Styles */
+	.cf_input {height:20px; padding:3px 5px 0px 5px;}
+	.cf_select {height:22px; padding:0px 0px 3px 0px;}
+	.cf_textarea {overflow:hidden;}
