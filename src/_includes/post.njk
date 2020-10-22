@@ -13,6 +13,9 @@
     <link rel="canonical" href="{{'https://jameskrayer.com' + page.url }}" />
   </head>
   <body>
+
+    {% include "header.njk" %}
+
     <article class="post">
       <header class="post-header">
         <h1>{{ title }}</h1>
@@ -31,5 +34,7 @@
         {% endfor %}
       </footer>
     </article>
+
+    {% include "footer.njk" %}
   </body>
 </html>

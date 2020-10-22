@@ -12,8 +12,13 @@
     <link rel="canonical" href="https://jameskrayer.com" />
   </head>
   <body>
+
+    {% include "header.njk" %}
+
     <h1>{{ title }}</h1>
 
     {{ content | safe }}
+
+    {% include "footer.njk" %}
   </body>
 </html>
