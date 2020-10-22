@@ -12,13 +12,12 @@
     <link rel="canonical" href="https://jameskrayer.com" />
   </head>
   <body>
+    <main>
+      {% include "header.njk" %}
 
-    {% include "header.njk" %}
+      {{ content | safe }}
 
-    <h1>{{ title }}</h1>
-
-    {{ content | safe }}
-
-    {% include "footer.njk" %}
+      {% include "footer.njk" %}
+    </main>
   </body>
 </html>

@@ -1,11 +1,7 @@
 ---
-title: "Blog"
+title: "Posts"
 layout: "base.njk"
 ---
-
-# Posts
-
-HERE!
 
 <ul>
 {% for post in collections.posts %}
