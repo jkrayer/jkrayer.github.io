@@ -24,8 +24,10 @@
       <footer class="post-footer">
         This post was tagged:
         {% for tag in tags %}
-          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-          <a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>
+          {% if tag !== 'posts' %}
+            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+            <a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{% if loop.last === false %}, {% endif %}
+          {% endif %}
         {% endfor %}
       </footer>
     </article>

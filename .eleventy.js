@@ -8,6 +8,25 @@ module.exports = (eleventy) => {
   eleventy.addWatchTarget('./src/style/');
   eleventy.addPassthroughCopy('./src/style/');
 
+  // Collections
+  eleventy.addCollection('tagList', collection => {
+    let tagSet = new Set();
+
+    collection.getAll().forEach(item => {
+      (item.data.tags || []).forEach(tag => {
+        if (tag !== 'posts') {
+          tagSet.add(tag);
+        }
+      });
+    });
+
+    // returning an array in addCollection works in Eleventy 0.5.3
+    return [...tagSet];
+  });
+
+
+
+
   //Filters
   eleventy.addFilter('readableDate', dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('LLL dd, yyyy');
@@ -18,6 +37,7 @@ module.exports = (eleventy) => {
   });
 
   return {
+    markdownTemplateEngine: 'njk',
     dir: {
       input: 'src',
       output: 'public'
