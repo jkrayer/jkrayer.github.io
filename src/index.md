@@ -1,6 +1,7 @@
 ---
-title: "James Krayer"
-layout: "base.njk"
+title: Home | James Krayer
+layout: base.njk
+description: The web site of New Jersey based developer, James Krayer
 ---
 
 <section>
