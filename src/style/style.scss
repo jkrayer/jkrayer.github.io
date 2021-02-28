@@ -91,6 +91,7 @@ body {
   pre[class*="language-"] {
     margin-top: 2.25em;
     margin-bottom: 2.25em;
+    font-size: 1rem;
   }
 
   &-time {
@@ -131,4 +132,9 @@ body {
   font-weight: 400;
   line-height: 1.125;
   text-transform: capitalize;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .875em;
 }
