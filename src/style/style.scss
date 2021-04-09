@@ -6,7 +6,7 @@ body {
   padding-right: 10px;
   padding-left: 10px;
   margin: 0 auto;
-  font: 300 1.125rem/1.5 'Cormorant Garamond', Times, 'Times New Roman', serif;
+  font: 300 1.125rem/1.5 "Cormorant Garamond", Times, "Times New Roman", serif;
 }
 
 // 62rem
@@ -43,8 +43,8 @@ body {
   }
 
   &-link {
-    padding-right: .5rem;
-    padding-left: .5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
     text-decoration: none;
     color: #000;
   }
@@ -53,14 +53,25 @@ body {
 .post {
   box-sizing: border-box;
 
-  h2, h3, h4, h5, h6 {
-    margin-top: .375em;
-    margin-bottom: .375em;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0.375em;
+    margin-bottom: 0.375em;
     line-height: 1;
   }
 
-  h2, h3 { font-weight: 400; }
-  h4, h5, h6 { font-weight: 400; }
+  h2,
+  h3 {
+    font-weight: 400;
+  }
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+  }
 
   h2 {
     font-size: 1.75em;
@@ -95,13 +106,13 @@ body {
   }
 
   &-time {
-    font-size: .75em;
+    font-size: 0.75em;
     color: $gray;
     font-style: oblique;
   }
 
   &-footer {
-    font-size: .875em;
+    font-size: 0.875em;
   }
 
   &-tag {
@@ -135,6 +146,6 @@ body {
 }
 
 code {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: .875em;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875em;
 }
