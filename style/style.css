@@ -42,15 +42,22 @@ body {
 .post {
   box-sizing: border-box;
 }
-.post h2, .post h3, .post h4, .post h5, .post h6 {
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
   margin-top: 0.375em;
   margin-bottom: 0.375em;
   line-height: 1;
 }
-.post h2, .post h3 {
+.post h2,
+.post h3 {
   font-weight: 400;
 }
-.post h4, .post h5, .post h6 {
+.post h4,
+.post h5,
+.post h6 {
   font-weight: 400;
 }
 .post h2 {
