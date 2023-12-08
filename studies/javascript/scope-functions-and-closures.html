@@ -157,7 +157,7 @@ m(3, 2) // returns 1
 
         <pre class="formatted-code">
 <code>function incrementer (startNum) {
-    let index = startNum;
+    let i = startNum;
 
     function increment () {
         return ++i;
@@ -174,8 +174,8 @@ m(3, 2) // returns 1
 }
 
 const myInc = incrementer(2);
-myInc.inc(); // ?
-myInc.dec(); // ?
+myInc.increment(); // ?
+myInc.decrement(); // ?
 </code></pre>
 
         <p><code class="inline-code">incrementer</code> is a function that instatiates a variable <code class="inline-code">index</code> which holds a number. It returns an object containing both <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions that change the value of <code class="inline-code">index</code> and return it.</p>
@@ -187,8 +187,6 @@ myInc.dec(); // ?
         <p>Let's pause for a moment to consider the scopes both implicit and created when we wrote the <code class="inline-code">incrementer</code> function. First there is the global scope known as window in the browser. The <code class="inline-code">incrementer</code> function creates its own scope and within it defines the <code class="inline-code">index</code> variable, <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions. The <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions in turn have their own scopes.</p>
 
         <p>As we learned earlier the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions can access their own scope and all of their ancestor scopes, <code class="inline-code">incrementer</code> and <code class="inline-code">global</code> in this case. <code class="inline-code">incrementer</code> in turn can access its ancestor scope, the global scope. When we invoke <code class="inline-code">incrementer</code> the environment creates a new function scope for <code class="inline-code">incremeter</code>, the value 2 is assigned to <code class="inline-code">index</code> the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions are created and then returned. But this time the function scope created by invoking increment is not destroyed.</p>
-
-        <h5>DO I NEED TO ADD SOMEHTHING ABOUT LEXICAL ENV CREATION ABOVE?</h5>
 
         <p>If we return a reference to the function scope or "lexical environment" of a function that scope is preserved and can continure to be referenced during the lifecycle of our program. That reference is called a "closure". It is "...the combination of a function and the lexical environment within which that function was declared."<sup><a href="#footnote-6">6</a></sup></p>
 
@@ -221,7 +219,7 @@ myInc.dec(); // ?
         <p>On the other hand you may be more familiar with more current coding examples like this definition of add.</p>
 
         <pre class="formatted-code">
-<code>const add = x => y = x + y;</code></pre>
+<code>const add = x => y => x + y;</code></pre>
 
         <p>If we read this definition of <code class="inline-code">add</code> carefully then we'll see that <code class="inline-code">add</code> is a function that takes an argument named <code class="inline-code">x</code> and returns a new function. The new function takes an argument named <code class="inline-code">y</code> which returns the sum of <code class="inline-code">x</code> and <code class="inline-code">y</code>.</p>
 
@@ -237,7 +235,7 @@ add2(5) // 7
         <p>The syntax of our last definition of <code class="inline-code">add</code> necessarily creates and odd sort of syntax. If for instances we wanted to add 2 and 3 we'd either have to write a lot of code or use more parenthesis.
             
         <pre class="formatted-code">
-<code>const add = x => y = x + y;
+<code>const add = x => y => x + y;
 
 const add2 = add(2);
 add2(3); // a lot of work for 5
@@ -272,7 +270,7 @@ const sorted = summedArr.sort()</code></pre>
         <p>We don't write our code that way because it's long and the interrim steps of assigning values to variables is unnecessary. Our last <code class="inline-code">add</code> code from above (repeated here) is no different.</p>
 
                 <pre class="formatted-code">
-<code>const add = x => y = x + y;
+<code>const add = x => y => x + y;
 
 const add2 = add(2);
 add2(3); // a lot of work for 5
