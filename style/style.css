@@ -1,3 +1,8 @@
+/**
+ * TOC
+ *
+ * 1. Site Blocks
+*/
 :root {
     --sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     --black: #222;
@@ -5,6 +10,12 @@
     --gray: #666;
     --blue: #0085bf;
     --darkBlue: #00354c;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -15,6 +26,7 @@ html {
     color: var(--black);
 }
 
+/* 1. Site Blocks */
 #main {
     box-sizing: border-box;
     padding: 0 1rem;
@@ -26,6 +38,26 @@ html {
         max-width: calc(78ex + 2rem);
     }
     
+}
+
+#site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 0;
+  border-bottom: 2px solid var(--blue);
+  margin-bottom: 1rem;
+}
+
+#site-title {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+#site-title > a {
+  color: var(--black);
+  text-decoration: none;
 }
 
 a,

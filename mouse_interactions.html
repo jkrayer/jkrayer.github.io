@@ -50,6 +50,12 @@
     </main>
     <script>
       // TO HIT Module
+      const noop = () => {}
+
+      const attack = (weaponData) => (targetData) => `Attacking ${targetData} with ${weaponData}.`
+
+      let attacking = noop;
+
       (function () {
         let toHitData = null;
         const targets = document.getElementById("button-targets");
@@ -57,14 +63,16 @@
 
         const handleTargets = (event) => {
           if (event.target.classList.contains("a-target")) {
-            alert("target acquired!");
+            alert(attacking('bob'));
             targets.removeEventListener("click", handleTargets);
             targets.classList.remove("active");
+            attacking = noop;
           }
         };
 
         toHitBtn.addEventListener("click", (e) => {
           targets.addEventListener("click", handleTargets);
+          attacking = attack('longsword')
           targets.classList.add("active");
         });
       })();
