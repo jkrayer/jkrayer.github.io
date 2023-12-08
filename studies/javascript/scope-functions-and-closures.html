@@ -312,29 +312,5 @@ addOne(2)(3) // Uncaught TypeError: addOne(...) is not a function
             </ol>
         </footer>
     </article>
-
-    <script>
-        function add (a, b) {
-            return a + b;
-        }
-
-        const b = add;
-
-        function math (a, b, callback) {
-            return callback(a, b);
-        }
-
-        function incrementer (startNum) {
-            let index = startNum;
-
-            const increment = () => ++i;
-            const decrement = () => --i;
-
-            return {
-                increment,
-                decrement
-            };
-        }
-    </script>
 </main>
 </body>
