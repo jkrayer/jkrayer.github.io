@@ -8,6 +8,7 @@
     padding: 1rem 1.5rem;
     border-radius: .5rem;
     line-height: 1.4;
+    word-wrap: break-word;
 }
 
 .inline-code {
@@ -19,4 +20,6 @@
     background-color: #333;
 }
 
-.footnotes {margin-top: 2rem;}
+.footnotes { margin-top: 2rem; }
+
+

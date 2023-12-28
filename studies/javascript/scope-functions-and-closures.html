@@ -23,11 +23,18 @@
     </header>
 
     <article>
+        <ol class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/studies/">Studies</a></li>
+            <li><a href="/studies/javascript/">JavaScript</a></li>
+            <li>Scope, Functions and Closures</li>
+        </ol>
+
         <header>
-            <h1>Scope, Functions and Closures</h1>
             <div class="byline">
                 <time datetime="2023-12-8">December 8, 2023</time>
             </div>
+            <h1>Scope, Functions and Closures</h1>
         </header>
 
         <p>It's not my intention to repeat the excellent explanations of others on the subjects of scope, functions and closures (some linked below). Instead this is meant to be a quick code focused reference for the occasions in which I find myself able to share what I've learned with others.
@@ -38,7 +45,7 @@
 
         <p>Scope is one of those subjects that we learn early on, think we understand and will therefore believe we can bypass. I believe understanding scope is important to understanding closures so I'll review in brief here.</p>
 
-        <p>The base scope in Javascript is the global scope which in the browswer is called <code class="inline-code">window</code>. Anything defined in the global scope is acccessible anywhere else in our programs. We know this by habit even if we haven't consciously considered it. When we define the <code class="inline-code">add</code> function in a script tag  we can call (or invoke) it anywhere else in our program. Open the console and try it out.</p>
+        <p>The base scope in Javascript is the global scope which in the browser is called <code class="inline-code">window</code>. Anything defined in the global scope is acccessible anywhere else in our programs. We know this by habit even if we haven't consciously considered it. When we define the <code class="inline-code">add</code> function in a script tag  we can call (or invoke) it anywhere else in our program. Open the console and try it out.</p>
 
         <pre class="formatted-code">
 <code>function add (a, b) {
@@ -51,7 +58,7 @@ add(1,2); // returns 3
         <p>Javascript has <em>function scope</em>. In other words when we wrote the <code class="inline-code">add</code> function we created a new scope. <code class="inline-code">add</code>'s scope is anything we defined between <code class="inline-code">()</code> and <code class="inline-code">{}</code> when we wrote the <code class="inline-code">add</code> function; in this case the parameters <code class="inline-code">a</code> and <code class="inline-code">b</code>.</p>
 
         <p><code class="inline-code">add</code> can access its own <em>function scope</em> and it can access it's parent's scope; in this case the global scope. Again we know this by habit.</p>
-            
+
         <pre class="formatted-code">
 <code>var a = 1;
 
@@ -65,8 +72,7 @@ function tenMinus(1) {
     return 10 - add(a, 1);
 }
 
-tenMinus(2) // 7
-</code></pre>
+tenMinus(2) // 7</code></pre>
 
         <p>The examples are very contrived but it comes as no surprise that <code class="inline-code">add</code> can access <code class="inline-code">a</code> or that <code class="inline-code">tenMinus</code> can access <code class="inline-code">add</code>. A function can access it's own scope and the scopes of its parent context or contexts. Conversely a parent scope can't access the scope of a child or function. There is no way to access the parameter <code class="inline-code">b</code> of the <code class="inline-code">add</code> function from the global scope.</p>
 
@@ -82,7 +88,7 @@ function add (b) {
     return a + times();
 }</code></pre>
 
-        <p>Additional nested functions create additional nested scopes and the rules continue to apply. The global scope can't access <code class="inline-code">add</code>'s sope and <code class="inline-code">add</code> can't access <code class="inline-code">times</code>' scope. But <code class="inline-code">times</code> can access both <code class="inline-code">add</code>'s scope and the global scope while <code class="inline-code">add</code> can as before access the global scope.</p>
+        <p>Additional nested functions create additional nested scopes and the rules continue to apply. The global scope can't access <code class="inline-code">add</code>'s scope and <code class="inline-code">add</code> can't access <code class="inline-code">times</code>' scope. But <code class="inline-code">times</code> can access both <code class="inline-code">add</code>'s scope and the global scope while <code class="inline-code">add</code> can as before access the global scope.</p>
 
         <p>At this point you may be wondering why I've left <code class="inline-code">let</code> and <code class="inline-code">const</code> out. I've done so because they work with block scope<sup><a href="#footnote-1">1</a></sup> which is pretty awesome but we're going to stay focused on <em>function scope</em> for this discussion</p>
 
@@ -131,7 +137,7 @@ const a = add;
 
         <p>Just as a function can be assigned to a variable it can also be passed as an argument to a function and can again be invoked.</p>
 
-        <pre class="formatted-code">
+        <pre class="formatted-code" id="link-math">
 <code>function math (a, b, callback) {
     return callback(a, b);
 }
@@ -142,7 +148,7 @@ math(2, 4, add) // returns 6</code></pre>
 
         <p>Let's now turn to returning a function from a function.</p>
 
-        <pre class="formatted-code">
+        <pre class="formatted-code"  id="link-addsub">
 <code>function addOrSubtract (symbol) {
     function add (a, b) {
         return a + b;
@@ -192,9 +198,9 @@ myInc.decrement(); // ?
 
         <h2>Closures</h2>
 
-        <p>Let's pause for a moment to consider the scopes both implicit and created when we wrote the <code class="inline-code">incrementer</code> function. First there is the global scope known as window in the browser. The <code class="inline-code">incrementer</code> function creates its own scope and within it defines the <code class="inline-code">index</code> variable, <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions. The <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions in turn have their own scopes.</p>
+        <p>Let's pause for a moment to consider the scopes both implicit and created when we wrote the <code class="inline-code">incrementer</code> function. First there is the global scope known as window in the browser. The <code class="inline-code">incrementer</code> function creates its own scope and within it defines the <code class="inline-code">i</code> variable, <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions. The <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions in turn have their own scopes.</p>
 
-        <p>As we learned earlier the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions can access their own scope and all of their ancestor scopes, <code class="inline-code">incrementer</code> and <code class="inline-code">global</code> in this case. <code class="inline-code">incrementer</code> in turn can access its ancestor scope, the global scope. When we invoke <code class="inline-code">incrementer</code> the environment creates a new function scope for <code class="inline-code">incremeter</code>, the value 2 is assigned to <code class="inline-code">index</code> the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions are created and then returned. But this time the function scope created by invoking increment is not destroyed.</p>
+        <p>As we learned earlier the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions can access their own scope and all of their ancestor scopes, <code class="inline-code">incrementer</code> and <code class="inline-code">global</code> in this case. <code class="inline-code">incrementer</code> in turn can access its ancestor scope, the global scope. When we invoke <code class="inline-code">incrementer</code> the environment creates a new function scope for <code class="inline-code">incremeter</code>, the value 2 is assigned to <code class="inline-code">i</code> the <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions are created and then returned. But this time the function scope created by invoking <code class="inline-code">incrementer</code> is not destroyed.</p>
 
         <p>If we return a reference to the function scope or "lexical environment" of a function that scope is preserved and can continure to be referenced during the lifecycle of our program. That reference is called a "closure". It is "...the combination of a function and the lexical environment within which that function was declared."<sup><a href="#footnote-6">6</a></sup></p>
 
@@ -240,7 +246,7 @@ add2(5) // 7
 
         <h2>Chaining, sort of</h2>
 
-        <p>The syntax of our last definition of <code class="inline-code">add</code> necessarily creates and odd sort of syntax. If for instances we wanted to add 2 and 3 we'd either have to write a lot of code or use more parenthesis.
+        <p>The syntax of our last definition of <code class="inline-code">add</code> necessarily creates and odd sort of syntax. If for instance we wanted to add 2 and 3 we'd either have to write a lot of code or use more parenthesis.
             
         <pre class="formatted-code">
 <code>const add = x => y => x + y;
@@ -257,13 +263,13 @@ add(2)(3) // weird!
         <pre class="formatted-code">
 <code>[2,1,3].map((n) => add(n, 2)).sort();</code></pre>
 
-        <p>In this code block we add 2 to each value in an array and then sort it. We may take it for granted that <code class="inline-code">.map</code> and <code class="inline-code">.sort</code> will work but they work because each method invocation returns an array and arrays have both the <code class="inline-code">map</code> and <code class="inline-code">sort</code> methods. Dot chaining may in turn break if we call a method that returns an unexpected type.</p>
+        <p>In this code block we add 2 to each value in an array and then sort it. We may take it for granted that <code class="inline-code">.map</code> and <code class="inline-code">.sort</code> will work but they work because each method invocation returns an <code class="inline-code">Array</code> and <code class="inline-code">Array</code>s have both the <code class="inline-code">map</code> and <code class="inline-code">sort</code> methods. Dot chaining may in turn break if we call a method that returns an unexpected type.</p>
 
         <pre class="formatted-code">
 <code>[2,1,3].join().sort();
 // Uncaught TypeError: [2, 1, 3].join().sort is not a function</code></pre>
 
-        <p>This code fails because join returns a <code class="inline-code">String</code> and <code class="inline-code">String</code> does not have a sort method. Our code would not break however if we called a valid string method.</p>
+        <p>This code fails because join returns a <code class="inline-code">String</code> and <code class="inline-code">String</code> does not have a <code class="inline-code">sort</code> method. Our code would not break however if we called a valid <code class="inline-code">String</code> method.</p>
 
         <pre class="formatted-code">
 <code>[2,1,3].join().toLocaleUpperCase(); // please enjoy a capitalized string</code></pre>
@@ -309,7 +315,7 @@ addOne(2)(3) // Uncaught TypeError: addOne(...) is not a function
                 <li id="footnote-2">Mozilla Developer Network, <a href="https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function">First-class Function</a></li>
                 <li id="footnote-3">Mozilla Developer Network, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></li>
                 <li id="footnote-4">Mozilla Developer Network, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function">function expression</a></li>
-                <li id="footnote-5">Technically it returns `add` when a  "+" is provided as the first argument and `subtract` for any other argument.</li>
+                <li id="footnote-5">Technically it returns <code class="inline-code">add</code> when a  "+" is provided as the first argument and <code class="inline-code">subtract</code> for any other argument.</li>
                 <li id="footnote-6">Mozilla Developer Network, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#closure">Closures: Closure</a></li>
             </ol>
             <h3>Further Reading</h3>

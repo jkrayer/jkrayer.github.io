@@ -1,17 +1,29 @@
 /**
  * TOC
  *
- * 1. Site Blocks
+ * typescale: https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.2&maxFontSize=16&maxWidth=1280&maxRatio=0&steps=sm%2Cbase%2Cmd%2Clg%2Cxl%2Cxxl%2Cxxxl&baseStep=base&prefix=font-size&decimals=2&useRems=on&remValue=16&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1280
+ *
+ * 1. Globals
+ * 2. Site Blocks
+ * 3. 
 */
 :root {
+    --fs-base: 1rem;
+    --fs-sm: .83rem;
+    --fs-md: 1.2rem;
+    --fs-lg: 1.44rem;
+    --fs-xl: 1.73rem;
+    --fs-xxl: 2.07rem;
+    --fs-xxxl: 2.49rem;
     --sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     --black: #222;
-    --slightlyDarkerBlack: #000;
-    --gray: #666;
     --blue: #0085bf;
     --darkBlue: #00354c;
+    --gray: #666;
+    --slightlyDarkerBlack: #000;
 }
 
+/* 1. Globals */
 html,
 body {
   padding: 0;
@@ -26,7 +38,41 @@ html {
     color: var(--black);
 }
 
-/* 1. Site Blocks */
+h1, h2, h3 {
+  font-weight: 200;
+  letter-spacing: .04em;
+}
+
+h1 {
+  font-size: var(--fs-xxxl);
+  margin: 0 0 .5em 0;
+}
+
+h2 {
+  font-size: var(--fs-xxl);
+}
+
+h3 {
+  font-size: var(--fs-xl);
+}
+
+a,
+a.visited {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--darkBlue);
+  text-decoration: underline;
+}
+
+sup {
+  line-height: 0;
+}
+
+/* 2. Site Blocks */
 #main {
     box-sizing: border-box;
     padding: 0 1rem;
@@ -60,32 +106,34 @@ html {
   text-decoration: none;
 }
 
-a,
-a.visited {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-a:hover,
-a:active {
-  color: var(--darkBlue);
-  text-decoration: underline;
-}
-
-h1 {
-  margin: 0 0 .5em 0;
-}
-
-sup {
-  line-height: 0;
-}
-
+/* 3. */
 .byline {
   color: var(--gray);
   text-align: right;
-  font-size: .875rem;
-  font-weight: 400;
+  font-size: var(--fs-sm);
 }
+
+.breadcrumbs {
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-sm);
+  list-style-type: none;
+}
+
+.breadcrumbs > li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs > li::after {
+  content: " > "
+}
+
+.breadcrumbs > li:last-of-type::after {
+  content: ""
+}
+
 
 /* html,
 body {
