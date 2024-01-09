@@ -38,10 +38,15 @@ html {
     color: var(--black);
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: 200;
   letter-spacing: .04em;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0;
+}
+
 
 h1 {
   font-size: var(--fs-xxxl);
@@ -55,6 +60,21 @@ h2 {
 h3 {
   font-size: var(--fs-xl);
 }
+
+h4 {
+  font-size: var(--fs-lg);
+}
+
+h5 {
+  font-weight: 300;
+  font-size: var(--fs-md);
+}
+
+h6 {
+  font-weight: 400;
+  font-size: var(--fs-base);
+}
+
 
 a,
 a.visited {
@@ -262,4 +282,3 @@ code {
   font-size: 0.875em;
 } */
 
-/*# sourceMappingURL=style.css.map */
