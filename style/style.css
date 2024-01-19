@@ -4,8 +4,8 @@
  * typescale: https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.2&maxFontSize=16&maxWidth=1280&maxRatio=0&steps=sm%2Cbase%2Cmd%2Clg%2Cxl%2Cxxl%2Cxxxl&baseStep=base&prefix=font-size&decimals=2&useRems=on&remValue=16&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=1280
  *
  * 1. Globals
- * 2. Site Blocks
- * 3. 
+ * 2. Links
+ * 3. Site Blocks
 */
 :root {
     --fs-base: 1rem;
@@ -19,6 +19,7 @@
     --black: #222;
     --blue: #0085bf;
     --darkBlue: #00354c;
+    --lightgray: #999;
     --gray: #666;
     --slightlyDarkerBlack: #000;
 }
@@ -75,7 +76,11 @@ h6 {
   font-size: var(--fs-base);
 }
 
+sup {
+  line-height: 0;
+}
 
+/* 2. Links */
 a,
 a.visited {
   color: var(--blue);
@@ -88,11 +93,26 @@ a:active {
   text-decoration: underline;
 }
 
-sup {
-  line-height: 0;
+.header-anchor {
+  position: relative;
 }
 
-/* 2. Site Blocks */
+.header-anchor > a[href^="#"],
+.header-anchor > a[href^="#"]:hover,
+.header-anchor > a[href^="#"]:active {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.header-anchor > a[href^="#"]:hover:before {
+  content: "#";
+  color: #ccc;   /* var(--gray); */
+  position: absolute;
+  left: -1.25ex;
+  font-weight: 400;
+}
+
+/* 3. Site Blocks */
 #main {
     box-sizing: border-box;
     padding: 0 1rem;
