@@ -1,0 +1,50 @@
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+
+        caption {
+        text-align: left;
+        font-weight: 500;
+        }
+
+        table > thead > tr > th,
+        table > tbody > tr > td {
+        text-align: center;
+        }
+
+        table > thead > tr > th:first-of-type,
+        table > tbody > tr > th:first-of-type,
+        table > tbody > tr > td:first-child {
+        text-align: left;
+        }
+
+        table > tbody > tr:nth-last-of-type(odd) {
+        background-color: #ccc;
+        }
+
+        table > tfoot {
+        font-size: .875em;
+        }
+
+        .bold { font-weight: 500; }
+
+
+        .header-anchor {
+        position: relative;
+        }
+
+        .header-anchor > a[href^="#"],
+        .header-anchor > a[href^="#"]:hover,
+        .header-anchor > a[href^="#"]:active {
+        color: var(--black);
+        text-decoration: none;
+        }
+
+        .header-anchor > a[href^="#"]:hover:before {
+        content: "#";
+        color: #ccc;   /* var(--gray); */
+        position: absolute;
+        left: -1.25ex;
+        font-weight: 400;
+        }
