@@ -1,0 +1,91 @@
+        <p>Its fairly common that you'll want to apply the same transformation to similar or even the same data. Perhaps your api returns data from different sources where all have a `name` field that UI needs to alter the capitalization of. Perhaps you need to make several calls to the same endpoint over time and with each response transform dates into a readable string. Or maybe several forms throughout your application have a states field and you need to transform response from this `{ id: 1, abbr: "NJ", name: "New Jersey" }` to this `{ id: 1, title: "NJ - New Jersey" }`.</p>
+
+        <p>Whichever of these problems I just made up a good first solution would be to local the transformation function in a lib in your project so you can reuse it.</p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+const stateTitle = ({ id, abbr, name }) => ({
+    id,
+    title: `${abbr} - ${name}`
+})
+
+// elsewhere
+import { stateTitle }
+
+stateArr.map(stateTitle);
+
+// or
+import { map, stateTitle }
+
+map(stateArr, stateTitle);</code></pre>
+
+        <p>Here again we're repeating ourselves with calls to the map function or method. We can use what we've learned so far to reduce that repitition.</p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+const stateTitle = ({ id, abbr, name }) => ({
+    id,
+    title: `${abbr} - ${name}`
+})
+
+const stateTitles = (arr) => map(arr, stateTitle);
+
+// elsewhere
+import { stateTitles }
+
+stateTitles(stateArr);</code></pre>
+
+        <p>We should pay close attention to the `stateTitles` function here because it's teaching us a lesson. We learn that lesson by asking ourselves, "what problem does `stateTitles` solve?"</p>
+        
+        <p>At the time we wrote  `stateTitles` we knew the state data would be an array of obejcts with certain properties (id, abbr, name) and how we wanted to change those properties (`stateTitle`) and even the process by which we'd apply that change to each entry in state data. (`map`) The only thing that changes is the state data. So the problem the `stateTitles` function solves is applying the same strategy to changing data. At a technical level it also solves the problem, "how do I insert the first argument into the map function."</p>
+
+        <p>This observation about the order of arguments is how we come to the conclusion that the order of arguments in our initial map function `map(arr, callback)` can be changed to `map(callback, arr)`. If we make that change our `stateTitles` function must also change accordingly.</p>
+
+        <pre class="formatted-code">
+<code>const stateTitles = (arr) => map(stateTitle, arr);</code></pre>
+
+        <!-- Reducing function...what is the algebra term -->
+        <p>Right now it looks like all we've done is change the order of things without much advantage so let's consider a slightly different implmention of `map`.</p>
+
+        <pre class="formatted-code">
+<code>const map = (callback) => (arr) => {
+    const result = [];
+
+    for (let i = 0, ii = arr.length; i < ii; i++) {
+        result[i] = callback(arr[i], i);
+    }
+
+    return result;
+}</code></pre>
+
+        <p>This implementation is not without drawbacks but we'll first look at its advantages.</p>
+
+        <pre class="formatted-code">
+<code>const stateTitles = map(stateTitle);</code></pre>
+
+        <p>...</p>
+
+        <p>functions returned from function have an impicit memory space that we can take advantge of . Old Timey example:</p>
+
+        <pre class="formatted-code">
+<code>var publicInterface = (function () {
+    // top of scope
+    var reg = /\s+/;
+
+    // various places in program
+    "string of values".split(reg);
+}());</code></pre>
+        
+        <pre class="formatted-code">
+<code>// lib.js
+const SPACE_REG = /\s+/;
+
+// elsewhere.js
+import { SPACE_REG } from "./lib";
+
+// in some function
+    ...
+    "string of values".split(reg);
+</code></pre>
+
+        <h3>Function.bind</h3>

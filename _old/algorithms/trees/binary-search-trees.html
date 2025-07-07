@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Krayer | Binary Search Tree Study</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/code-style.css" />
+    <link rel="canonical" href="jameskrayer.com/studies/algorithms/trees/binary-search-trees" />
+</head>
+
+<body>
+<main id="main">
+    <article>
+        <header>
+            <h1>Binary Search Tree</h1>
+        </header>
+
+        <p>To see how I get here look at my <a href="/studies/algorithms/trees/bst-notes.html">original notes</a>.</p>
+
+        <h2>Big O</h2>
+
+        <p>Best case is <code class="inline-code">O(1)</code><sup><a href="#footnote-1">1</a></sup> (constant time). Looking up the very first node.</p>
+
+        <p>Average case is <code class="inline-code">O(log(n))</code><sup><a href="#footnote-2">2</a></sup>. Since some branch of values can be ruled out with each comparison.</p>
+
+        <p>Worst case is <code class="inline-code">O(n)</code><sup><a href="#footnote-1">1</a></sup><sup>,</sup><sup><a href="#footnote-2">2</a></sup> or more accurately <code class="inline-code">O(height)</code>. This is the case when all the nodes in the Binary Search Tree form a "linear chain"<sup><a href="#footnote-2">2</a></sup>.</p>
+
+        <h2>Code</h2>
+
+        <p>All of the following code is provided in this document. Simply open the console as you read along.</p>
+
+        <p>To begin with Javascript for better or worse has two values that could represent the absence of a value; <code class="inline-code">undefined</code> and <code class="inline-code">null</code><sup><a href="#footnote-3">3</a></sup>. Let's write a utility function to deal with that so we don't have to.</p>
+
+        <pre class="formatted-code">
+<code>const isNil = (x) => x === null || x === undefined;</code></pre>
+
+        <h3>Create Node</h3>
+
+        <p>A tree is ultimately an organized collection of nodes. Given that we need a function or functions to create nodes.</p>
+
+        <p>The <code class="inline-code">newNode</code> function creates a single node with an optional parent reference. Here we return a Javascript Object using <code class="inline-code">Object.create</code> since we won't be needing the Object methods but this isn't strictly necessary.</p>
+
+        <pre class="formatted-code">
+<code>const newNode = (key, parent = null) => Object.create(
+    null,
+    {
+        key: {
+            value: key,
+            writable: true
+        },
+        parent: {
+            value: parent,
+            writable: true
+        },
+        left: {
+            value: null,
+            writable: true
+        },
+        right: {
+            value: null,
+            writable: true
+        },
+    }
+);</code></pre>
+
+        <p>Also some are more comfortable with class syntax so this function could just as easily be written like this.</p>
+
+                <pre class="formatted-code">
+<code>class Node {
+    constructor (key, parent = null) {
+        this.key = key;
+        this.parent = parent;
+        this.left = null;
+        this.right = null;
+    }
+}</code></pre>
+
+        <p>FFF</p>
+
+        <pre class="formatted-code">
+<code>const addNode = (key, node = null) => {
+    if (isNil(node)) {
+        return newNode(key);
+    } else if (key < node.key) {
+        node.left = isNil(node.left)
+            ? newNode(key, node)
+            : addNode(key, node.left);
+    } else {
+        node.right = isNil(node.right)
+            ? newNode(key, node)
+            : addNode(key, node.left);
+    }
+
+    return node;
+}</code></pre>
+
+
+        <footer>
+            <h3>Bibliography</h3>
+            <ol class="footnotes">
+                <li  id="footnote-1">Brian Holt, <a href="https:rontendmasters.com/courses/computer-science-v2/binary-search-tree/">Binary Search Tree: Complete Intro to Computer Science V2</a> (Front End Masters: Video).</li>
+                <li id ="footnote-2">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022). Binary Search Trees, 312.</li>
+                <li id ="footnote-3">I understand of course that there is a difference between the automatically assigned <code class="inline-code">undefined</code> and the intentionally assigned <code class="inline-code">null</code>. While these examples will only use the intentionally assigned <code class="inline-code">null</code> I find the usefulness of <code class="inline-code">isNil</code> compelling.</li>
+                
+                <!-- <li id="footnote-3"><a href="https://www.geeksforgeeks.org/insertion-in-binary-search-tree/">Insertion in Binary Search Tree</a></li>
+                <li id ="footnote-4">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).</li>
+                <li id ="footnote-5">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).  Successor and predecessor, 318</li>
+                <li id ="footnote-6">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).  Figure 12.3, 322</li>
+                <li id ="footnote-7"><a href="https://builtin.com/software-engineering-perspectives/tree-traversal">4 Types of Tree Traversal Algorithms</a></li>
+                <li id ="footnote-8"><a href="https://www.programiz.com/dsa/tree-traversal">Tree Traversal - inorder, preorder and postorder</a></li>
+                <li id="footnote-9"><a href="https://visualgo.net/en/">Algorithm visualizer</a> that may be helpful in the future.</li> -->
+            </ol>
+        </footer>
+    </article>
+
+    <script>
+        const isNil = (x) => x === null || x === undefined;
+
+        const newNode = (key, parent = null) => Object.create(
+            null,
+            {
+                key: {
+                    value: key,
+                    writable: true
+                },
+                parent: {
+                    value: parent,
+                    writable: true
+                },
+                left: {
+                    value: null,
+                    writable: true
+                },
+                right: {
+                    value: null,
+                    writable: true
+                },
+            }
+        );
+
+        const addNode = (key, node = null) => {
+            if (isNil(node)) {
+                return newNode(key);
+            } else if (key < node.key) {
+                node.left = isNil(node.left)
+                ? newNode(key, node)
+                : addNode(key, node.left);
+            } else {
+                node.right = isNil(node.right)
+                ? newNode(key, node)
+                : addNode(key, node.left);
+            }
+    
+            return node;
+        }
+    </script>
+
+</main>    
+</body>
+</html>

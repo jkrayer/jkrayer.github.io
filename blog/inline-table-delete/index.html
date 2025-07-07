@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./Skeleton-2.0.4/css/normalize.css" />
+    <link rel="stylesheet" href="./Skeleton-2.0.4/css/skeleton.css" />
+    <style>
+      #table1 {
+        vertical-align: middle;
+        transition: max-height 0.2s ease-out;
+        max-height: 500px;
+        overflow: hidden;
+      }
+      #table1 td {
+        padding: 0;
+      }
+      .table-right {
+        text-align: right;
+      }
+      .skeleton {
+        width: 100%;
+        height: 15px;
+        background-color: blue;
+      }
+      #table1 > tbody > tr > td > div {
+        box-sizing: border-box;
+        max-height: 100px;
+        padding: 12px 15px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out, padding 0.2s ease-out;
+      }
+      #table1 > tbody > tr.d > td {
+        border-bottom: none;
+      }
+      #table1 > tbody > tr.d > td > div {
+        max-height: 0;
+        padding: 0;
+      }
+      #table1 > tbody > tr > td > button {
+        margin-bottom: 0;
+      }
+      svg {
+        pointer-events: none;
+      }
+
+      .t {
+        max-height: 500px;
+        transition: max-height 0.2s ease-out;
+        overflow: hidden;
+      }
+      .t.d {
+        max-height: 0;
+      }
+      .btn-delete,
+      .btn-cancel {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 5px;
+        margin-bottom: 0;
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
+      }
+      .btn-delete.off,
+      .btn-cancel.off {
+        opacity: 0;
+      }
+
+      .btn-row {
+        position: relative;
+        height: 38px;
+      }
+      .btn-row > .btn-delete,
+      .btn-row > .btn-cancel {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        /* z-index: 2; */
+      }
+      .btn-row > .btn-delete.off,
+      .btn-row > .btn-cancel.off {
+        /* z-index: 1; */
+      }
+      .linear {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: pink;
+      }
+      .linear > div {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background-color: red;
+        transition: width 3s ease-out;
+      }
+      .linear > div.start {
+        width: 0;
+      }
+      [aria-hidden="true"] {
+        display: none;
+      }
+
+      .row-controls {
+        position: fixed;
+        z-index: 1;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        /* width: 813px;
+        height: 63px; */
+        /* top: 49px;
+        left: 0; */
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      button {
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <table id="table1">
+        <colgroup>
+          <col style="width: 100px" />
+          <col style="width: 217px" />
+          <col style="width: 96px" />
+          <col style="width: 96px" />
+          <col style="width: 103px" />
+          <col style="width: 200px" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Initiative</th>
+            <th>Revenue Stream</th>
+            <th class="table-right">Goal</th>
+            <th class="table-right">Billed</th>
+            <th class="table-right">Difference</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div>Broadcast</div></td>
+            <td><div>Early Morning</div></td>
+            <td class="table-right"><div>$250,000</div></td>
+            <td class="table-right"><div>$300,000</div></td>
+            <td class="difference-positive table-right"><div>$50,000</div></td>
+            <td class="table-right">
+              <div>
+                <button type="button" class="btn-delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- <div class="btn-row">
+                <button type="button" class="btn-delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <button type="button" class="btn-cancel off">
+                  Cancel
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.49991 0.877075C3.84222 0.877075 0.877075 3.84222 0.877075 7.49991C0.877075 11.1576 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1576 14.1227 7.49991C14.1227 3.84222 11.1576 0.877075 7.49991 0.877075ZM3.85768 3.15057C4.84311 2.32448 6.11342 1.82708 7.49991 1.82708C10.6329 1.82708 13.1727 4.36689 13.1727 7.49991C13.1727 8.88638 12.6753 10.1567 11.8492 11.1421L3.85768 3.15057ZM3.15057 3.85768C2.32448 4.84311 1.82708 6.11342 1.82708 7.49991C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C8.88638 13.1727 10.1567 12.6753 11.1421 11.8492L3.15057 3.85768Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div> -->
+            </td>
+            <!-- <td><button type="button">&times;</button></td> -->
+          </tr>
+          <tr>
+            <td><div>Broadcast</div></td>
+            <td><div>Late Night</div></td>
+            <td class="table-right"><div>$100,000</div></td>
+            <td class="table-right"><div>$125,000</div></td>
+            <td class="difference-positive table-right"><div>$25,000</div></td>
+            <td class="table-right">
+              <div>
+                <button type="button" class="delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div>Digital</div></td>
+            <td><div>Direct</div></td>
+            <td class="table-right"><div>$75,000</div></td>
+            <td class="table-right"><div>$25,000</div></td>
+            <td class="difference-negative table-right"><div>$50,000</div></td>
+            <td class="table-right">
+              <div>
+                <button type="button" class="delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div>Cable</div></td>
+            <td><div>General Market</div></td>
+            <td class="table-right"><div>$300,000</div></td>
+            <td class="table-right"><div>$75,000</div></td>
+            <td class="difference-negative table-right"><div>$225,000</div></td>
+            <td class="table-right">
+              <div>
+                <button type="button" class="delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div>PVX</div></td>
+            <td><div>Digitally Focused Agencies</div></td>
+            <td class="table-right"><div>$300,000</div></td>
+            <td class="table-right"><div>$120,000</div></td>
+            <td class="difference-negative table-right"><div>$180,000</div></td>
+            <td class="table-right">
+              <div>
+                <button type="button" class="delete">
+                  Delete
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- aria-hidden="true" -->
+          <!--
+            Fixing the animation
+            - sudden dissappearance of controls
+            - fixed control poistion means they don't move when upper rows collapse
+          -->
+          <style>
+            .tr-row-controls > td > div {
+              position: relative;
+              display: flex;
+              flex-direction: row-reverse;
+            }
+          </style>
+          <tr id="js-row-control" class="tr-row-controls">
+            <td colspan="6">
+              <div>
+                <button type="button" class="btn-cancel">
+                  Cancel
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.49991 0.877075C3.84222 0.877075 0.877075 3.84222 0.877075 7.49991C0.877075 11.1576 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1576 14.1227 7.49991C14.1227 3.84222 11.1576 0.877075 7.49991 0.877075ZM3.85768 3.15057C4.84311 2.32448 6.11342 1.82708 7.49991 1.82708C10.6329 1.82708 13.1727 4.36689 13.1727 7.49991C13.1727 8.88638 12.6753 10.1567 11.8492 11.1421L3.85768 3.15057ZM3.15057 3.85768C2.32448 4.84311 1.82708 6.11342 1.82708 7.49991C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C8.88638 13.1727 10.1567 12.6753 11.1421 11.8492L3.15057 3.85768Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="linear">
+                  <div class="js-timer"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <script>
+            const table = document.getElementById("table1");
+            const controlRow = document.getElementById("js-row-control");
+
+            // should be a maybe
+            const closest = (tagName, el) => {
+              const tn = tagName.toUpperCase();
+              let closesEl = el;
+
+              while (closesEl.tagName !== tn) {
+                closesEl = closesEl.parentNode;
+              }
+
+              return closesEl;
+            };
+
+            const addControl = (row) => {
+              const control = controlRow.cloneNode(true);
+              const { height } = row.getBoundingClientRect();
+
+              // Clean Me Up
+              const collapseAndDelete = (el) => {
+                el.addEventListener("transitionend", () => el.remove(), {
+                  once: true,
+                });
+                // el.querySelector("button").remove();
+                el.setAttribute("style", `height: auto; max-height: 0;`);
+                el.querySelector("td").setAttribute(
+                  "style",
+                  "border-bottom: none;"
+                );
+                el.querySelector("div").setAttribute(
+                  "style",
+                  `height: auto; max-height: 0; padding-top:0; padding-bottom: 0;`
+                );
+              };
+
+              const onTimerEnd = (e) => {
+                control.removeEventListener("transitionend", onTimerEnd);
+                control.removeEventListener("click", handleClick);
+                collapseAndDelete(control);
+              };
+
+              const handleClick = (e) => {
+                if (e.target.className.includes("btn-cancel")) {
+                  control.removeEventListener("transitionend", onTimerEnd);
+                  control.removeEventListener("click", handleClick);
+                  control.replaceWith(row);
+                }
+              };
+
+              control.removeAttribute("id");
+              control.removeAttribute("aria-hidden");
+              control.setAttribute("style", `height:${height}px;`);
+              control
+                .querySelector("div")
+                .setAttribute("style", `height:${height}px;`);
+
+              control.addEventListener("transitionend", onTimerEnd);
+              control.addEventListener("click", handleClick);
+
+              row.replaceWith(control);
+              setTimeout(
+                () => control.querySelector(".js-timer").classList.add("start"),
+                10
+              );
+            };
+
+            table.addEventListener("click", (event) => {
+              if (event.target.className.includes("delete")) {
+                const tr = closest("tr", event.target);
+
+                addControl(tr);
+              }
+            });
+          </script>
+        </tbody>
+      </table>
+
+      <aside class="t">
+        <h2>Foot Notes</h2>
+      </aside>
+    </main>
+    <!-- 
+      How would I skeleton?
+    -->
+
+    <div id="js-count-down" class="linear" aria-hidden="true">
+      <div class=""></div>
+    </div>
+
+    <div id="js-row-controls" class="row-controls" aria-hidden="true">
+      <button type="button" class="btn-cancel" style="margin-right: 15px">
+        Cancel
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.49991 0.877075C3.84222 0.877075 0.877075 3.84222 0.877075 7.49991C0.877075 11.1576 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1576 14.1227 7.49991C14.1227 3.84222 11.1576 0.877075 7.49991 0.877075ZM3.85768 3.15057C4.84311 2.32448 6.11342 1.82708 7.49991 1.82708C10.6329 1.82708 13.1727 4.36689 13.1727 7.49991C13.1727 8.88638 12.6753 10.1567 11.8492 11.1421L3.85768 3.15057ZM3.15057 3.85768C2.32448 4.84311 1.82708 6.11342 1.82708 7.49991C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C8.88638 13.1727 10.1567 12.6753 11.1421 11.8492L3.15057 3.85768Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+      <div class="linear">
+        <div class="js-timer"></div>
+      </div>
+
+      <!-- <div
+        class="timer"
+        style="
+          background-color: red;
+          height: 1px;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+        "
+      ></div> -->
+    </div>
+
+    <script>
+      /*
+      const table = document.getElementById("table1");
+      const rowControls = document.getElementById("js-row-controls");
+      // const countdown = document.getElementById("js-count-down");
+
+      const closest = (tagName, el) => {
+        const tn = tagName.toUpperCase();
+        let closesEl = el;
+
+        while (closesEl.tagName !== tn) {
+          closesEl = closesEl.parentNode;
+        }
+
+        return closesEl;
+      };
+
+      const addControl = ({ top, left, width, height }, cb) => {
+        const control = rowControls.cloneNode(true);
+
+        const onTimerEnd = () => {
+          control.removeEventListener("transitionend", onTimerEnd);
+          control.removeEventListener("click", handleClick);
+          control.remove();
+          cb();
+        };
+
+        const handleClick = (e) => {
+          if (e.target.tagName === "BUTTON") {
+            control.removeEventListener("transitionend", onTimerEnd);
+            control.removeEventListener("click", handleClick);
+            control.remove();
+          }
+        };
+
+        control.removeAttribute("id");
+        control.setAttribute(
+          "style",
+          `top:${top}px; left:${left}px; width:${width}px; height:${height}px;`
+        );
+        control.addEventListener("transitionend", onTimerEnd);
+        control.addEventListener("click", handleClick);
+        document.body.appendChild(control);
+        control.setAttribute("aria-hidden", false);
+        setTimeout(
+          () => control.querySelector(".js-timer").classList.add("start"),
+          10
+        );
+      };
+
+      table.addEventListener("click", (event) => {
+        if (event.target.className.includes("delete")) {
+          const tr = closest("tr", event.target);
+          const { top, left, width, height } = tr.getBoundingClientRect();
+          addControl({ top, left, width, height }, () => {
+            tr.classList.add("d");
+          });
+        }
+      });
+
+      // Pressing the delete 2
+      // Clone the delete module
+      // position it based on measuring the TR in question
+      // attach animation and cancel events
+      // on animation end do the delete
+      // on cancel, remove events and
+
+      // table.addEventListener("click", (event) => {
+      //   if (event.target.className.includes("delete")) {
+      //     // document.querySelector(".btn-delete").nextElementSibling
+      //     event.target.classList.toggle("off");
+      //     event.target.nextElementSibling.classList.toggle("off");
+
+      //     let tr = event.target;
+      //     while (tr.tagName !== "TR") {
+      //       tr = tr.parentNode;
+      //     }
+      //     // console.log(tr.getBoundingClientRect());
+
+      //     const count = countdown.cloneNode(true);
+      //     count.setAttribute("aria-hidden", false);
+      //     count.removeAttribute("id");
+      //     count.addEventListener(
+      //       "transitionend",
+      //       () => {
+      //         // console.log(319);
+      //         tr?.classList.add("d");
+      //       },
+      //       { once: true }
+      //     );
+      //     document.body.appendChild(count);
+      //     setTimeout(
+      //       () => count.querySelector("div").classList.add("start"),
+      //       0
+      //     );
+      //   } else if (event.target.className.includes("cancel")) {
+      //     event.target.classList.toggle("off");
+      //     event.target.previousElementSibling.classList.toggle("off");
+      //   }
+      // });
+
+      // pressing delete overlays the other control
+      // the overlay listens for animation end
+      // the end of the animation triggers the actual delete.
+
+      // document
+      //   .querySelector("#test > div")
+      //   .addEventListener("transitionend", (a, b, c) =>
+      //     console.log(1, a, b, c)
+      //   );
+      // document
+      //   .querySelector("#test")
+      //   .addEventListener("transitionend", (a, b, c) =>
+      //     console.log(2, a, b, c)
+      //   );
+      */
+    </script>
+  </body>
+</html>
+
+<script>
+  // OLD
+  /*
+  const countdown = document.getElementById("js-count-down");
+  const table = document.getElementById("table1");
+
+  table.addEventListener("click", (event) => {
+    if (event.target.className.includes("delete")) {
+      // document.querySelector(".btn-delete").nextElementSibling
+      event.target.classList.toggle("off");
+      event.target.nextElementSibling.classList.toggle("off");
+
+      let tr = event.target;
+      while (tr.tagName !== "TR") {
+        tr = tr.parentNode;
+      }
+      // console.log(tr.getBoundingClientRect());
+
+      const count = countdown.cloneNode(true);
+      count.setAttribute("aria-hidden", false);
+      count.removeAttribute("id");
+      count.addEventListener(
+        "transitionend",
+        () => {
+          // console.log(319);
+          tr?.classList.add("d");
+        },
+        { once: true }
+      );
+      document.body.appendChild(count);
+      setTimeout(
+        () => count.querySelector("div").classList.add("start"),
+        0
+      );
+    } else if (event.target.className.includes("cancel")) {
+      event.target.classList.toggle("off");
+      event.target.previousElementSibling.classList.toggle("off");
+    }
+  });
+  */
+</script>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Krayer | Binary Search Tree Notes</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/code-style.css" />
+    <link rel="canonical" href="jameskrayer.com/studies/algorithms/trees/bst-notes" />
+</head>
+
+<body>
+<main id="main">
+    <article>
+        <header>
+            <h1>Binary Search Tree</h1>
+        </header>
+
+        <p>Binary trees have at most 2 children. Binary search trees are sorted. Fast look ups.</p>
+        <p>Best case is <code class="inline-code">O(1)</code> (constant time). Looking up the very first node.</p>
+        <p>Average case is <code class="inline-code">O(log(n))</code>. Since some branch of values can be ruled out with each comparison.</p>
+        <p>Worst case is <code class="inline-code">O(n)</code>. Which can happen if all stored nodes are direct children of the prior node.</p>
+
+        <h2>Add</h2>
+
+        <p>The following code is based on Binary Search Tree: Complete Intro to Computer Science V2<sup><a href="#footnote-1">1</a></sup>.</p>
+
+        <pre class="formatted-code">
+<code>const t = new Tree()
+t.add(3)
+t.add(7)
+t.add(4)
+...
+
+   or it could be
+const t = new Tree()
+[3, 7, 4, 6, 5, 1, 10, 2, 9, 8].forEach(num => t.add(num))</code>
+        </pre>
+
+        <pre class="formatted-code">
+<code>class Tree {
+    constructor () {
+        this.root = null;
+    }
+
+    add (num) {
+        if (root === null) {
+            this.root = new Node(num)
+        } else {
+            this.root.add(num)
+        }
+    }
+}
+
+   1. In the case where an equal value is inserted that value will be
+   inserted on the right.
+
+class Node {
+    constructor (val, left = null, right = null) {
+        this.value = val;
+        this.left = left;
+        this.right = right;
+    }
+
+    add (num) {
+           1.
+        if (num < this.value) {
+            if (this.left === null) {
+                this.left = new Node(num)
+            } else {
+                this.left.add(num)
+            }
+        } else {
+            if (this.right === null) {
+                this.right = new Node(num)
+            } else {
+                this.right.add(num)
+            }
+        }
+    }
+}</code>
+        </pre>
+
+        <h4>Observations</h4>
+
+        <p>This solution is unlike Brian's in that the add function is called recursively from the Node class instead of being called in a while(true) in the Tree class. Done because while(true) may be expedient but it also risks the infinite loop. Additionally I think this is a better first step toward deletes.</p>
+
+        <h3>Side Treks</h3>
+
+        <p>As always if I can eschew an OOP solution I'd like to if for no other reason than to prove I can. The previous solution may be better.</p>
+
+        <pre class="formatted-code">
+<code>const newNode = (value, left = null, right = null) => ({
+    value,
+    left,
+    right
+});
+
+const addNode = (value, tree = null) => {
+    if (tree === null) {
+        return newNode(value);
+    } else if (value < tree.value) {
+        if (tree.left === null) {
+            tree.left = newNode(value);
+            return;
+        } else {
+            return addNode(value, tree.left);
+        }
+    } else {
+        if (tree.right === null) {
+            tree.right = newNode(value);
+            return;
+        } else {
+            return addNode(value, tree.right)
+        }
+    }
+}</code>
+        </pre>
+
+        <h4>Observations</h4>
+
+        <p>This is in many ways no different to the first solution but may be preferable if for some reason functions and data need to be kept separate.</p>
+
+        <h2>Delete</h2>
+        <p>There are two deletes. Greatest left subtree and least right subtree. Taking the example from "Binary Search It seems to me there should be a delete strategy. I'll use a left delete bias. If there is a left tree I'll employ the greatest left subtree strategy. If there is a right subtree and no left subtree I'll employ the least right subtree strategy. Otherwise I'll set the current node to null.</p>
+
+        <p>Tree example from "Complete Intro to Computer Science V2" <sup><a href="#footnote-2">2</a></sup>.</p>
+
+        <h3>Test Case: Delete a Leaf</h3>
+
+        <pre class="formatted-code">
+<code>
+         10
+       /   \
+     5      15
+    / \       \
+   3   8      19
+      /       / 
+     6       16
+      \       \
+       7      17
+
+t.delete(17);
+
+class Tree {
+    ...
+
+<span class="formatted-code-insert">
+    delete (num) {
+        if (this.root !== null) {
+            this.root.delete(num);
+        }
+    }</span>
+}
+
+
+class Node {
+    ...
+<span class="formatted-code-insert">
+    delete (num) {
+        if (num < this.value) {
+            this.left.delete(num)
+        } else if (num > this.value)  {
+            this.right.delete(num)
+        } else {
+               num === this.value; because it's neither < nor >
+            if (this.left !== null) {
+                this.deleteLeft()
+            } else if (this.right !== null) {
+                this.deleteRight();
+            } else {
+                this.value = null;
+            }
+        }
+    }</span>
+}</code>
+        </pre>
+
+        <p>My first attempt above was incorrect. I was replacing the value of <code class="inline-code">17</code> with <code class="inline-code">null</code> when I intended to replace the "17 node" with <code class="inline-code">null</code>. Correction to the delete method follows. Includes references to <code class="inline-code">deleteNode</code> for next step.</p>
+
+        <pre class="formatted-code">
+<code>
+<span class="formatted-code-insert">
+delete (num) {
+    if( num < this.value) {
+        if (this.left !== null) {
+            if (this.left.value === num) {
+                if (this.left.isLeaf()) {
+                    this.left === null;
+                } else {
+                    this.left.deleteNode();
+                }
+            } else {
+                this.left.delete(num);
+            }
+        }
+    } else if (num > this.value) {
+        if (this.right !== null) {
+            if (this.right.value === num) {
+                if (this.right.isLeaf()) {
+                    this.right = null;
+                } else {
+                    this.right.deleteNode()
+                }
+            } else {
+                this.right.delete(num)
+            }
+        }
+    } else {
+        this.deleteNode()
+    }
+}</span></code>
+        </pre>
+
+        <h3>Test Case: Delete Node With Left and Right Subtree</h3>
+
+        <h4>Case: Greatest Left Subtree</h4>
+
+        <p>Delete 5. But that's too simple since the left node has no children in the original example.<sup><a href="#footnote-2">2</a></sup> So let's add 2 and 4.</p>
+
+        <ol>
+            <li>Find the node to be deleted as above.</li>
+            <li>If it's not a leaf node call <code class="inline-code">this.deleteNode()</code> on the node to be deleted. In this case <code class="inline-code">Node(5).deleteNode()</code></li>
+            <li>If <code class="inline-code">Node(5).deleteNode()</code> has a left subtree (which it will for this example) use the greatest left subtree strategy. Otherwise use the least right subtree strategy.</li>            
+            <li>Find the greatest right node starting at 3. In this case <code class="inline-code">Node(4)</code>.</li>
+        </ol>
+
+        <pre class="formatted-code">
+<code>
+   Start
+               10
+             /   \
+           5      15
+          /  \       \
+         3    8      19
+       / \   /        / 
+      2   4  6       16
+             \       \
+              7      17</code>
+        </pre>
+
+        <ol start="5">
+            <li>Insert <code class="inline-code">Node(5)</code> left subtree into into <code class="inline-code">Node(3)</code> right subtree.</li>
+        </ol>
+
+        <pre class="formatted-code">
+<code>
+               10
+             /   \
+           5      15
+          /  \       \
+         3    8      19
+       / \   /        / 
+      2   4  6       16
+         /   \       \
+        3     7      17
+       /  \
+      2    4</code>
+        </pre>
+
+        <ol start="6">
+            <li>Move <code class="inline-code">Node(3)</code> right tree (<code class="inline-code">Node(4)</code>) to <code class="inline-code">Node(3)</code></li>
+            <li>Clear <code class="inline-code">Node(3)</code> right subtree.</li>
+        </ol>
+
+        <pre class="formatted-code">
+<code>
+               10
+             /   \
+           5      15
+          /  \       \
+         4    8      19
+       /     /        / 
+      3      6       16
+     /       \       \
+    2         7      17</code>
+        </pre>
+
+        <ol start="8">
+            <li>Assign the found value to self.</li>
+            <li>If the value of self is equal to this.left.value move the left subtree up one level.</li>
+            <li>Else set this left right subtree to the found node's subtree</li>
+        </ol>
+
+        <pre class="formatted-code">
+<code>
+               10
+             /   \
+           4      15
+          /  \       \
+         2    8      19
+       /     /        / 
+      2      6       16
+             \       \
+              7      17</code>
+        </pre>
+
+        <p>This works and the code for delete right follows. But I wasn't terribly satisfied. Firstly I don't need to check .left.right for null since my Node.getRightMost() will handle this for me. Secondly I'm pretty convinced that a better order for copying nodes means I won't need to check ths.value against this.left.value.</p>
+
+        <pre class="formatted-code">
+<code>
+class Node {
+    ...
+<span class="formatted-code-insert">
+    getRightMost() {
+        if (this.right === null) {
+            return this;
+        } else {
+            return this.right.getRightMost();
+        }
+    }
+
+    getLeftMost() {
+        if (this.left === null) {
+            return this;
+        } else {
+            return this.left.getLeftMost();
+        }
+    }
+
+    insertLeft(subTree) {
+        if (this.left === null) {
+            this.left = subTree;
+        } else {
+            this.left.insertLeft(subTree)
+        }
+    }
+
+    insertRight(subTree) {
+        if (this.right === null) {
+            this.right = subTree;
+        } else {
+            this.right.insertRight(subTree)
+        }
+    }
+
+       deleting self
+    deleteNode() {
+           greatest left subtree
+        if (this.left !== null) {
+            if (this.left.right === null) {
+                this.value = this.left.value;
+                this.left = this.left.left;
+            } else {
+                const greatestRight = this.left.getRightMost();
+                const left = this.left;
+
+                left.right.insertLeft(left);
+
+                this.left = this.left.right
+                left.right = null;
+
+                this.value = greatestRight.value;
+
+                if (this.value === this.left.value) {
+                    this.left = this.left.left
+                } else {
+                    this.left.right = greatestRight.left;
+                }
+            }
+        } else {
+            if (this.right.left === null) {
+                this.value = this.right.value;
+                this.right = this.right.right;
+            } else {
+                const leastLeft = this.right.getLeftMost();
+                const right = this.right;
+
+                   8
+                right.left.insertRight(right) 
+
+                this.right = this.right.left;
+                right.left = null;
+
+                this.value = leastLeft.value;
+
+                if (this.value = this.right.value) {
+                    this.right = this.right.right;
+                } else {
+                    this.right.left = leastLeft.right
+                }
+            }
+        }
+    }</span>
+}</code>
+        </pre>
+
+        <p>Let's look at delete again with a slightly different tree.</p>
+
+        <pre class="formatted-code">
+<code>
+   Start
+               10
+             /   \
+           5      15
+          /  \       \
+         3     8       19
+       / \     /       / 
+      2   4    6       16
+           \    \       \
+           4.5   7      17
+            /
+          4.1</code>
+        </pre>
+
+
+insert this.left into found.left
+
+        <pre class="formatted-code">
+<code>
+   Start
+               10
+             /   \
+           5      15
+          /  \       \
+         3     8       19
+       / \     /       / 
+      2   4    6       16
+           \    \       \
+           4.5   7      17
+            /
+          4.1
+           /
+          3
+         / \
+        2   4
+             \
+             4.5
+              /
+             4.1</code>
+        </pre>
+
+move found here. 
+
+        <pre class="formatted-code">
+<code>
+   Start
+               10
+             /   \
+          4.5      15
+          /  \       \
+        4.1   8       19
+       /       /       / 
+      3        6       16
+     / \        \       \
+    2   4        7      17
+         \
+         4.5
+          /
+         4.1</code>
+        </pre>
+
+
+Delete found value and children.
+
+        <pre class="formatted-code">
+<code>
+   Start
+               10
+             /   \
+          4.5      15
+          /  \       \
+        4.1   8       19
+       /       /       / 
+      3        6       16
+     / \        \       \
+    2   4        7      17</code>
+        </pre>
+
+        <p>To handle this step I could call this.left.delete(4.5) but after moving the bottom 4.1 up I'd also have to delete 4.1. Basically recursively walking the tree and deleteing the all original found lefts which would without some aount of extra insanity cause the deletion of a value we want to keep; 4.1 in this example. </p>
+
+        <p>I think a better solution would be to add a deltree method to delete 4.5 and it's children from the left subtree.</p>
+
+        <pre class="formatted-code">
+<code>
+class Node {
+    ...
+
+    deltree (num) {
+        if (num < this.value) {
+            if (this.left.value === num) {
+                this.left = null;
+            } else {
+                this.left.deltree(num)
+            }
+        } else {
+            if (this.right.value === num) {
+                this.right = null;
+            } else {
+                this.right.deltree(num)
+            }
+        }
+    }
+}</code>
+        </pre>
+
+        <p>Alas this will not work becuase 4.1 has no right subtree which is where 4.5 would naturally fall.</p>
+
+        <p>A better solution then is to have a reference to foundNode.parent (4) so its right can be set to null</p>
+
+        <h4>Delete Case</h4>
+
+        <p>After some work on this I realized I needed another source to make sure I knew what was going on.<sup><a href="#footnote-3">3</a></sup> It's Greatest Left and Least Right shoud be Greatest Left or Least Right. Also some of the above node swaping was made difficult by not being able to do <code class="inline-code">this = newNode</code>.</p>
+        
+        <p>Let's begin again.</p>
+    </article>
+
+    <article>
+        <header>
+            <h1>Binary Search Tree Using Sources <sup><a href="#footnote-1">1</a></sup>, <sup><a href="#footnote-3">3</a></sup></h1>
+        </header>
+
+        <pre class="formatted-code">
+<code>const newNode = (value, left = null, right = null) => ({
+    value,
+    left,
+    right
+});
+
+// recursion
+const addNode = (value, node = null) => {
+    if (node === null) return newNode(value);
+
+    if (value < node.value) {
+        node.left = addNode(value, node.left);
+    } else {    
+        node.right = addNode(value, node.right);
+    }
+
+    return node;
+}
+
+// loops if you prefer
+const addNode = (value, node = null) => {
+    if (node === null) return newNode(value);
+
+    let n = node;
+
+    while (n !==null ) {
+        if (value < n.value) {
+            if (n.left === null) {
+                n.left = newNode(value);
+                break;
+            } else {
+                n = n.left;
+            }
+        } else {
+            if (n.right === null) {
+                n.right = newNode(value);
+                break;
+            } else {
+                n = n.right;
+            }
+        }
+    }
+
+    return node;
+}
+
+// Delete - Recurive
+const deleteNode = (value, node) => {
+    if (node === null) {
+        return node;
+    }
+
+    if (value < node.value) {
+        node.left = deleteNode(value, node.left)
+        return node;
+    } else if (value > node.value) {
+        node.right = deleteNode(value, node.right)
+        return node;
+    }
+
+    if (node.right === null) {
+        const left = node.left;
+        delete node;
+        return left;
+    } else if (node.left === null) {
+        const right = node.right;
+        delete node;
+        return right;
+    } else {
+        let current = node;
+        let greatestLeft = node.left;
+
+        while (greatestLeft.right !== null) {
+            current = greatestLeft;
+            greatestLeft = greatestLeft.right;
+        }
+
+        if (current === node) {
+            current.left = greatestLeft.left
+        } else {
+            current.right = greatestLeft.left
+        }
+
+        node.value = greatestLeft.value;
+
+        delete greatestLeft;
+        return node;
+
+    }
+}
+
+// Delete in a loop
+const deleteWhile = (value, node) => {
+    if (node === null) return node;
+
+    // Get Node
+    let nodeToDelete = node;
+
+    while (nodeToDelete.value !== value) {
+        if (value < nodeToDelete.value) {
+            nodeToDelete = nodeToDelete.left;
+        } else {
+            nodeToDelete = nodeToDelete.right
+        }
+    }
+
+    // 
+    if (nodeToDelete.right === null) {
+        nodeToDelete.value = nodeToDelete.left.value;
+        nodeToDelete.left = nodeToDelete.left.left;
+        nodeToDelete.right = nodeToDelete.left.right;
+    } else if (nodeToDelete.left === null) {
+        nodeToDelete.value = nodeToDelete.right.value;
+        nodeToDelete.left = nodeToDelete.right.left;
+        nodeToDelete.right = nodeToDelete.right.right;
+    } else {
+        let current = nodeToDelete;
+        let greatestLeft = nodeToDelete.left;
+
+        while (greatestLeft.right !== null) {
+            current = greatestLeft;
+            greatestLeft = greatestLeft.right;
+        }
+
+        if (current === nodeToDelete) {
+            current.left = greatestLeft.left
+        } else {
+            current.right = greatestLeft.left
+        }
+
+        nodeToDelete.value = greatestLeft.value;
+    }
+
+    return node;
+}</code>
+        </pre>
+
+
+<!-- 
+<script>
+const newNode = (value, left = null, right = null) => ({
+    value,
+    left,
+    right
+});
+
+// recursion
+const addNode = (value, node = null) => {
+    if (node === null) return newNode(value);
+
+    if (value < node.value) {
+        node.left = addNode(value, node.left);
+    } else {    
+        node.right = addNode(value, node.right);
+    }
+
+    return node;
+}
+
+// Delete - Greatest Left
+const deleteNode = (value, node) => {
+    if (node === null) {
+        return node;
+    }
+
+    if (value < node.value) {
+        node.left = deleteNode(value, node.left)
+        return node;
+    } else if (value > node.value) {
+        node.right = deleteNode(value, node.right)
+        return node;
+    }
+
+    if (node.right === null) {
+        const left = node.left;
+        delete node;
+        return left;
+    } else if (node.left === null) {
+        const right = node.right;
+        delete node;
+        return right;
+    } else {
+        let current = node;
+        let greatestLeft = node.left;
+
+        while (greatestLeft.right !== null) {
+            current = greatestLeft;
+            greatestLeft = greatestLeft.right;
+        }
+
+        if (current === node) {
+            current.left = greatestLeft.left
+        } else {
+            current.right = greatestLeft.left
+        }
+
+        node.value = greatestLeft.value;
+
+        delete greatestLeft;
+        return node;
+
+    }
+}
+
+    // DO WITH LOOP NEXT
+
+const deleteWhile = (value, node) => {
+    if (node === null) return node;
+
+    // Get Node
+    let nodeToDelete = node;
+
+    while (nodeToDelete.value !== value) {
+        if (value < nodeToDelete.value) {
+            nodeToDelete = nodeToDelete.left;
+        } else {
+            nodeToDelete = nodeToDelete.right
+        }
+    }
+
+    // 
+    if (nodeToDelete.right === null) {
+        nodeToDelete.value = nodeToDelete.left.value;
+        nodeToDelete.left = nodeToDelete.left.left;
+        nodeToDelete.right = nodeToDelete.left.right;
+    } else if (nodeToDelete.left === null) {
+        nodeToDelete.value = nodeToDelete.right.value;
+        nodeToDelete.left = nodeToDelete.right.left;
+        nodeToDelete.right = nodeToDelete.right.right;
+    } else {
+        let current = nodeToDelete;
+        let greatestLeft = nodeToDelete.left;
+
+        while (greatestLeft.right !== null) {
+            current = greatestLeft;
+            greatestLeft = greatestLeft.right;
+        }
+
+        if (current === nodeToDelete) {
+            current.left = greatestLeft.left
+        } else {
+            current.right = greatestLeft.left
+        }
+
+        nodeToDelete.value = greatestLeft.value;
+    }
+
+    return node;
+}
+
+    let t = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8].reduce((acc, n) => addNode(n, acc), null);
+
+    // INORDER(4)
+    // PREORDER(4)
+    // POSTORDER(4)
+
+
+</script> -->
+    </article>
+
+    <article>
+        <header>
+            <h1>Introduction to Algorithms</h1>
+        </header>
+
+        <p>At this point I was stuck on the bus home with no internet so I resorted to reading Introduction to Algorithms<sup><a href="#footnote-4">4</a></sup>. Even though some of the notation was unfamiliar and some of the Math (there wasn't much) beyond me I found this resource very helpful. Parent reference (p312) and tree min/max functions (p318) alone could simplify much of what I've done so far.</p>
+
+        <p>Beginning again I'm going to start with a helper function to deal with javascript's <code class="inline-code">undefined</code> and <code class="inline-code">null</code> properties. These two properties represent and absence of value (though differently) and can cause some amount of confusion.</p>
+
+        <pre class="formatted-code">
+<code>const isNil = (x) => x === null || x === undefined;</code></pre>
+
+        <p>Or if you'd like to be very careful, because some environments allow the value of <code class="inline-code">undefined</code> to be reassigned. This is old news and probably not worth being concerned with but for the sake of painful detail I mention it anyway.</p>
+
+        <pre class="formatted-code">
+<code>const isNil = (x) => x === null || x === void 0;</code></pre>
+
+        <p>Next I'm going to reconsider the <code class="inline-code">newNode</code> function from above. In all previous cases <code class="inline-code">newNode</code> declared left and right as arguments but those are never used. Also in our new case <code class="inline-code">newNode</code> will need a parent reference. Let's refactor based on those observations.</p>
+
+        <pre class="formatted-code">
+<code>const newNode = (key, parent = null) => Object.create(
+    null,
+    {
+        key: {
+            value: key,
+            writable: true
+        },
+        parent: {
+            value: parent,
+            writable: true
+        },
+        left: {
+            value: null,
+            writable: true
+        },
+        right: {
+            value: null,
+            writable: true
+        },
+    }
+);
+
+// use
+const t = newNode(7);
+
+// returned value
+//  {
+//    key: 7,
+//    parent: null,
+//    left: null,
+//    right: null
+//  }</code></pre>
+
+        <p>Since new nodes are created with <code class="inline-code">null</code> as their prototype they wind up not having one and therefore take up a bit less memory. Using <code class="inline-code">Object.create</code> is a bit of a flex and probably unnecessary. Remember if the object has no prototype then it has no reference to built in methods like <code class="inline-code">hasOwnProperty</code>.</p>
+
+        <p>Next we need to refactor add so we can add parent references.</p>
+
+        <pre class="formatted-code">
+<code>const addNode = (key, node = null) => {
+    if (isNil(node)) {
+        return newNode(key);
+    } else if (key < node.key) {
+        node.left = isNil(node.left)
+            ? newNode(key, node)
+            : addNode(key, node.left);
+    } else {
+        node.right = isNil(node.right)
+            ? newNode(key, node)
+            : addNode(key, node.left);
+    }
+
+    return node;
+}</code></pre>
+
+        <p>At this point it should be mentioned that the <code class="inline-code">parent</code> property is a reference to the <code class="inline-code">parent</code> object not a copy of it. Despite what the output may look like a <code class="inline-code">parent</code> node and a <code class="inline-code">parent</code> property are pointing at the same spot in memory. Also note that I've switched to use <code class="inline-code">key</code> instead of<code class="inline-code">value</code>. Presumably more complex data will be stored in the tree and sorted by <code class="inline-code">key</code> so it makes sense to get comfortable with that way of thinking.</p>
+
+        <p><code class="inline-code">treeMin</code> and <code class="inline-code">treeMax</code> functions are simple enough. I suspect from above experiences they'll make deletion simple enough.</p>
+
+        <pre class="formatted-code">
+<code>const treeMin = (node) => isNil(node.left) ? node : treeMin(node.left);
+const treeMax = (node) => isNil(node.right) ? node : treeMax(node.right);
+</code></pre>
+        
+    <p>Tree successor. Here I understand the code but not the need. What is the case in which I'd want to "smallest key greater than x.key"?<sup><a href="#footnote-5">5</a></sup></p>
+
+        <pre class="formatted-code">
+<code>const treeSuccessor = (node) => {
+    if (!isNil(node.right)) {
+        return treeMin(node.right)
+    } else {
+        let current = node;
+        let parent = node.parent;
+
+        while (!isNil(parent) && parent.right === current) {
+            current = parent;
+            parent = current.parent;
+        }
+
+        return parent;
+    }
+</code></pre>
+
+        <h2>Insertion</h2> 
+
+        <p>This code is different to my earlier <code class="inline-code">addNode</code> in that it expects a full node instead of creating a node. This is of course a more sensible approach than my earier code since key is the organizing property.<sup><a href="#footnote-6">6</a></sup></p>
+
+        <pre class="formatted-code">
+<code>const insertNode = (tree, node) => {
+        const currentNode = tree; 
+        const parentNode = null;
+
+        while (!isNil(currentNode)) {
+            parentNode = currentNode;
+
+            if (node.key < currentNode.key) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+
+        node.parent = parentNode;
+
+        // if (isNil(parentNode)) {
+        //    tree.root = parentNode // 1.
+        if (node.key < parentNode.key) {
+            parentNode.left = node;
+        } else {
+            parentNode.right = node;
+        }
+    }
+</code></pre>
+
+        <p>I've commented the <code class="inline-code">isNil(parentNode)</code> check above since my working concept does not have a tree.root property.</p>
+
+        <h2>Deletion</h2>
+
+        <p>Transplant <code class="inline-code">nodeY</code> into <code class="inline-code">nodeX</code>'s position.</p>
+
+        <pre class="formatted-code">
+<code>const transplant = (tree, nodeX, nodeY) => {
+    // if the parent is null then nodeX is the root of the tree.
+    if (isNil(nodeX.parent)) {
+        tree.root = nodeY;
+    }
+    // if nodeX is it's parent's left subtree
+    else if (nodeX === nodeX.parent.left)  {
+        nodeX.parent.left = nodeY;
+    } else {
+        nodeX.parent.right = nodeY
+    }
+
+    // if nodeY is an actual node then its parent needs to be replaced
+    if !isNil(nodeY) 
+        nodeY.parent = nodeX.parent
+}
+</code></pre>
+
+        <p></p>
+
+        <pre class="formatted-code">
+<code>const deleteNode = (tree, node) => {
+    // if node does not have a left subtree replace it with its right subtree
+    if (isNil(node.left)) {
+        transplant(tree, node, node.right);
+    }
+    // if node does not have a right subtree replace it with its left subtree
+    else if (isNil(node.right)) {
+        transplant(tree, node, node.left);
+    }
+    // node has both a left and right subtree
+    else {
+        const leastRightNode = treeMin(node.right);
+
+        // if leastRight is farther down node's right subtree
+        if (leastRightNode !== node.right) {
+            // replace least right with its right
+            transplant(tree, leastRightNode, leastRightNode.right) 
+            leastRightNode.right = node.right;
+            leastRightNode.right.parent = leastRightNode
+        }
+        transplant(tree, node, leastRightNode);
+        leastRightNode.left = node.left;
+        leastRightNode.left.parent = node.leastRightNode;
+    }
+}
+</code></pre>
+
+        <h2>4 Types of Tree Traversal Algorithms<sup><a href="#footnote-7">7</a></sup></h2>
+        
+        <p>Didn't feel the need to write all of the code described here but liked the simple straight forward explanation. Will come back to this on the final pass. Also worth noting that tree traversal does not seem to be covered in "Introduction to Algorithms" until "Chapter 20 Elementary Graph Algorithms".</p>
+
+        <h2>Tree Traversal - inorder, preorder and postorder<sup><a href="#footnote-8">8</a></sup></h2>
+
+        <p>Did not read since the last article covered tree traversal but there were more articles on trees and balanced trees so I want to retrun to this resource later.</p>
+
+        <h2>Finally</h2>
+
+        <p>It will be worth while in a future final pass to find some practical BST excercise and complete that.</p>
+
+        <footer>
+            <h3>Bibliography</h3>
+            <ol class="footnotes">
+                <li  id="footnote-1">Brian Holt, <a href="https:  frontendmasters.com/courses/computer-science-v2/binary-search-tree/">Binary Search Tree: Complete Intro to Computer Science V2</a> (Front End Masters: Video).</li>
+                <li id="footnote-2">Brian Holt, <a href="https:  btholt.github.io/complete-intro-to-computer-science/">Binary Search Tree: Complete Intro to Computer Science V2</a> (Front End Masters: Support Site).</li>
+                <li id="footnote-3"><a href="https://www.geeksforgeeks.org/insertion-in-binary-search-tree/">Insertion in Binary Search Tree</a></li>
+                <li id ="footnote-4">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).</li>
+                <li id ="footnote-5">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).  Successor and predecessor, 318</li>
+                <li id ="footnote-6">Cormen, Leiserson, Rivest and Stein,Introduction to Algorithms 4th Edition (Cambridge: MIT Press, 2022).  Figure 12.3, 322</li>
+                <li id ="footnote-7"><a href="https://builtin.com/software-engineering-perspectives/tree-traversal">4 Types of Tree Traversal Algorithms</a></li>
+                <li id ="footnote-8"><a href="https://www.programiz.com/dsa/tree-traversal">Tree Traversal - inorder, preorder and postorder</a></li>
+                <li id="footnote-9"><a href="https://visualgo.net/en/">Algorithm visualizer</a> that may be helpful in the future.</li>
+            </ol>
+        </footer>
+
+    </article>
+</main>    
+</body>
+</html>
