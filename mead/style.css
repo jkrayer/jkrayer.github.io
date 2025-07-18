@@ -123,6 +123,8 @@ td {
 }
 
 .table-measurements > tbody > tr > td[colspan] {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
   text-align: left;
 }
 
