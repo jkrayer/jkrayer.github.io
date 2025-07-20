@@ -1,0 +1,82 @@
+body,
+html {
+  font-family: "Jost", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.page-title-group > h1 {
+  margin-bottom: 0.125rem;
+}
+.page-title-group > p {
+  margin-top: 0.125rem;
+}
+
+/* Layout */
+.rules-wrapper {
+  max-width: 800px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.layout-2col {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media screen and (width >= 750px) {
+  .layout-2col {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+
+  .layout-2col > h3:first-of-type,
+  .layout-2col > h4:first-of-type,
+  .layout-2col > h5:first-of-type,
+  .layout-2col > p:first-of-type {
+    margin-top: 0;
+  }
+
+  .layout-2col > p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  text-align: center;
+}
+
+.table > thead > tr > th {
+  padding: 0.25rem 0.375rem;
+}
+
+.table > tbody > tr > td {
+  padding: 0.25rem 0.125rem;
+}
+
+.table.filled > tbody:nth-of-type(odd) {
+  background-color: var(--grayccc);
+}
+
+.table > tfoot {
+  font-size: var(--text-size-90);
+}
+
+/* Links */
+a,
+a:visited,
+a:active {
+  color: #0085bf;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
