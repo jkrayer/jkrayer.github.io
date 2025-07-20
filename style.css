@@ -4,6 +4,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Nav */
+.root-navigation {
+}
+.root-navigation > a {
+  display: block;
+}
+
 /* Layout */
 .article-full-width {
   max-width: 670px;
