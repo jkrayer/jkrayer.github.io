@@ -1,6 +1,7 @@
 body,
 html {
   font-family: "Jost", sans-serif;
+  font-size: 1.125rem;
   scroll-behavior: smooth;
 }
 
@@ -79,4 +80,34 @@ a:active {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* TOC */
+.table-of-contents {
+  list-style: none;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.table-of-contents-root > li {
+  overflow: hidden;
+  font-weight: 700;
+}
+
+.table-of-contents-level-001 {
+  padding-left: 1rem;
+}
+
+.table-of-contents-level-001 > li {
+  font-weight: 400;
+}
+
+.table-of-contents-level-002 {
+  padding-left: 2rem;
+}
+
+.table-of-contents-level-003 {
+  padding-left: 3rem;
 }
