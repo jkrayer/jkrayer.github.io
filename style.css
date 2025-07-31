@@ -4,14 +4,34 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Nav */
-.root-navigation {
-}
-.root-navigation > a {
-  display: block;
+/* Root Layout */
+.root-logo {
+  margin: 0;
+  padding: 0.5em;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
-/* Layout */
+/* Nav */
+.root-navigation {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid gray;
+}
+
+.root-navigation-link {
+  align-content: center;
+  box-sizing: border-box;
+  padding: 0.5em;
+  border-bottom: 1px solid gray;
+  min-height: 2.5em;
+  max-height: 2.5em;
+  line-height: 1;
+  text-decoration: none;
+  /* display: block; */
+}
+
+/* Shared Layout */
 .article-full-width {
   max-width: 670px;
   margin-right: 1rem;
