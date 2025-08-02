@@ -28,6 +28,10 @@ a:visited {
   text-decoration: line-through;
 }
 
+.strike {
+  text-decoration: line-through;
+}
+
 /* NAVIGATION */
 .mead-breadcrumbs {
   padding: 0;
