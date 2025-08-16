@@ -1,7 +1,7 @@
 body,
 html {
   font-family: "Jost", sans-serif;
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   scroll-behavior: smooth;
 }
 

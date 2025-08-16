@@ -25,19 +25,36 @@
   <body>
     <main class="" id="anchor-top">
       <header class="root-header">
-        <h1 class="root-logo">James Krayer</h1>
-        <label for="root-navigation-check" role="button" title="Toggle Navigation">Clicky</label>
-        <input type="checkbox" id="root-navigation-check" aria-controls="root-navigation" />
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
 
-        <nav id="root-navigation" class="root-navigation">
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/" class="root-navigation-link">Home</a>
+          <a href="/web-developer/" class="root-navigation-link">Web Developer</a>
+          <a href="/mead/" class="root-navigation-link">Mead</a>
+          <a href="/dungeons-and-dragons/" class="root-navigation-link">D&D</a>
+          <a href="#contact" class="root-navigation-link">Contact</a>
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+
+        <!-- <nav id="root-navigation" class="root-navigation">
           <a class="root-navigation-link" href="#anchor-about">About</a>
           <a class="root-navigation-link" href="#anchor-projects">Projects</a>
           <a class="root-navigation-link" href="#anchor-blog">Blog</a>
           <a class="root-navigation-link" href="https://github.com/jkrayer">GitHub</a>
           <a class="root-navigation-link" href="https://www.linkedin.com/in/james-krayer-65808715/">LinkedIn</a>
-          <!-- <a href="/mead/">Mead</a>
-          <a href="/dungeons-and-dragons/">Dungeons &amp; Dragons</a> -->
-        </nav>
+        </nav> -->
       </header>
       <!-- <article class="root-article" id="anchor-first">
         <div>James Krayer</div>
