@@ -2,6 +2,15 @@ body,
 html {
   font-family: "Lato", sans-serif;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Root Layout */
@@ -198,4 +207,77 @@ html {
   .root-navigation-link {
     padding: 0.75rem 1.25rem;
   }
+}
+
+/* Root Article Styles - Single Screen Sections */
+.root-article {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.root-article header {
+  margin-bottom: 2rem;
+}
+
+.root-article .root-article-h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.root-article .root-article-h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--gray333);
+  font-weight: 400;
+}
+
+.root-article p {
+  max-width: 600px;
+  margin: 1rem auto;
+  text-align: left;
+}
+
+/* Responsive adjustments for root articles */
+@media screen and (min-width: 768px) {
+  .root-article {
+    padding: 3rem 2rem;
+  }
+  
+  .root-article p {
+    font-size: var(--text-size-200);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .root-article {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Footer positioning */
+.root-footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: var(--grayddd);
+}
+
+.root-footer-link {
+  color: var(--gray333);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.root-footer-link:hover {
+  background-color: var(--grayccc);
+  color: var(--black);
 }
