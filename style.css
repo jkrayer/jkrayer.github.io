@@ -249,7 +249,7 @@ main {
   .root-article {
     padding: 3rem 2rem;
   }
-  
+
   .root-article p {
     font-size: var(--text-size-200);
   }
