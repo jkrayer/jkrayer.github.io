@@ -19,11 +19,33 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/core.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/dungeons-and-dragons/style.css" />
   </head>
   <body>
-    <header></header>
     <main>
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/dungeons-and-dragons/" class="logo-link">Dungeons and Dragons</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/dungeons-and-dragons" class="root-navigation-link">Dungeons &amp; Dragons</a>
+          <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+
       <!-- <article class="rules-wrapper">
         <header>
           <hgroup class="page-title-group">

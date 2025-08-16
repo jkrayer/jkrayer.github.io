@@ -21,6 +21,10 @@ html {
   margin-left: auto;
 }
 
+.rules-wrapper:first-of-type {
+  margin-top: 3rem;
+}
+
 .layout-2col {
   column-count: 1;
   column-gap: 1rem;
