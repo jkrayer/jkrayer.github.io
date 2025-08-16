@@ -23,12 +23,29 @@
     <link rel="stylesheet" href="/mead/style.css" />
   </head>
   <body>
-    <header class="article-full-width">
-      <nav>
-        <a href="/mead/batches/">Batches</a>
-      </nav>
-    </header>
     <main>
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/mead" class="logo-link">Mead</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/mead" class="root-navigation-link">Mead Home</a>
+          <a href="/mead/batches/" class="root-navigation-link">Batch Notes</a>
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+
       <article class="article-full-width">
         <header>
           <hgroup>
@@ -194,62 +211,64 @@
           flavors I can produce.
         </p>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Week 1</th>
-              <th>Week 2</th>
-              <th>Week 3</th>
-              <th>Week 4</th>
-              <th>Week 5</th>
-              <th>Week 6</th>
-              <th>Week 7</th>
-              <th>Week 8</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Batch #1</td>
-              <td>Rest</td>
-              <td>Rest</td>
-              <td>Rest</td>
-              <td>Bottle</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td>Batch #2</td>
-              <td>Rest</td>
-              <td>Rest</td>
-              <td>Rest</td>
-              <td>Bottle</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Batch #3</td>
-              <td>Rest</td>
-              <td>Rest</td>
-              <td>Rest</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Batch #4</td>
-              <td>Rest</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+                <th>Week 5</th>
+                <th>Week 6</th>
+                <th>Week 7</th>
+                <th>Week 8</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Batch #1</td>
+                <td>Rest</td>
+                <td>Rest</td>
+                <td>Rest</td>
+                <td>Bottle</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Batch #2</td>
+                <td>Rest</td>
+                <td>Rest</td>
+                <td>Rest</td>
+                <td>Bottle</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Batch #3</td>
+                <td>Rest</td>
+                <td>Rest</td>
+                <td>Rest</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Batch #4</td>
+                <td>Rest</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <p>
           If money, space and equipment were of no concern odd weeks would be for honey experiments and even weeks yeast
@@ -282,7 +301,8 @@
 
         <p>This plan will of course be revised along the way.</p>
       </article>
+
+      <footer></footer>
     </main>
-    <footer></footer>
   </body>
 </html>

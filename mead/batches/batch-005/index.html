@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Mead Experiment #4 using Neshanic Valley Bamboo Blossom honey."
-    />
+    <meta name="description" content="Mead Experiment #4 using Neshanic Valley Bamboo Blossom honey." />
     <title>James Krayer | Mead | Batch 005</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,21 +23,32 @@
     <link rel="stylesheet" href="/mead/style.css" />
   </head>
   <body>
-    <header class="article-full-width">
-      <nav>
-        <ol class="mead-breadcrumbs">
-          <li><a href="/mead/">Mead</a></li>
-          <li><a href="/mead/batches/">Batches</a></li>
-        </ol>
-      </nav>
-    </header>
     <main>
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/mead" class="logo-link">Mead</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/mead" class="root-navigation-link">Mead Home</a>
+          <a href="/mead/batches/" class="root-navigation-link">Batch Notes</a>
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
       <article class="article-full-width">
         <header>
           <hgroup>
-            <h2 class="mead-batch-title">
-              Batch #5: Neshanic Valley Blueberry Blossom
-            </h2>
+            <h2 class="mead-batch-title">Batch #5: Neshanic Valley Blueberry Blossom</h2>
             <p class="mead-batch-subtitle">Part of Experimentation Matrix 1</p>
           </hgroup>
         </header>
@@ -50,29 +58,24 @@
         <h3>Assumptions</h3>
 
         <p>
-          Based on Batch <a href="/mead/batch-003/">#3</a> and
-          <a href="/mead//batch-004/">#4</a> I no longer feel safe predicting
-          the rate at which fermentation will occur. However, I believe the
-          rehydration nutrients and fermenting nutrients were insufficient in
-          <a href="/mead//batch-004/">Batch #4</a> so I'll make an effort to
+          Based on Batch <a href="/mead/batch-003/">#3</a> and <a href="/mead//batch-004/">#4</a> I no longer feel safe
+          predicting the rate at which fermentation will occur. However, I believe the rehydration nutrients and
+          fermenting nutrients were insufficient in <a href="/mead//batch-004/">Batch #4</a> so I'll make an effort to
           correct that and measure whether that alters the rate of fermentation.
         </p>
         <p>
-          For this batch I'm targeting a starting gravity that should allow for
-          15% alcohol and yield a dry mead (<abbr title="Final Gravity"
+          For this batch I'm targeting a starting gravity that should allow for 15% alcohol and yield a dry mead (<abbr
+            title="Final Gravity"
             >f.g.</abbr
           >
           ~1.006) that I'll back-sweeten to
-          <abbr title="Final Gravity">f.g.</abbr> 1.020 for a semi-sweet Mead. I
-          think this will restart fermentation and may require several rounds of
-          back-sweetening.
+          <abbr title="Final Gravity">f.g.</abbr> 1.020 for a semi-sweet Mead. I think this will restart fermentation
+          and may require several rounds of back-sweetening.
         </p>
         <p>
-          In <a href="/mead//batch-004/">Batch #4</a> my first gravity reading
-          was higher than my initial gravity reading. I'm wondering if this will
-          occur again perhaps due to de-gassing, which I'm currently doing by
-          shaking and swirling, before taking readings. This could be causing
-          the mixture to be more homogenous.
+          In <a href="/mead//batch-004/">Batch #4</a> my first gravity reading was higher than my initial gravity
+          reading. I'm wondering if this will occur again perhaps due to de-gassing, which I'm currently doing by
+          shaking and swirling, before taking readings. This could be causing the mixture to be more homogenous.
         </p>
 
         <h3>Ingredients</h3>
@@ -88,9 +91,8 @@
         <h4>Note</h4>
 
         <p>
-          I'm not targeting specific weights of honey because I am targeting a
-          starting specific gravity and plan to simply use the amount of honey
-          that will yield that gravity.
+          I'm not targeting specific weights of honey because I am targeting a starting specific gravity and plan to
+          simply use the amount of honey that will yield that gravity.
         </p>
 
         <p>Actual weights to be recorded.</p>
