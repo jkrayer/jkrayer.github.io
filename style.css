@@ -11,6 +11,7 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 80px; /* Add padding to account for fixed header */
 }
 
 /* Root Layout */
@@ -38,7 +39,12 @@ main {
   padding: 0 1rem;
   background-color: var(--white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
   z-index: 1000;
 }
 
