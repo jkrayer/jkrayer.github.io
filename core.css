@@ -86,7 +86,8 @@ h6,
   margin-top: 1rem;
 }
 
-p {
+p,
+table {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
