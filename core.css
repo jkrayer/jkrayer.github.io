@@ -77,6 +77,15 @@ h6,
   font-size: var(--text-size-200);
 }
 
+.h1.compact,
+.h2.compact,
+.h3.compact,
+.h4.compact,
+.h5.compact,
+.h6.compact {
+  margin-top: 1rem;
+}
+
 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
