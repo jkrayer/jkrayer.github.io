@@ -1,50 +1,211 @@
-        table {
-        width: 100%;
-        border-collapse: collapse;
-        }
+/**
+ * Table of Contents
+ */
 
-        caption {
-        text-align: left;
-        font-weight: 500;
-        }
+body,
+html {
+  font-family: "Jost", sans-serif;
+  /* font-size: 1.125rem; */
+  scroll-behavior: smooth;
+}
 
-        table > thead > tr > th,
-        table > tbody > tr > td {
-        text-align: center;
-        }
+.page-title-group > h1 {
+  margin-bottom: 0.125rem;
+}
+.page-title-group > p {
+  margin-top: 0.125rem;
+}
 
-        table > thead > tr > th:first-of-type,
-        table > tbody > tr > th:first-of-type,
-        table > tbody > tr > td:first-child {
-        text-align: left;
-        }
+/* Layout */
+.rules-wrapper {
+  max-width: 800px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-        table > tbody > tr:nth-last-of-type(odd) {
-        background-color: #ccc;
-        }
+.rules-wrapper:first-of-type {
+  margin-top: 3rem;
+}
 
-        table > tfoot {
-        font-size: .875em;
-        }
+.layout-2col {
+  column-count: 1;
+  column-gap: 1rem;
+}
 
-        .bold { font-weight: 500; }
+@media screen and (width >= 750px) {
+  .layout-2col {
+    column-count: 2;
+    column-gap: 1rem;
+  }
 
+  .layout-2col > h3:first-of-type,
+  .layout-2col > h4:first-of-type,
+  .layout-2col > h5:first-of-type,
+  .layout-2col > p:first-of-type {
+    margin-top: 0;
+  }
 
-        .header-anchor {
-        position: relative;
-        }
+  .layout-2col > p:last-of-type {
+    margin-bottom: 0;
+  }
+}
 
-        .header-anchor > a[href^="#"],
-        .header-anchor > a[href^="#"]:hover,
-        .header-anchor > a[href^="#"]:active {
-        color: var(--black);
-        text-decoration: none;
-        }
+/* Tables */
+.table-wrapper {
+  overflow-x: auto;
+}
 
-        .header-anchor > a[href^="#"]:hover:before {
-        content: "#";
-        color: #ccc;   /* var(--gray); */
-        position: absolute;
-        left: -1.25ex;
-        font-weight: 400;
-        }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  text-align: center;
+}
+
+.table > thead > tr > th {
+  padding: 0.25rem 0.375rem;
+}
+
+.table > tbody > tr > td {
+  padding: 0.25rem 0.125rem;
+}
+
+.table > tfoot {
+  font-size: var(--text-size-90);
+}
+
+.table.filled {
+  white-space: nowrap;
+}
+
+.table.filled > tbody:nth-of-type(odd) {
+  background-color: var(--grayccc);
+}
+
+.table.table-features > tbody > tr > th {
+  width: 25%;
+  vertical-align: top;
+  white-space: nowrap;
+  background-color: var(--grayccc);
+}
+
+.table.table-features > tbody > tr > th,
+.table.table-features > tbody > tr > td {
+  padding: 0.25rem 0.375rem;
+  text-align: left;
+}
+
+/* Links */
+a,
+a:visited,
+a:active {
+  color: #0085bf;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+[id^="anchor-"] {
+  scroll-margin-top: calc(50px + 1em); /* 50px is approximately the height of the fixed header */
+}
+
+/* TOC */
+.table-of-contents {
+  list-style: none;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.table-of-contents-root > li {
+  overflow: hidden;
+  font-weight: 700;
+}
+
+.table-of-contents-level-001 {
+  padding-left: 1rem;
+}
+
+.table-of-contents-level-001 > li {
+  font-weight: 400;
+}
+
+.table-of-contents-level-002 {
+  padding-left: 2rem;
+}
+
+.table-of-contents-level-003 {
+  padding-left: 3rem;
+}
+
+/* Pregens */
+.pregen-wrapper {
+  border: 1px solid var(--grayccc);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.pregen-attribute-title {
+  padding-right: 0.25em;
+  font-weight: bold;
+}
+.pregen-wrapper > header > .h5 {
+  margin-top: 0;
+}
+
+/* Utility */
+.flex-row {
+  display: flex;
+}
+
+@media screen and (min-width: 700px) {
+  .flex-row-md {
+    display: flex;
+    column-gap: 1rem;
+  }
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Base 24 */
+.flex-col-12 {
+  flex-basis: calc(12 / 24 * 100%);
+}
+
+.flex-col-8 {
+  flex-basis: calc(6 / 24 * 100%);
+}
+
+/* SPACING */
+.margin-vertical-1 {
+  margin: 1rem 0;
+}
+
+.margin-horizontal-1 {
+  margin: 0 1rem;
+}
+
+.margin-all-1 {
+  margin: 1rem;
+}

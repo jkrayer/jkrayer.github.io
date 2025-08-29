@@ -1,29 +1,68 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en-US" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-language" content="en-US">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The web site of New Jersey based developer, James Krayer">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The web site of New Jersey based developer, James Krayer" />
     <title>James Krayer | Home</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/core.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="canonical" href="jameskrayer.com" />
-</head>
-<body>
-<main id="main">
-      <header id="site-header">
-        <h1 id="site-title"><a href="/">James Krayer</a></h1>
-        <nav id="site-nav">
-          <a class="site-nav-link"  href="/studies/">Studies</a>
-        </nav>
-      </header>
+  </head>
+  <body>
+    <main class="" id="anchor-top">
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
 
-      <p>Content may or may not come in the near future. The home page isn't terribly interesting anyway.</p>
-      
-      <footer class="site-footer">
-        <a href="https://github.com/jkrayer">GitHub</a>
-        <a href="https://www.linkedin.com/in/james-krayer-65808715/">LinkedIn</a>
-      </footer>
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/#anchor-about" class="root-navigation-link">Home</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+      <article class="root-article" id="anchor-about">
+        <header>
+          <p class="h3 root-article-h2 large-intro">
+            Hi, I&lsquo;m Jim — a front-end developer who builds fast, scalable web apps with React, TypeScript, and
+            modern JavaScript tools. I enjoy creating clean, reusable UI, streamlining workflows, and mentoring teams.
+            Whether it&lsquo;s internal tools or large-scale apps, I focus on performance, usability, and clean code.
+          </p>
+        </header>
+      </article>
     </main>
   </body>
 </html>
