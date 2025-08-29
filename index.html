@@ -35,10 +35,16 @@
         <!-- Navigation menu -->
         <nav class="root-navigation">
           <a href="/#anchor-about" class="root-navigation-link">Home</a>
-          <!-- <a href="/web-developer/" class="root-navigation-link">Web Developer</a>
-          <a href="/mead/" class="root-navigation-link">Mead</a>
-          <a href="/dungeons-and-dragons/" class="root-navigation-link">D&D</a> -->
-          <a href="#anchor-projects" class="root-navigation-link">Projects</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
         </nav>
 
         <!-- Hamburger menu for mobile -->
@@ -47,19 +53,7 @@
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
         </label>
-
-        <!-- <nav id="root-navigation" class="root-navigation">
-          <a class="root-navigation-link" href="#anchor-about">About</a>
-          <a class="root-navigation-link" href="#anchor-projects">Projects</a>
-          <a class="root-navigation-link" href="#anchor-blog">Blog</a>
-          <a class="root-navigation-link" href="https://github.com/jkrayer">GitHub</a>
-          <a class="root-navigation-link" href="https://www.linkedin.com/in/james-krayer-65808715/">LinkedIn</a>
-        </nav> -->
       </header>
-      <!-- <article class="root-article" id="anchor-first">
-        <div>James Krayer</div>
-        <div>Blurb</div>
-      </article> -->
       <article class="root-article" id="anchor-about">
         <header>
           <p class="h3 root-article-h2 large-intro">
@@ -68,171 +62,7 @@
             Whether it&lsquo;s internal tools or large-scale apps, I focus on performance, usability, and clean code.
           </p>
         </header>
-
-        <!-- 
-        How do I focus on react peformance?
-
-        Focusing on React performance means identifying and eliminating bottlenecks that slow down rendering, memory usage, or user interaction. Here's a practical breakdown of how to do that, grouped into key focus areas:        
-
-        1. Avoid Unnecessary Re-Renders
-
-Use React.memo() for functional components to prevent re-renders unless props change.
-
-Use useCallback() and useMemo() to memoize functions and values passed as props.
-
-Use key props correctly in lists to help React track changes efficiently.
-
-🧹 2. Optimize Component Structure
-
-Break down large components into smaller ones to isolate updates.
-
-Lift state wisely – avoid lifting state too high if it causes excessive re-renders in parent/child components.
-
-🪞 3. Efficient State Management
-
-Use local state (useState) for UI-specific data and Redux or Context sparingly—only for truly global state.
-
-Avoid large context values that cause re-renders of all child components.
-
-🚀 4. Lazy Loading and Code Splitting
-
-Use React.lazy() + Suspense to load components only when needed.
-
-Split bundles with dynamic import() and tools like Webpack or Vite to reduce initial load time.
-
-⚙️ 5. Windowing Large Lists
-
-Use libraries like react-window or react-virtualized to render only visible items in large lists/tables.
-
-🧪 6. Profile and Measure
-
-Use the React DevTools Profiler to see component render times.
-
-Track re-renders and wasted renders.
-
-Measure TTI (Time to Interactive), FCP (First Contentful Paint), etc., using Lighthouse or Web Vitals.
-
-🖼️ 7. Optimize Images and Assets
-
-Use <img loading="lazy" />, modern formats (WebP/AVIF), and responsive image sizes.
-
-Compress and serve only what’s needed for the current view.
-
-⚡ 8. Debounce Expensive Events
-
-Debounce inputs, scroll, or resize events with lodash.debounce or requestAnimationFrame. -->
-
-        <!--
-How do I focus on usability?
-
-Focusing on usability means making your React app intuitive, accessible, and enjoyable for users. It’s about reducing friction and helping people accomplish their goals efficiently. Here’s how you can approach usability as a front-end developer: 
-
-1. Design for Clarity
-
-Use clear, consistent UI elements – buttons, inputs, labels, and navigation should behave predictably.
-
-Prioritize content – don’t overload screens. Use whitespace and visual hierarchy to guide attention.
-
-Follow platform conventions – e.g., blue links, hamburger menus, form validation patterns.
-
-🧭 2. Navigation Should Be Intuitive
-
-Use React Router to handle navigation with clear URLs and breadcrumbs.
-
-Show users where they are and where they can go.
-
-Preserve scroll position and history for a natural browser-like experience.
-
-🧑‍🦯 3. Accessibility (a11y)
-
-Use semantic HTML: <button>, <label>, <nav>, etc.
-
-Add ARIA roles only when needed.
-
-Ensure keyboard navigability (Tab, Enter, Esc should work naturally).
-
-Test with screen readers or tools like axe, Lighthouse, or VoiceOver/NVDA.
-
-📱 4. Mobile-Friendly & Responsive
-
-Design mobile-first or use responsive breakpoints.
-
-Ensure interactive elements are big enough to tap (44px by 44px is the minimum recommended).
-
-Use media queries or flex/grid to adapt layouts.
-
-⚠️ 5. Form Usability
-
-Add real-time validation with tools like Yup or react-hook-form.
-
-Provide helpful error messages, not just “Invalid input.”
-
-Autofocus or scroll to the first invalid field.
-
-Respect user input (don’t reset forms unless intentional).
-
-🧠 6. Feedback & State Awareness
-
-Show loading states, success confirmations, or error messages.
-
-Use skeleton loaders or spinners to indicate progress.
-
-Disable buttons during processing to avoid duplicate actions.
-
-7. User Testing & Feedback
-
-Run usability tests with real users or stakeholders (even informally).
-
-Watch where people hesitate or get confused.
-
-Use tools like Hotjar, FullStory, or Session Replay to gather behavior insights.
-
-🧪 8. Use Linting & Testing Tools for UX
-
-eslint-plugin-jsx-a11y for catching a11y issues early.
-
-Write unit and E2E tests to ensure key interactions work reliably.
-
-Validate usability flows with Cypress, Testing Library, or Playwright.
-
-Final Tip:
-
-Think like a user. Build like a developer. Test like a critic.
-
-Would you like a usability checklist or UX patterns you can implement in a portfolio project?
--->
       </article>
-
-      <!-- <article class="root-article" id="anchor-about-2">
-        <p>Works and has a lot of hobbies.</p>
-        <p>A web developer should perhaps have a cool looking website. I agree. But cool takes time.</p>
-
-        <p>
-          Instead of shooting at the coolest ever I'm happy, for now at least, to get to done. "What's done," you ask.
-        </p>
-
-        <p>
-          Done is a persistent effort to build the site I want the way I want it. Step one of that effort is content.
-          Not "content" for its own sake but content organized according to my interests and presented to visitors in an
-          easily accessible way. A way in which they may quickly find the area where our interests overlap.
-        </p>
-      </article> -->
-
-      <article class="root-article" id="anchor-projects">
-        <header><h1>Projects</h1></header>
-      </article>
-
-      <!-- <article class="root-article" id="anchor-two">
-        <header><h1>Two</h1></header>
-      </article>
-
-      <article class="root-article" id="anchor-three">
-        <header><h1>Three</h1></header>
-      </article>
- -->
-      <footer class="root-footer">
-        <a class="root-footer-link" href="#anchor-top">Back to Top</a>
-      </footer>
     </main>
 
     <script defer src="/script.js"></script>
