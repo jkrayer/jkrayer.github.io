@@ -79,9 +79,9 @@
           In <a href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a> we learned that JavaScript
           has first class functions and saw examples of functions that both took
           <a href="/blog/scope-functions-and-closures#link-math">functions as arguments</a> and
-          <a href="/blog/scope-functions-and-closures#link-addsub">retuned functions</a>. As with so many things there's
-          a term for functions that can either take a function as an argument or return a function. Such functions are
-          called <em>Higher Order Functions</em>.
+          <a href="/blog/scope-functions-and-closures#link-addsub">returned functions</a>. As with so many things
+          there's a term for functions that can either take a function as an argument or return a function. Such
+          functions are called <em>Higher Order Functions</em>.
         </p>
 
         <p>
@@ -235,7 +235,7 @@ myString.split(/\s+/);</code></pre>
 
         <p>
           A good first step in refactoring this code might be to start a new <code class="inline-code">.lib</code> file
-          and export a solution that can accomodate our various needs.
+          and export a solution that can accommodate our various needs.
         </p>
 
         <pre class="formatted-code">
@@ -273,7 +273,7 @@ myString.split(REG_SPLIT);
 myString.split(REG_SPLIT_SEMI);</code></pre>
 
         <p>
-          Since we've found ourselves typing <code class="inline-code">.split</code> quite alot and would like to save
+          Since we've found ourselves typing <code class="inline-code">.split</code> quite a lot and would like to save
           ourselves some repetition. The logical next step in refactoring might look like this.
         </p>
 
@@ -373,11 +373,11 @@ export const splitOnSemicolon = split(/\s*;\s*/);</code></pre>
         <p>
           If you recall from
           <a href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a> Javascript functions can be
-          assigned to variables&mdash;or of course you may know that from elsehwere.
+          assigned to variables&mdash;or of course you may know that from elsewhere.
           <code class="inline-code">splitOnSpace</code> and the others are functions. In fact each is the function
-          retuned by calling <code class="inline-code">split</code> with a
-          <code class="inline-code">Regular Expression</code>. And yet each function is unique because because the
-          closure created by calling <code class="inline-code">split</code> saves a reference to the
+          returned by calling <code class="inline-code">split</code> with a
+          <code class="inline-code">Regular Expression</code>. And yet each function is unique because the closure
+          created by calling <code class="inline-code">split</code> saves a reference to the
           <code class="inline-code">Regular Expression</code> <code class="inline-code">split</code> was called with. In
           turn each invocation of <code class="inline-code">splitOnSpace</code> accesses
           <code class="inline-code">/\s+/</code> and applies it to a <code class="inline-code">String</code> argument.
@@ -394,7 +394,7 @@ splitOnSpace("the lazy dog."); // ['the', 'lazy', 'dog.']
           functions like <code class="inline-code">split</code> and from them generate specific functions like
           <code class="inline-code">splitOnSpace</code>. Additionally saving the various
           <code class="inline-code">Regular Expressions</code> in a closure instead of a global variable gives us
-          certainty that they won't be changed elswhere in our programs since a function's scope can't be accessed from
+          certainty that they won't be changed elsewhere in our programs since a function's scope can't be accessed from
           outside of the function.
         </p>
 
@@ -410,7 +410,7 @@ splitOnSpace("the lazy dog."); // ['the', 'lazy', 'dog.']
           Most of the time we'll be happy to split strings on known characters but there's bound to be a time in the
           future where we'll have to split a string on some unique sequence. This single solution won't be universal
           enough to merit addition to our <code class="inline-code">lib</code> file so we may want to do it in place. At
-          that time we're going to have to decide wich is better, funny syntax or more constants.
+          that time we're going to have to decide which is better, funny syntax or more constants.
         </p>
 
         <pre class="formatted-code">
@@ -454,7 +454,7 @@ split(uniqueReg)(string);</code></pre>
 <code>const split = ( regex, string ) => string.split(regex);</code></pre>
 
         <p>
-          Writing normal syntax means we'll have no shennanigans when we want to use
+          Writing normal syntax means we'll have no shenanigans when we want to use
           <code class="inline-code">.split</code> in some unique situation elsewhere.
         </p>
 
@@ -477,7 +477,7 @@ export const splitOnSemicolon = split.bind(null, /\s*;\s*/);</code></pre>
           Under the hood <code class="inline-code">.bind</code> is doing basically what we did earlier
           <a href="#code-split">manually</a>. <code class="inline-code">.bind</code> has advantages like allowing us to
           write our functions normally and handling functions with any amount of arguments. But it also has the
-          disadvatage of compelling us to consider a <code class="inline-code">this</code> context that our functions
+          disadvantage of compelling us to consider a <code class="inline-code">this</code> context that our functions
           will never use.<sup><a href="#footnote-2">2</a></sup>
         </p>
 
