@@ -130,6 +130,9 @@ main {
   max-width: 670px;
   margin-right: 1rem;
   margin-left: 1rem;
+}
+
+.article-full-width:first-of-type {
   padding-top: 5rem;
 }
 
@@ -138,6 +141,16 @@ main {
     margin-right: auto;
     margin-left: auto;
   }
+}
+
+.article-title-link {
+  text-decoration: none;
+  color: var(--gray333);
+  font-weight: 700;
+}
+
+.article-title-link:hover {
+  color: var(--black);
 }
 
 /* Mobile menu toggle */
@@ -300,4 +313,27 @@ main {
 .root-footer-link:hover {
   background-color: var(--grayccc);
   color: var(--black);
+}
+
+/* BREADCRUMBS */
+.inline-code,
+.formatted-code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: whitesmoke;
+}
+
+.formatted-code {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.inline-code {
+  padding: 0.125rem;
+}
+
+.formatted-code-insert {
+  color: white;
+  background-color: #333;
 }

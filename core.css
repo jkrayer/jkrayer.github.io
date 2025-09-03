@@ -97,3 +97,13 @@ ul,
 ol {
   text-wrap: pretty;
 }
+
+/* BREADCRUMBS */
+.breadcrumbs > a {
+  text-decoration: none;
+}
+
+.breadcrumbs > a::after {
+  content: " > ";
+  padding: 0 0.125rem;
+}

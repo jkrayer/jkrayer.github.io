@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn how to write higher-order functions in JavaScript - functions that take other functions as arguments or return functions. Explore practical examples including map implementation, function factories, and Function.bind for cleaner, reusable code."
+    />
+    <title>James Krayer | Blog | Higher Order Functions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/core.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="jameskrayer.com/blog/higher-order-functions/" />
+  </head>
+  <body>
+    <main id="anchor-top">
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/#anchor-about" class="root-navigation-link">Home</a>
+          <a href="/blog" class="root-navigation-link">Blog</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+
+      <article class="article-full-width">
+        <aside>
+          <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            Higher Order Functions
+          </nav>
+        </aside>
+
+        <header>
+          <hgroup>
+            <h1>Higher Order Functions</h1>
+          </hgroup>
+          <time datetime="2023-12-8">December 28, 2023</time>
+        </header>
+
+        <p>
+          In <a href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a> we learned that JavaScript
+          has first class functions and saw examples of functions that both took
+          <a href="/blog/scope-functions-and-closures#link-math">functions as arguments</a> and
+          <a href="/blog/scope-functions-and-closures#link-addsub">retuned functions</a>. As with so many things there's
+          a term for functions that can either take a function as an argument or return a function. Such functions are
+          called <em>Higher Order Functions</em>.
+        </p>
+
+        <p>
+          Javascript and popular libraries have many built-in Higher Order Functions that we've all probably used
+          without knowing there was a special name. Some examples follow.
+        </p>
+
+        <pre class="formatted-code">
+<code>// DOM
+button.addEventListener("click", callback);
+
+// Timers
+setTimeout(callback, 200);
+
+// Map
+[1, 2, 3].map(callback)
+
+// Promises
+new Promise(...).then(callback);
+
+// Fetch
+fetch(request).then(callback);
+
+// jQuery
+$('#my-element').on("click", callback);
+
+// LoDash
+_.find([], callback);</code></pre>
+
+        <h2>Take a Function as an Argument</h2>
+
+        <p>
+          More interesting than a list of Higher Order Functions is that we can write our own. The question we may ask
+          ourselves is, "Why would we want to write our own Higher Order Functions?" The answer is actually quite
+          simple. Higher Order functions allow us to write common logic a single time and inject custom solutions with
+          each function call.
+        </p>
+
+        <p>
+          I think we can agree that a very common need when writing a program is to take an array of data and transform
+          it into a new array of data with the same length. We may have in fact wrote just such a transformation the
+          long way on several occasions.
+        </p>
+
+        <pre class="formatted-code">
+<code>function myUniqueSolution (arr) {
+    // Step 1 transform
+    const copy = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        copy.push(someCustomChange(arr[i]))
+    }
+
+    // more code...
+}</code></pre>
+
+        <p>
+          The need is in fact so common that many languages have a name for it<sup><a href="#footnote-1">1</a></sup
+          >. This operation is called <code class="inline-code">map</code> and you can find implementations of
+          <code class="inline-code">map</code> in common libraries like
+          <a href="https://lodash.com/docs/4.17.15#map">LoDash</a> or
+          <a href="https://ramdajs.com/docs/#map">Ramda</a> and as part of the core language;
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+            ><code class="inline-code">Array.map</code></a
+          >.
+        </p>
+
+        <p>
+          Despite the abundance of implementations this need is so common and so well understood that we'll implement it
+          here to demonstrate the value of the "taking a function as an argument" part of Higher Order Functions.
+        </p>
+
+        <p>
+          First let's look at the common bits. Every time we call our <code class="inline-code">map</code> function
+          we'll need to take an input array, instantiate a new array to hold our changed values and loop over the input
+          array in order to apply some transformation.
+        </p>
+
+        <pre class="formatted-code">
+<code>function map(arr) {
+    const result = [];
+
+    for (let i = 0, ii = arr.length; i < ii; i++) {
+        result[i] = arr[i];
+    }
+
+    return result;
+}</code></pre>
+
+        <p>
+          So far <code class="inline-code">map</code> is nearly the same as our unique solution. In order for it to
+          transform the input data it will need to take a function to change our unique input data into our desired
+          output data.
+        </p>
+
+        <pre class="formatted-code">
+<code>function map(arr, callback) {
+    const result = [];
+
+    for (let i = 0, ii = arr.length; i < ii; i++) {
+        result[i] = callback(arr[i], i, arr);
+    }
+
+    return result;
+}
+
+// Typescript if you prefer
+function map&lt;T, U&gt;(arr: T[], callback: ((arg0: T, arg1: number, arg2: T[]) => U)):U[]</code></pre>
+
+        <p>
+          The <code class="inline-code">callback</code> function is how we encapsulate the unique logic of tranforming
+          some bit of data into a new bit of data. In other words a Javascript function's ability to take a function as
+          an argument allows the developer to focus on truly unique solutions while abstracting away repetitive code.
+        </p>
+
+        <pre class="formatted-code">
+<code>const fullName = ({ firstName, lastName }) => ({
+    fullName: `${firstName} ${lastName}`
+});
+
+map([
+  {firstName: "Ian", lastName: "Kilmister" },
+  {firstName: "Phil", lastName: "Campbell" },
+  {firstName: "Mikkey", lastName: "Dee" }
+], fullName)</code></pre>
+
+        <p>
+          While implementations may vary (<a href="https://github.com/lodash/lodash/blob/main/src/map.ts">LoDash</a>)
+          what stays constant is the usefulness of taking a function as an argument in order to customize the behavior
+          of a more generic function. <code class="inline-code">map</code> can apply any transformation to any set of
+          data without any internal logic related either to the data or the transformation.
+        </p>
+
+        <h2>Return a Function from a Function</h2>
+
+        <p>
+          In the early days of a program it may be sufficient to add split functions wherever we need them but it's
+          likely over time that we'll find variant solutions creeping into our codebase. When we have a chance to
+          address our tech debt we'll make an attempt to DRY out these functions.
+        </p>
+
+        <pre class="formatted-code">
+<code>// a.js
+myString.split(' ');
+
+// b.js
+myString.split(/\s/);
+
+// c.js
+myString.split(/\s+/);</code></pre>
+
+        <p>
+          A good first step in refactoring this code might be to start a new <code class="inline-code">.lib</code> file
+          and export a solution that can accomodate our various needs.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const REG_SPLIT = /\s+/;
+
+// a.js
+myString.split(REG_SPLIT);
+
+// b.js
+myString.split(REG_SPLIT);
+
+// c.js
+myString.split(REG_SPLIT);</code></pre>
+
+        <p>
+          There will come a time however when we want to start splitting strings by different characters like commas or
+          semicolons. At that time we'll also notice that every time we use these regular epressions we're coupling them
+          with the <code class="inline-code">split</code> method.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const REG_SPLIT = /\s+/;
+export const REG_SPLIT_COMMA = /\s*,\s*/;
+export const REG_SPLIT_SEMI = /\s*;\s*/;
+
+// a.js
+myString.split(REG_SPLIT_COMMA);
+
+// b.js
+myString.split(REG_SPLIT);
+
+// c.js
+myString.split(REG_SPLIT_SEMI);</code></pre>
+
+        <p>
+          Since we've found ourselves typing <code class="inline-code">.split</code> quite alot and would like to save
+          ourselves some repetition. The logical next step in refactoring might look like this.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const splitOnSpace = (string) => string.split(/\s+/);
+export const splitOnComma = (string) => string.split(/\s*,\s*/);
+export const splitOnSemicolon = (string) => string.split(/\s*;\s*/);</code></pre>
+
+        <p>Here again we have a lot of repetition and so we make another attempt at simplification.</p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+const split = (string, regex) => string.split(regex);
+
+export const splitOnSpace = (string) => split(string, /\s+/);
+export const splitOnComma = (string) => split(string, /\s*,\s*/);
+export const splitOnSemicolon = (string) => split(string, /\s*;\s*/);</code></pre>
+
+        <p>And this isn't a whole lot better&hellip; so let's re-think it.</p>
+
+        <p>
+          Our initial approach to writing the <code class="inline-code">split</code> function is one I think of as
+          "solution order". I want to <code class="inline-code">split</code> a
+          <code class="inline-code">String</code> using a <code class="inline-code">RegeEx</code> and so I write
+          <code class="inline-code">split = (string, regex)</code> and this works sensibly in many cases. However each
+          of our functions do the same thing. they take a <code class="inline-code">String</code> as an argument and
+          call the <code class="inline-code">split</code> function on the string with the same
+          <code class="inline-code">Regular Expression</code>.
+        </p>
+
+        <p>
+          In many ways this code is not very different from exporting both the
+          <code class="inline-code">split</code> function and multiple
+          <code class="inline-code">Regular Expression</code>s and calling them as we need them throughout our program.
+          What we need is a less repetitive solution and for that we need to change the way we think about writing
+          functions.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+const split = (regex, string) => string.split(regex);
+
+export const splitOnSpace = (string) => split(/\s+/, string);
+export const splitOnComma = (string) => split(/\s*,\s*/, string);
+export const splitOnSemicolon = (string) => split(/\s*;\s*/, string);</code></pre>
+
+        <p>
+          Reversing the order of the arguments may not seem like much of a change but if we order them from least likely
+          to change between calls to most likely to change between calls we can write our functions a bit differently.
+        </p>
+
+        <pre class="formatted-code" id="code-split">
+<code>// lib.js
+const split = ( regex ) => ( string ) => string.split(regex);
+
+// more explicit example
+function split (regex) {
+    return function (string) {
+        return string.split(regex)
+    }
+}</code></pre>
+
+        <p>Let's pause here a moment to consider our newest implemention of <code class="inline-code">split</code>.</p>
+
+        <p>
+          <code class="inline-code">split</code> is a function that takes a
+          <code class="inline-code">Regular Expression</code> as an argument and returns a function. The function
+          returned by <code class="inline-code">split</code> takes a <code class="inline-code">String</code> and returns
+          the result of splitting the <code class="inline-code">String</code> with the
+          <code class="inline-code">Regular Expression</code>. The implicit return of arrow functions make this syntax
+          conventient to write but sometimes less obvious than a more explicit example.
+        </p>
+
+        <p>
+          <code class="inline-code">split</code> is a Higher Order Function because it returns a function. The following
+          example shows how we would use it.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const splitOnSpace = (string) => split(/\s+/)(string);
+export const splitOnComma = (string) => split(/\s*,\s*/)(string);
+export const splitOnSemicolon = (string) => split(/\s*;\s*/)(string);</code></pre>
+
+        <p>
+          Refactoring our various split functions we find we're still doing a lot of typing. Even worse we're seeing the
+          weird <code class="inline-code">()()</code> syntax again. It sure would be nice to get rid of that.
+        </p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const splitOnSpace = split(/\s+/);
+export const splitOnComma = split(/\s*,\s*/);
+export const splitOnSemicolon = split(/\s*;\s*/);</code></pre>
+
+        <p>
+          If you recall from
+          <a href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a> Javascript functions can be
+          assigned to variables&mdash;or of course you may know that from elsehwere.
+          <code class="inline-code">splitOnSpace</code> and the others are functions. In fact each is the function
+          retuned by calling <code class="inline-code">split</code> with a
+          <code class="inline-code">Regular Expression</code>. And yet each function is unique because because the
+          closure created by calling <code class="inline-code">split</code> saves a reference to the
+          <code class="inline-code">Regular Expression</code> <code class="inline-code">split</code> was called with. In
+          turn each invocation of <code class="inline-code">splitOnSpace</code> accesses
+          <code class="inline-code">/\s+/</code> and applies it to a <code class="inline-code">String</code> argument.
+        </p>
+
+        <pre class="formatted-code">
+<code>splitOnSpace("the quick brown"); // ['the', 'quick', 'brown']
+splitOnSpace("fox jumped over"); // ['fox', 'jumped', 'over']
+splitOnSpace("the lazy dog."); // ['the', 'lazy', 'dog.']
+</code></pre>
+
+        <p>
+          Ultimately the advantage of writing Higher Order functions that return functions is that we can write generic
+          functions like <code class="inline-code">split</code> and from them generate specific functions like
+          <code class="inline-code">splitOnSpace</code>. Additionally saving the various
+          <code class="inline-code">Regular Expressions</code> in a closure instead of a global variable gives us
+          certainty that they won't be changed elswhere in our programs since a function's scope can't be accessed from
+          outside of the function.
+        </p>
+
+        <p>
+          The downside of our last implemention of <code class="inline-code">split</code> is the
+          <code class="inline-code">()()</code> syntax. We'll explore the built-in way to address this next and other
+          solutions in the future.
+        </p>
+
+        <h3>Function.bind</h3>
+
+        <p>
+          Most of the time we'll be happy to split strings on known characters but there's bound to be a time in the
+          future where we'll have to split a string on some unique sequence. This single solution won't be universal
+          enough to merit addition to our <code class="inline-code">lib</code> file so we may want to do it in place. At
+          that time we're going to have to decide wich is better, funny syntax or more constants.
+        </p>
+
+        <pre class="formatted-code">
+<code>// unique.js
+export const uniqueSplit = split(uniqueReg);
+
+// confusing syntax
+split(uniqueReg)(string);</code></pre>
+
+        <p>
+          Reusing <code class="inline-code">split</code> would a better developer experience if we could sometimes call
+          it like <code class="inline-code">split(reg, string)</code> and other times call it like
+          <code class="inline-code">split(reg)(string)</code>. The native way to do that in JavaScript is using
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"
+            ><code class="inline-code">Function.bind</code></a
+          >.
+        </p>
+
+        <p>
+          <code class="inline-code">.bind</code> is a method on the <code class="inline-code">Function</code> object
+          that takes one or more arguments. The first argument is always the
+          <code class="inline-code">this</code> context you want the bound function to be called with. We won't work
+          with <code class="inline-code">this</code> so in our example we always call
+          <code class="inline-code">.bind(null, ...)</code>.
+        </p>
+
+        <p>
+          The rest of the arguments are a comma separated list of arguments in the order in which you'd like them to
+          apply. The return value of <code class="inline-code">.bind</code> is a new function that will execute the
+          bound function with the initially supplied arguments and arguments supplied to the bound function in left to
+          right order.
+        </p>
+
+        <p>
+          That's a lot to stuff into your brain all at once so let's look at an example. First we write our split
+          function as a single function like we normally would keeping in mind that the left to right order of our
+          arguments will be important later.
+        </p>
+
+        <pre class="formatted-code">
+<code>const split = ( regex, string ) => string.split(regex);</code></pre>
+
+        <p>
+          Writing normal syntax means we'll have no shennanigans when we want to use
+          <code class="inline-code">.split</code> in some unique situation elsewhere.
+        </p>
+
+        <pre class="formatted-code">
+<code>// unique.js
+import { split } from "./lib.js";
+
+// elsewhere
+split(uniqueReg, string);</code></pre>
+
+        <p>Leveraging <code class="inline-code">.bind</code> allows to generate the same functions as earlier.</p>
+
+        <pre class="formatted-code">
+<code>// lib.js
+export const splitOnSpace = split.bind(null, /\s+/);
+export const splitOnComma = split.bind(null, /\s*,\s*/);
+export const splitOnSemicolon = split.bind(null, /\s*;\s*/);</code></pre>
+
+        <p>
+          Under the hood <code class="inline-code">.bind</code> is doing basically what we did earlier
+          <a href="#code-split">manually</a>. <code class="inline-code">.bind</code> has advantages like allowing us to
+          write our functions normally and handling functions with any amount of arguments. But it also has the
+          disadvatage of compelling us to consider a <code class="inline-code">this</code> context that our functions
+          will never use.<sup><a href="#footnote-2">2</a></sup>
+        </p>
+
+        <p>
+          In the future we'll explore how to write our own utility functions that can replace the need to use either
+          <code class="inline-code">.bind</code> or <code class="inline-code">this</code>.
+        </p>
+
+        <footer>
+          <h3>Footnotes</h3>
+          <ol class="footnotes">
+            <li id="footnote-1">
+              <a href="https://docs.python.org/3/library/functions.html?highlight=map#map">Python</a>,
+              <a href="https://hackage.haskell.org/package/base-4.19.0.0/docs/Data-List.html#g:2">Haskell</a>,
+              <a href="https://lisp-lang.org/learn/lists#map">Lisp</a> and so on.
+            </li>
+            <li id="footnote-2">
+              I'm not arguing that <code class="inline-code">this</code> is not a helpful construct. But from here on
+              out we head solidly in the direction of Functional Programming and for that we have no need of
+              <code class="inline-code">this</code>.
+            </li>
+          </ol>
+        </footer>
+
+        <aside class="commentbox"></aside>
+      </article>
+
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <script>
+        commentBox("5748375731306496-proj");
+      </script>
+    </main>
+  </body>
+</html>

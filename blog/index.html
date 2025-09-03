@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="The web site of New Jersey based developer, James Krayer"
-    />
-    <title>James Krayer | Web Developer</title>
+    <meta name="description" content="The web site of New Jersey based developer, James Krayer" />
+    <title>James Krayer | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,49 +20,101 @@
     />
     <link rel="stylesheet" href="/core.css" />
     <link rel="stylesheet" href="/style.css" />
-    <link rel="canonical" href="jameskrayer.com/web-developer" />
+    <link rel="canonical" href="jameskrayer.com" />
   </head>
   <body>
-    <header></header>
+    <main class="" id="anchor-top">
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/#anchor-about" class="root-navigation-link">Home</a>
+          <a href="/blog" class="root-navigation-link">Blog</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
     <main>
-      <article id="anchor-expermentation-matrix-one" class="article-full-width">
+      <!-- <article class="article-full-width">
         <header>
           <hgroup>
-            <h2 class="mead-batch-title">What's with all of the HTML?</h2>
-            <time datetime="2025-07-20">July 20, 2025</time>
+            <h2>What's with all of the HTML?</h2>
           </hgroup>
+            <time datetime="2025-07-20">July 20, 2025</time>
         </header>
         <p>
-          It feels a bit antiquated to start a website by typing HTML in the
-          current year on the current day. There are after all many wonderful
-          content management systems, blog platforms and static site generators
-          available. Each of these could solve the problem of publishing content
-          to the web far more elegantly. And yet &hellip; each of these comes
-          with a cost in time spent learning the system.
+          It feels a bit antiquated to start a website by typing HTML in the current year on the current day. There are
+          after all many wonderful content management systems, blog platforms and static site generators available. Each
+          of these could solve the problem of publishing content to the web far more elegantly. And yet &hellip; each of
+          these comes with a cost in time.
         </p>
         <p>
-          While I love learning I find it far more difficult to compel myself to
-          write. But write I must, because writing is the solution to another
-          far more interesting problem. That problem is repeating myself.
+          While I love learning I find it far more difficult to compel myself to write. But write I must, because
+          writing is the solution to another far more interesting problem. That problem is repeating myself.
         </p>
         <p>
-          My life is filled with notebooks and mark down files and ideas on
-          scraps of paper and comments on code I've forgotten I've written and a
-          heck of a lot of circling back to interests interrupted by other
-          interests. I have questions.
+          My life is filled with notebooks and mark down files and ideas on scraps of paper and comments on code I've
+          forgotten I've written and a heck of a lot of circling back to interests interrupted by other interests. I
+          have questions.
         </p>
         <p>
-          How do I come back to those interests and pick up where I left off?
-          How do I measure when I've explored a topic deeply enough and remind
-          myself not to circle back again? Can I store the notes in an easy to
-          reference non-linear way? Can I create a site where each subdomain or
-          each page can be fully custom?
+          How do I come back to those interests and pick up where I left off? How do I measure when I've explored a
+          topic deeply enough and remind myself not to circle back again? Can I store the notes in an easy to reference
+          non-linear way? Can I create a site where each subdomain or each page can be fully custom?
         </p>
         <p>
-          So why build a website in the most archaic way possible in the current
-          day and age? It's simply the
-          <abbr title="Minimum Viable Product">M.V.P.</abbr> for answering my
-          own questions.
+          So why build a website in the most archaic way possible in the current day and age? It's simply the
+          <abbr title="Minimum Viable Product">M.V.P.</abbr> for answering my own questions.
+        </p>
+      </article> -->
+
+      <article class="article-full-width">
+        <header>
+          <hgroup>
+            <h2><a class="article-title-link" href="/blog/higher-order-functions/">Higher Order Functions</a></h2>
+          </hgroup>
+            <time datetime="2023-12-8">December 28, 2023</time>
+        </header>
+        <p>
+          In <a href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a> we learned that JavaScript
+          has first class functions and saw examples of functions that both took functions as arguments and
+          returned functions. As with so many things there's a term for functions that can either take a function as an argument or return a function. Such functions are
+          called <em>Higher Order Functions</em>.
+        </p>
+      </article>
+
+      <article class="article-full-width">
+        <header>
+          <hgroup>
+            <h2><a class="article-title-link" href="/blog/scope-functions-and-closures/">Scope, Functions and Closures</a></h2>
+          </hgroup>
+            <time datetime="2023-12-8">December 8, 2023</time>
+        </header>
+        <p>
+          It's not my intention to repeat the excellent explanations of others on the subjects of scope, functions and
+          closures (some linked below). Instead this is meant to be a quick code focused reference for the occasions in
+          which I find myself able to share what I've learned with others.
         </p>
       </article>
     </main>
