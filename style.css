@@ -138,6 +138,7 @@ main {
 
 @media screen and (width >= 702px) {
   .article-full-width {
+    min-width: 670px;
     margin-right: auto;
     margin-left: auto;
   }
