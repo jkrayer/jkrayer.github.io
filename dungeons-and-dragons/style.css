@@ -116,6 +116,15 @@ a:hover {
   scroll-margin-top: calc(50px + 1em); /* 50px is approximately the height of the fixed header */
 }
 
+.title-link,
+.title-link:visited,
+.title-link:active,
+.title-link:focus,
+.title-link:hover {
+  color: var(--gray333);
+  text-decoration: none;
+}
+
 /* TOC */
 .table-of-contents {
   list-style: none;
@@ -208,4 +217,31 @@ a:hover {
 
 .margin-all-1 {
   margin: 1rem;
+}
+
+/* FOOTNOTES */
+.footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.footnotes li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  padding-left: 0.5rem;
+}
+
+.footnotes li:last-child {
+  margin-bottom: 0;
+}
+
+.footnotes li::marker {
+  font-weight: bold;
+  color: #666;
+}
+
+/* lists */
+li {
+  margin: 0.5em 0;
 }
