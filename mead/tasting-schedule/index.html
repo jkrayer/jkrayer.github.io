@@ -44,7 +44,9 @@
           <span class="hamburger-line"></span>
         </label>
       </header>
-      <article class="article-full-width">
+
+      <!-- calendar-grid -->
+      <article class="calendar-article">
         <header>
           <h1>24 Month Calendar</h1>
           <p>Starting September 1, 2025</p>
@@ -63,7 +65,7 @@
               <div class="day-header">Fri</div>
               <div class="day-header">Sat</div>
               <div class="day"></div>
-              <div class="day today">1</div>
+              <div class="day">1</div>
               <div class="day">2</div>
               <div class="day">3</div>
               <div class="day">4</div>
@@ -118,6 +120,7 @@
               <div class="day">6</div>
               <div class="day">7</div>
               <div class="day">8</div>
+              <div class="day">9</div>
               <div class="day">9</div>
               <div class="day">10</div>
               <div class="day">11</div>
@@ -207,7 +210,8 @@
               <div class="day-header">Sat</div>
               <div class="day"></div>
               <div class="day tasting-date batch-6">
-                1<span class="batch-info">Batch #6<br />Tasting #1</span>
+                1
+                <!-- tooltip: Batch #6, Tasting #1 -->
               </div>
               <div class="day">2</div>
               <div class="day">3</div>
@@ -216,7 +220,10 @@
               <div class="day">6</div>
               <div class="day">7</div>
               <div class="day">8</div>
-              <div class="day">9</div>
+              <div class="day tasting-date batch-7">
+                9
+                <!-- tooltip: Batch #7, Tasting #1 -->
+              </div>
               <div class="day">10</div>
               <div class="day">11</div>
               <div class="day">12</div>
@@ -330,7 +337,8 @@
               <div class="day">26</div>
               <div class="day">27</div>
               <div class="day tasting-date batch-4 batch-5">
-                28<span class="batch-info">Batch #4<br />Tasting #1<br />Batch #5<br />Tasting #1</span>
+                28
+                <!-- tooltip: Batch #4, Tasting #1; Batch #5, Tasting #1 -->
               </div>
             </div>
           </div>
@@ -347,7 +355,8 @@
               <div class="day-header">Fri</div>
               <div class="day-header">Sat</div>
               <div class="day tasting-date batch-6">
-                1<span class="batch-info">Batch #6<br />Tasting #2</span>
+                1
+                <!-- tooltip: Batch #6, Tasting #2 -->
               </div>
               <div class="day">2</div>
               <div class="day">3</div>
@@ -356,8 +365,8 @@
               <div class="day">6</div>
               <div class="day">7</div>
               <div class="day">8</div>
-              <div class="day">9</div>
-              <div class="day">10</div>
+              <div class="day tasting-date batch-7">9<!-- tooltip: Batch #7, Tasting #2 --></div>
+              <div class="day tasting-date batch-8">10<!-- tooltip: Batch #8, Tasting #1 --></div>
               <div class="day">11</div>
               <div class="day">12</div>
               <div class="day">13</div>
@@ -492,7 +501,8 @@
               <div class="day-header">Sat</div>
               <div class="day"></div>
               <div class="day tasting-date batch-6">
-                1<span class="batch-info">Batch #6<br />Tasting #3</span>
+                1
+                <!-- tooltip: Batch #6, Tasting #3 -->
               </div>
               <div class="day">2</div>
               <div class="day">3</div>
@@ -501,7 +511,7 @@
               <div class="day">6</div>
               <div class="day">7</div>
               <div class="day">8</div>
-              <div class="day">9</div>
+              <div class="day tasting-date batch-7">9<!-- tooltip: Batch #7, Tasting #3 --></div>
               <div class="day">10</div>
               <div class="day">11</div>
               <div class="day">12</div>
@@ -622,7 +632,8 @@
               <div class="day">29</div>
               <div class="day">30</div>
               <div class="day tasting-date batch-4 batch-5">
-                31<span class="batch-info">Batch #4<br />Tasting #2<br />Batch #5<br />Tasting #2</span>
+                31
+                <!-- tooltip: Batch #4, Tasting #2; Batch #5, Tasting #2 -->
               </div>
             </div>
           </div>
@@ -649,7 +660,7 @@
               <div class="day">7</div>
               <div class="day">8</div>
               <div class="day">9</div>
-              <div class="day">10</div>
+              <div class="day tasting-date batch-8">10<!-- tooltip: Batch #8, Tasting #2 --></div>
               <div class="day">11</div>
               <div class="day">12</div>
               <div class="day">13</div>
@@ -903,7 +914,8 @@
               <div class="day">26</div>
               <div class="day">27</div>
               <div class="day tasting-date batch-4 batch-5">
-                28<span class="batch-info">Batch #4 Tasting #3<br />Batch #5 Tasting #3</span>
+                28
+                <!-- tooltip: Batch #4, Tasting #3; Batch #5, Tasting #3 -->
               </div>
             </div>
           </div>
@@ -929,7 +941,7 @@
               <div class="day">7</div>
               <div class="day">8</div>
               <div class="day">9</div>
-              <div class="day">10</div>
+              <div class="day tasting-date batch-8">10<!-- tooltip: Batch #8, Tasting #3 --></div>
               <div class="day">11</div>
               <div class="day">12</div>
               <div class="day">13</div>
@@ -1190,12 +1202,56 @@
               <div class="day">29</div>
               <div class="day">30</div>
               <div class="day tasting-date batch-4 batch-5">
-                31<span class="batch-info">Batch #4<br />Tasting #4<br />Batch #5<br />Tasting #4</span>
+                31
+                <!-- tooltip: Batch #4, Tasting #4; Batch #5, Tasting #4 -->
               </div>
             </div>
           </div>
         </section>
       </article>
     </main>
+    <script>
+      // Highlight today's date in the calendar
+      (function () {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth(); // 0-indexed
+        const date = today.getDate();
+
+        // Find all months in the calendar
+        const monthDivs = document.querySelectorAll(".month");
+        monthDivs.forEach((monthDiv) => {
+          const h2 = monthDiv.querySelector("h2");
+          if (!h2) return;
+          const [monthName, yearText] = h2.textContent.split(" ");
+          const calendarYear = parseInt(yearText, 10);
+          const calendarMonth = new Date(Date.parse(monthName + " 1, 2000")).getMonth();
+          if (calendarYear === year && calendarMonth === month) {
+            // Find all .day divs with a number
+            const dayDivs = monthDiv.querySelectorAll(".day");
+            dayDivs.forEach((dayDiv) => {
+              if (dayDiv.textContent.trim() == date) {
+                dayDiv.classList.add("today");
+              }
+            });
+          }
+        });
+      })();
+    </script>
+    <script>
+      // Convert tooltip comments to data-tooltip attributes
+      (function () {
+        document.querySelectorAll(".day").forEach((dayDiv) => {
+          if (dayDiv.childNodes) {
+            dayDiv.childNodes.forEach((node) => {
+              if (node.nodeType === Node.COMMENT_NODE && node.nodeValue.trim().startsWith("tooltip:")) {
+                const tooltipText = node.nodeValue.replace("tooltip:", "").trim();
+                dayDiv.setAttribute("data-tooltip", tooltipText);
+              }
+            });
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

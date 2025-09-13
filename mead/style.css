@@ -1,3 +1,4 @@
+/* Unique color for Batch #7 */
 :root {
   /* Colors: https://colormagic.app/palette/687a4fd4d72710da2172d8fd */
   --color-1: #ffc30f;
@@ -105,11 +106,19 @@ td {
 }
 
 /* CALENDAR */
+/* .style="padding-top: 5rem" */
+
+.calendar-article {
+  padding: 5rem 1rem 0;
+}
+
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(calc(250px + 2rem), 1fr));
+  grid-template-rows: auto 1fr;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .month {
@@ -158,6 +167,31 @@ td {
   color: #333;
 }
 
+.day[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+.day[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+  white-space: pre-line;
+  z-index: 10;
+  margin-top: 0.5em;
+  font-size: 0.95em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  min-width: 120px;
+  max-width: 240px;
+}
+
 .today {
   background-color: #007bff;
   color: white;
@@ -182,17 +216,17 @@ td {
   background-color: #dc3545; /* Red */
 }
 
+.batch-7 {
+  background: #f7b42c;
+}
+
+.batch-8 {
+  background: #6a4cff;
+}
+
 .batch-info {
   display: block;
   font-size: 0.7rem;
   font-weight: normal;
   margin-top: 2px;
-}
-
-@media (max-width: 768px) {
-  .calendar-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-    gap: 1rem;
-  }
 }
