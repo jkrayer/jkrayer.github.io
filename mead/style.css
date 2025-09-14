@@ -224,6 +224,12 @@ td {
   background: #6a4cff;
 }
 
+.bottle-date {
+  background: #6ec1e4;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+}
 .batch-info {
   display: block;
   font-size: 0.7rem;
