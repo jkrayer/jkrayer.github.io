@@ -6,6 +6,12 @@
   --color-3: #ffa600;
   --color-4: #ff8c00;
   --color-5: #ff8052;
+  /* Cool complements */
+  --color-6: #0f3ffc; /* Deep blue */
+  --color-7: #4d6eff; /* Medium blue */
+  --color-8: #0066ff; /* Bright blue */
+  --color-9: #0088ff; /* Sky blue */
+  --color-10: #52a0ff; /* Light blue */
 }
 
 /* TYPOGRAPHY */
@@ -33,6 +39,17 @@ a:hover {
 
 a:visited {
   text-decoration: line-through;
+}
+
+a[href^="https://"],
+a:visited[href^="https://"]
+{
+  color: var(--color-9);
+}
+
+a[href^="https://"]:hover
+{
+  color: var(--color-7);
 }
 
 .logo-link,
@@ -210,10 +227,6 @@ td {
 
 .batch-5 {
   background-color: #28a745; /* Green */
-}
-
-.batch-6 {
-  background-color: #dc3545; /* Red */
 }
 
 .batch-7 {
