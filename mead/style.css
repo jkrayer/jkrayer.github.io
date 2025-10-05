@@ -41,15 +41,34 @@ a:visited {
   text-decoration: line-through;
 }
 
-a[href^="https://"],
-a:visited[href^="https://"]
-{
+a[href^="http"],
+a:visited[href^="http"] {
   color: var(--color-9);
 }
 
-a[href^="https://"]:hover
-{
+a[href^="http"]:hover {
   color: var(--color-7);
+}
+
+a[href^="http"]::after,
+a:visited[href^="http"]::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 0.25em;
+  background-image: url("/assets/external-link.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: baseline;
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(1614%) hue-rotate(201deg) brightness(100%)
+    contrast(100%);
+}
+
+a[href^="http"]:hover::after {
+  filter: brightness(0) saturate(100%) invert(44%) sepia(100%) saturate(6000%) hue-rotate(241deg) brightness(106%)
+    contrast(101%);
 }
 
 .logo-link,
