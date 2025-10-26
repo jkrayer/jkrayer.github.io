@@ -1,5 +1,15 @@
 /**
  * Table of Contents
+ * 1. Layout
+ * 2. Tables
+ * 3. Links
+ * 4. TOC
+ * 5. Pregens
+ * 6. Utility
+ * 7. Base 24
+ * 8. Spacing
+ * 9. Footnotes
+ * 10. Lists
  */
 
 body,
@@ -12,11 +22,12 @@ html {
 .page-title-group > h1 {
   margin-bottom: 0.125rem;
 }
+
 .page-title-group > p {
   margin-top: 0.125rem;
 }
 
-/* Layout */
+/* 1. Layout */
 .rules-wrapper {
   max-width: 800px;
   padding-right: 1rem;
@@ -244,4 +255,138 @@ a:hover {
 /* lists */
 li {
   margin: 0.5em 0;
+}
+
+/* NAVIGATION */
+.root-navigation-link {
+  text-decoration: none;
+  color: inherit; /* Uses the default text color instead of blue */
+}
+
+.root-navigation-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.root-navigation-link:visited {
+  color: inherit;
+}
+
+.root-navigation-link:active {
+  color: inherit;
+}
+
+/* Dropdown link styles */
+.dropdown-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background-color: #f5f5f5;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropdown-link:visited {
+  color: inherit;
+}
+
+.dropdown-link:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-link:last-child {
+  border-bottom: none;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    /* margin-left: 1rem; */
+  }
+
+  .root-navigation-link.dropdown-toggle {
+    border-bottom-color: #eee;
+  }
+
+  .dropdown-link {
+    /* border-bottom: none; */
+    padding: 0.5rem 0 0.5rem 2.25rem;
+  }
+}
+
+/* Block Quotes */
+.quote-read-aloud {
+  padding: 1rem;
+  border: 1px solid var(--gray333);
+  margin: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.quote-read-aloud > p:first-of-type {
+  margin-top: 0;
+}
+
+.quote-read-aloud > p:last-of-type {
+  margin-bottom: 0;
 }

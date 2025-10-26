@@ -29,17 +29,20 @@
         <div class="root-logo">
           <a href="/dungeons-and-dragons/" class="logo-link">Dungeons &amp; Dragons</a>
         </div>
-
         <!-- Hidden checkbox for mobile menu toggle -->
         <input type="checkbox" id="root-navigation-check" />
-
         <!-- Navigation menu -->
         <nav class="root-navigation">
-          <a href="/dungeons-and-dragons" class="root-navigation-link">Dungeons &amp; Dragons</a>
+          <!-- Campaigns with dropdown -->
+          <div class="nav-dropdown">
+            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns </a>
+            <div class="dropdown-menu">
+              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
+            </div>
+          </div>
           <a href="/dungeons-and-dragons/proposals/" class="root-navigation-link">Proposals</a>
           <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
         </nav>
-
         <!-- Hamburger menu for mobile -->
         <label for="root-navigation-check" class="hamburger-menu">
           <span class="hamburger-line"></span>
@@ -47,6 +50,7 @@
           <span class="hamburger-line"></span>
         </label>
       </header>
+
       <article class="rules-wrapper">
         <header>
           <hgroup class="page-title-group">
