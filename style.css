@@ -136,6 +136,10 @@ main {
   padding-top: 5rem;
 }
 
+.article-full-width:first-of-type + .article-full-width:first-of-type {
+  padding-top: 0;
+}
+
 @media screen and (width >= 702px) {
   .article-full-width {
     min-width: 670px;
