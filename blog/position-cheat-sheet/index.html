@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A practical CSS positioning cheat sheet for web developers. Learn how to position elements and tooltips in the DOM with clear examples, diagrams, and code for every alignment scenario."
+    />
+    <title>James Krayer | Blog | Position Cheat Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/core.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="jameskrayer.com/blog/position-cheat-sheet/" />
+  </head>
+  <body>
+    <main id="anchor-top">
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/#anchor-about" class="root-navigation-link">Home</a>
+          <a href="/blog" class="root-navigation-link">Blog</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+
+      <article class="article-full-width">
+        <aside>
+          <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            Position Cheat Sheet
+          </nav>
+        </aside>
+        <header>
+          <hgroup>
+            <h1>Position Cheat Sheet</h1>
+          </hgroup>
+          <time datetime="2025-10-29">October 29, 2025</time>
+        </header>
+
+        <section>
+          <p>
+            A quick reference for positioning elements relative to other elements when they're not next to each other,
+            or within a common container in the <abbr title="Document Object Model">DOM</abbr>. There are several
+            reasons why this might be the case; mine was rendering a tooltip in a portal in React.
+          </p>
+
+          <canvas
+            id="bounding-rect-canvas"
+            width="600"
+            height="400"
+            style="border: 1px solid #ccc; max-width: 100%; height: auto"
+          ></canvas>
+        </section>
+
+        <aside class="commentbox"></aside>
+      </article>
+    </main>
+
+    <script src="./scripts/cheat-sheet.js"></script>
+    <!-- <script src="./scripts/positions.js"></script> -->
+    <!-- <script src="./scripts/bounding-client-rect.js"></script> -->
+
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+    <script>
+      commentBox("5748375731306496-proj");
+    </script>
+  </body>
+</html>
