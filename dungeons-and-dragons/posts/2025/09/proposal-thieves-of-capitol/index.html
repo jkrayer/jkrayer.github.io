@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="500 years before the war with the Elves during the reign of Emperor Leto, the Undying a group of thieves tries to make a name for themselves in the bustling streets of Capitol. A detailed campaign proposal for an urban heist adventure."
+    />
     <title>James Krayer | Dungeons & Dragons | Proposal: Thieves of Capitol</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,21 +35,34 @@
         <div class="root-logo">
           <a href="/dungeons-and-dragons/" class="logo-link">Dungeons &amp; Dragons</a>
         </div>
-        <!-- Hidden checkbox for mobile menu toggle -->
+
         <input type="checkbox" id="root-navigation-check" />
-        <!-- Navigation menu -->
+
         <nav class="root-navigation">
-          <!-- Campaigns with dropdown -->
+          <a href="/dungeons-and-dragons/" class="root-navigation-link">Home</a>
+
           <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns </a>
+            <a href="/dungeons-and-dragons/posts/" class="root-navigation-link dropdown-toggle">Blog</a>
+            <div class="dropdown-menu">
+              <a href="/dungeons-and-dragons/posts/" class="dropdown-link">All Posts</a>
+              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="dropdown-link"
+                >Campaign Planning</a
+              >
+              <a href="/dungeons-and-dragons/posts/category/house-rules/" class="dropdown-link">House Rules</a>
+              <a href="/dungeons-and-dragons/posts/category/proposals/" class="dropdown-link">Proposals</a>
+            </div>
+          </div>
+
+          <div class="nav-dropdown">
+            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns</a>
             <div class="dropdown-menu">
               <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
             </div>
           </div>
-          <a href="/dungeons-and-dragons/proposals/" class="root-navigation-link">Proposals</a>
-          <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
+
+          <a href="/dungeons-and-dragons/reference/" class="root-navigation-link">Reference</a>
         </nav>
-        <!-- Hamburger menu for mobile -->
+
         <label for="root-navigation-check" class="hamburger-menu">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -55,11 +71,28 @@
       </header>
 
       <article class="rules-wrapper">
+        <aside>
+          <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <a href="/dungeons-and-dragons/">D&D</a>
+            <a href="/dungeons-and-dragons/posts/">Blog Posts</a>
+            <a href="/dungeons-and-dragons/posts/2025/">2025</a>
+            <a href="/dungeons-and-dragons/posts/2025/09/">September</a>
+            Proposal: Thieves of Capitol
+          </nav>
+        </aside>
+
         <header>
           <hgroup class="page-title-group">
             <h1>Proposal: Thieves of Capitol</h1>
           </hgroup>
-          <time datetime="2025-09-07">September 7, 2025</time>
+
+          <div class="post-meta">
+            <time datetime="2025-09-07">September 7, 2025</time>
+            <span class="post-category">
+              <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
+            </span>
+          </div>
         </header>
 
         <p>
@@ -465,7 +498,7 @@
             <header>
               <h3 id="anchor-human-fighter" class="h5">
                 <a href="/dungeons-and-dragons/house-rules/#anchor-human">Human</a>/<a
-                  href="http://localhost:8080/dungeons-and-dragons/house-rules/#anchor-fighter"
+                  href="/dungeons-and-dragons/house-rules/#anchor-fighter"
                   >Fighter</a
                 >
               </h3>
@@ -682,8 +715,53 @@
             </div>
           </section>
         </section>
+
+        <!-- Post Footer with Tags and Categories -->
+        <footer class="post-footer">
+          <div class="post-taxonomy">
+            <div class="post-category-section">
+              <h3>Category</h3>
+              <a href="/dungeons-and-dragons/posts/category/proposals/" class="post-category-link">Proposals</a>
+            </div>
+
+            <div class="post-tags-section">
+              <h3>Tags</h3>
+              <div class="post-tags">
+                <a href="/dungeons-and-dragons/posts/tag/thieves-of-capitol/" class="post-tag">#thieves-of-capitol</a>
+                <a href="/dungeons-and-dragons/posts/tag/campaign-proposal/" class="post-tag">#campaign-proposal</a>
+                <a href="/dungeons-and-dragons/posts/tag/urban-adventure/" class="post-tag">#urban-adventure</a>
+                <a href="/dungeons-and-dragons/posts/tag/stealth/" class="post-tag">#stealth</a>
+                <a href="/dungeons-and-dragons/posts/tag/blades-in-the-dark/" class="post-tag">#blades-in-the-dark</a>
+                <a href="/dungeons-and-dragons/posts/tag/greyhawk/" class="post-tag">#greyhawk</a>
+                <a href="/dungeons-and-dragons/posts/tag/house-rules/" class="post-tag">#house-rules</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-navigation">
+            <div class="nav-links">
+              <a href="/dungeons-and-dragons/posts/" class="nav-link">← All Posts</a>
+              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="nav-link">View Active Campaign →</a>
+            </div>
+          </div>
+
+          <div class="related-posts">
+            <h3>Related Content</h3>
+            <div class="related-links">
+              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="related-link">
+                <strong>Thieves of Capitol Campaign</strong>
+                <span>Follow the active campaign based on this proposal</span>
+              </a>
+              <a href="/dungeons-and-dragons/posts/category/proposals/" class="related-link">
+                <strong>All Campaign Proposals</strong>
+                <span>Browse other campaign proposals and ideas</span>
+              </a>
+            </div>
+          </div>
+        </footer>
       </article>
     </main>
+
     <footer class="rules-wrapper">
       <h3>Footnotes</h3>
       <ol class="footnotes">
@@ -704,16 +782,6 @@
           too.
         </li>
       </ol>
-      <!-- <p class="text-center text-small">
-        All rights reserved. This document may be reproduced for personal use only. No part of this document may be
-        reproduced or transmitted in any form or by any means, electronic or mechanical, including photocopying,
-        recording, or by any information storage and retrieval system, without permission in writing from the publisher.
-      </p>
-      <p class="text-center text-small">
-        Dungeons &amp; Dragons, D&D, Advanced Dungeons &amp; Dragons, AD&D, TSR and all associated logos and characters
-        are trademarks of Wizards of the Coast in the United States and other countries. Used with permission. All
-        rights reserved.
-      </p> -->
     </footer>
   </body>
 </html>

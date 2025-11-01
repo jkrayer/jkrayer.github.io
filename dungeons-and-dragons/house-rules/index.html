@@ -33,14 +33,29 @@
         <input type="checkbox" id="root-navigation-check" />
         <!-- Navigation menu -->
         <nav class="root-navigation">
+          <a href="/dungeons-and-dragons/" class="root-navigation-link">Home</a>
+
+          <!-- Blog with dropdown -->
+          <div class="nav-dropdown">
+            <a href="/dungeons-and-dragons/posts/" class="root-navigation-link dropdown-toggle"> Blog </a>
+            <div class="dropdown-menu">
+              <a href="/dungeons-and-dragons/posts/" class="dropdown-link">All Posts</a>
+              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="dropdown-link"
+                >Campaign Planning</a
+              >
+              <a href="/dungeons-and-dragons/posts/category/house-rules/" class="dropdown-link">House Rules</a>
+              <a href="/dungeons-and-dragons/posts/category/proposals/" class="dropdown-link">Proposals</a>
+            </div>
+          </div>
+
           <!-- Campaigns with dropdown -->
           <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns </a>
+            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle"> Campaigns </a>
             <div class="dropdown-menu">
               <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
             </div>
           </div>
-          <a href="/dungeons-and-dragons/proposals/" class="root-navigation-link">Proposals</a>
+
           <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
         </nav>
         <!-- Hamburger menu for mobile -->
