@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <title>James Krayer | Dungeons & Dragons | Home</title>
+    <meta
+      name="description"
+      content="D&D blog featuring campaign logs, homebrew content, and game mastering thoughts"
+    />
+    <title>James Krayer | Dungeons & Dragons | Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,21 +32,35 @@
         <div class="root-logo">
           <a href="/dungeons-and-dragons/" class="logo-link">Dungeons &amp; Dragons</a>
         </div>
-        <!-- Hidden checkbox for mobile menu toggle -->
+
         <input type="checkbox" id="root-navigation-check" />
-        <!-- Navigation menu -->
+
         <nav class="root-navigation">
+          <a href="/dungeons-and-dragons/" class="root-navigation-link">Home</a>
+
+          <!-- Blog with dropdown -->
+          <div class="nav-dropdown">
+            <a href="/dungeons-and-dragons/posts/" class="root-navigation-link dropdown-toggle"> Blog </a>
+            <div class="dropdown-menu">
+              <a href="/dungeons-and-dragons/posts/" class="dropdown-link">All Posts</a>
+              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="dropdown-link"
+                >Campaign Planning</a
+              >
+              <a href="/dungeons-and-dragons/posts/category/house-rules/" class="dropdown-link">House Rules</a>
+              <a href="/dungeons-and-dragons/posts/category/proposals/" class="dropdown-link">Proposals</a>
+            </div>
+          </div>
+
           <!-- Campaigns with dropdown -->
           <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns </a>
+            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle"> Campaigns </a>
             <div class="dropdown-menu">
               <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
             </div>
           </div>
-          <a href="/dungeons-and-dragons/proposals/" class="root-navigation-link">Proposals</a>
+
           <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
         </nav>
-        <!-- Hamburger menu for mobile -->
         <label for="root-navigation-check" class="hamburger-menu">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -51,209 +68,162 @@
         </label>
       </header>
 
-      <article class="rules-wrapper">
-        <header>
-          <hgroup class="page-title-group">
-            <h1>
-              <a class="title-link" href="/dungeons-and-dragons/proposals/thieves-of-capitol/"
-                >Proposal: Thieves of Capitol</a
+      <!-- Blog Header -->
+      <header class="blog-header">
+        <hgroup>
+          <h1>D&D Blog & Campaign Logs</h1>
+          <p class="blog-subtitle">Game mastering thoughts, campaign logs, and homebrew content</p>
+        </hgroup>
+      </header>
+
+      <!-- Recent Posts Section -->
+      <section class="recent-posts">
+        <h2>Recent Posts</h2>
+
+        <!-- Post 1: Latest -->
+        <article class="post-preview">
+          <header class="post-header">
+            <div class="post-meta">
+              <time datetime="2025-09-07">September 7, 2025</time>
+              <span class="post-category">
+                <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
+              </span>
+              <div class="post-tags">
+                <a href="/dungeons-and-dragons/posts/tag/thieves-of-capitol/" class="tag">#thieves-of-capitol</a>
+                <a href="/dungeons-and-dragons/posts/tag/campaign-proposal/" class="tag">#campaign-proposal</a>
+              </div>
+            </div>
+            <h3>
+              <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/" class="post-title-link">
+                Proposal: Thieves of Capitol
+              </a>
+            </h3>
+          </header>
+
+          <div class="post-excerpt">
+            <p>
+              500 years before the war with the Elves during the reign of Emperor Leto, the Undying a group of thieves
+              tries to make a name for themselves in the bustling streets of Capitol. In this first chapter the player's
+              fledgling crew will become embroiled in a murder plot that they must resolve to survive.
+            </p>
+          </div>
+
+          <footer class="post-footer">
+            <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/" class="read-more"
+              >Read More &rsaquo;</a
+            >
+          </footer>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-preview">
+          <header class="post-header">
+            <div class="post-meta">
+              <time datetime="2025-08-02">August 2, 2025</time>
+              <span class="post-category">
+                <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
+              </span>
+              <div class="post-tags">
+                <a href="/dungeons-and-dragons/posts/tag/city-adventures/" class="tag">#city-adventures</a>
+                <a href="/dungeons-and-dragons/posts/tag/homebrew/" class="tag">#homebrew</a>
+              </div>
+            </div>
+            <h3>
+              <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="post-title-link">
+                Adventures in the City, Maybe
+              </a>
+            </h3>
+          </header>
+
+          <div class="post-excerpt">
+            <p>
+              My first instinct while I was writing the last was to create games that allow me to both play test rules
+              and develop parts of the setting through running games. This development is not merely geographic but also
+              temporal.
+            </p>
+          </div>
+
+          <footer class="post-footer">
+            <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="read-more"
+              >Read More &rsaquo;</a
+            >
+          </footer>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-preview">
+          <header class="post-header">
+            <div class="post-meta">
+              <time datetime="2025-07-26">July 26, 2025</time>
+              <span class="post-category">
+                <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
+              </span>
+              <div class="post-tags">
+                <a href="/dungeons-and-dragons/posts/tag/homebrew/" class="tag">#homebrew</a>
+                <a href="/dungeons-and-dragons/posts/tag/setting/" class="tag">#setting</a>
+              </div>
+            </div>
+            <h3>
+              <a href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/" class="post-title-link">
+                Thoughts About My Next Game
+              </a>
+            </h3>
+          </header>
+
+          <div class="post-excerpt">
+            <p>
+              I've been working in fits and starts to prepare good old "T1-4 The Temple of Elemental Evil" for my next
+              game. I reasoned a while back that preparing a game in the "World of Greyhawk" would be both rewarding and
+              less difficult than writing my own game.
+            </p>
+          </div>
+
+          <footer class="post-footer">
+            <a href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/" class="read-more"
+              >Read More &rsaquo;</a
+            >
+          </footer>
+        </article>
+      </section>
+
+      <!-- Active Campaigns Section -->
+      <section class="active-campaigns">
+        <h2>Active Campaigns</h2>
+        <div class="campaign-grid">
+          <article class="campaign-card">
+            <header>
+              <h3>
+                <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a>
+              </h3>
+              <div class="campaign-meta">
+                <span class="campaign-status active">Active</span>
+                <span class="campaign-system">D&D 5e</span>
+              </div>
+            </header>
+            <p>
+              An urban heist campaign set in the bustling metropolis of Capitol. Follow the adventures of a fledgling
+              crew of thieves as they navigate the city's treacherous underworld.
+            </p>
+            <footer>
+              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="campaign-link"
+                >View Campaign Log &rsaquo;</a
               >
-            </h1>
-          </hgroup>
-          <time datetime="2025-09-07">September 7, 2025</time>
-        </header>
+            </footer>
+          </article>
+        </div>
+      </section>
 
-        <p>
-          500 years before the war with the Elves during the reign of Emperor Leto, the Undying a group of thieves tries
-          to make a name for themselves in the bustling streets of Capitol<sup
-            ><a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-footnote-001">1</a></sup
-          >. In this first chapter the player's fledgling crew will become embroiled in a murder plot that they must
-          resolve to survive.
-        </p>
-
-        <section>
-          <h2>Abstract</h2>
-
-          <p><strong>Start Date:</strong> T.B.D.</p>
-
-          <p>
-            <strong>Structure:</strong> At the end of each adventure the players will be presented with two
-            <a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-jobs">jobs</a
-            ><sup><a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-footnote-002">2</a></sup> and must
-            select one. The DM will prepare that job for the following session. All
-            <a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-jobs">jobs</a
-            ><sup><a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-footnote-002">2</a></sup> will be
-            offered by the patron of the crew, Joey Silver-Thumbs.
-          </p>
-
-          <p><strong>Sessions:</strong> 5 - 7. I will do my best to keep each session to a single evening's play.</p>
-
-          <p>
-            <strong>Session 0:</strong> Characters will be created, questions answered and the first two
-            <a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-jobs">jobs</a
-            ><sup><a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-footnote-002">2</a></sup>
-            presented.
-          </p>
-
-          <p>
-            <strong>Pregenerated Characters:</strong>
-            <a href="/dungeons-and-dragons/proposals/thieves-of-capitol/#anchor-pre-generated-characters">See Below</a>
-          </p>
-          <p>
-            <strong>Experience:</strong> Special rules for awarding experience to emphasize mission and objective
-            completion over combat.
-          </p>
-          <p>
-            <strong>Special Equipment:</strong> Sap. A successful back-stab attack made with a sap renders the target
-            unconscious. The target must have hit dice less than or equal to the wielders back-stab multiplier, be a
-            medium sized or smaller humanoid and must not be wearing metal armor. The target is rendered unconscious for
-            d4 + back-stab multiplier rounds, d4 + 2 for a first level Thief. A natural 20 doubles the duration.
-          </p>
-          <p>
-            <strong>Reputation:</strong> Reputation with other factions starts at 0 (unknown) and may be adjusted up or
-            down by 1-2 points after each mission.
-          </p>
-          <p>
-            <strong>Conclusion:</strong> At the end of this Chapter a second chapter or new campaign may be proposed.
-          </p>
-          <p>
-            <strong>Play test:</strong> The Assassin, Bard and adjustments to the Fighter and Thief abilities will be
-            tested for balance and fun.
-          </p>
-        </section>
-
-        <p><a href="/dungeons-and-dragons/proposals/thieves-of-capitol/">Read More &rsaquo;</a></p>
-      </article>
-
-      <article class="rules-wrapper">
-        <header>
-          <hgroup class="page-title-group">
-            <h1>Adventures in the City, Maybe</h1>
-            <time datetime="2025-08-02">August 2, 2025</time>
-          </hgroup>
-        </header>
-        <p>
-          My first instinct while I was writing the last was to create games that allow me to both play test rules and
-          develop parts of the setting through running games. This development is not merely geographic but also
-          temporal. I think giving the players the chance to learn about the setting through time and space will give
-          them cross campaign insights. For my part it gives me the opportunity to find the place and time in which
-          they'll have the most fun.
-        </p>
-        <h2>Capitol: a City in Need of a Name</h2>
-        <p>
-          My earliest game 5E with the members of my current group took place in my home brew Nentir Vale setting.
-          Nentir Vale is from 4E and much of the customization I made and shared poorly was a reaction to &ldquo;Humans
-          in Funny Hats&rdquo; combined with the &ldquo;Gods of Your World&rdquo; section of the 5E Dungeon Master's
-          Guide. Adventures on the frontier of a fallen empire are simple enough since they can be for the most part
-          standard D&D adventures. It begs the question, &ldquo;Why did the Empire fall and what was it like?&rdquo;
-        </p>
-        <p>
-          The answers could be explored in the form of a lore document but I don't expect my players to be invested
-          enough to read that sort of document. I believe it's far more rewarding for both myself and the players to
-          learn about the Capitol through play. That means city adventure.
-        </p>
-        <p>
-          I am, for certain, intimidated by the idea of running a city adventure but, it could also be a lot of fun. To
-          pull it off though I need a lot of advice. After some searching I've narrowed my basic resources to two to
-          prevent analysis paralysis; &ldquo;Cities of Mystery&rdquo; and &ldquo;Blades in the Dark&rdquo;.
-          &ldquo;Cities of Mystery&rdquo; because it's a great city building resource and &ldquo;Blades in the
-          Dark&rdquo; because D&D a city based game needs non-combat systems to resolve, suspense and so forth. Oh, did
-          I forget to mention I plan for this to be a "thieves" campaign?
-        </p>
-        <h3>Planning Capitol: a City that Still Needs a Name</h3>
-        <p>
-          I glanced over a lot of wonderful advice from
-          <a href="https://thealexandrian.net/wordpress/48182/roleplaying-games/running-the-city">The Alexandrian</a>
-          that I'll probably return to but I'm often an impatient sort so I sketched out my own plan.
-        </p>
-
-        <ol>
-          <li>Map the City</li>
-          <li>Map the Neighborhoods</li>
-          <li>Insert Important Landmarks, city buildings, religious buildings, monuments.</li>
-          <li>Map the starting Neighborhood in detail.</li>
-          <li>Actually write some adventures because that's the part the players actually care about.</li>
-          <li>Name the City, don't forget to name the city.</li>
-        </ol>
-        <p>
-          That's basically it. I'll of course need to produce a brief setting guide since certain classes won't work in
-          a thieving campaign. The players should also know what to expect in a game so they can create characters
-          they'll enjoy playing throughout.
-        </p>
-        <h3>Adventures in Capitol: a Joke that's Getting Old</h3>
-        <p>
-          D&D is a great framework for general fantasy adventures but when one wants to run more specialized games
-          additional rules are needed to reward a specialized style of play. Combat is the primary stressor for players
-          but in a city with guards and punitive laws avoiding it would be the better course of action. So we need some
-          a framework to for stealth based adventure design and a system for rewarding players for stealth and planning.
-        </p>
-        <p>
-          Fortunately some very talented people have solved this problem in the past. Let us therefore mine
-          &ldquo;Blades in the Dark&rdquo; for that which we can use in D&D.
-        </p>
-        <ul>
-          <li>Progress Clocks</li>
-          <li>
-            Downtime + 5E
-            <ol>
-              <li>Laying Low - Reduces Heat but also Reputation</li>
-            </ol>
-          </li>
-
-          <li>Consequences - Each mission should have a fall out for better or worse.</li>
-          <li>
-            Gather Information - There's a system to remove player actin but I want RP here
-            <ul>
-              <li>
-                Perhaps have each player invent a contact at character creation. A fence, a talkative barman &hellip;
-              </li>
-            </ul>
-          </li>
-          <li>Rewards, monetary and reputation</li>
-          <li>Need Reputation Mechanic</li>
-          <li>Factions + Mausritter (maybe)</li>
-          <li>Crew - But I want to make this an ongoing conversation among the players</li>
-        </ul>
-        <p>And this is getting long so I'll</p>
-      </article>
-
-      <article class="rules-wrapper">
-        <header>
-          <hgroup class="page-title-group">
-            <h1>Thoughts About My Next Game</h1>
-            <time datetime="2025-07-26">July 26, 2025</time>
-          </hgroup>
-        </header>
-        <p>
-          I&lsquo;ve been working in fits and starts to prepare good old &ldquo;T1-4 The Temple of Elemental Evil&rdquo;
-          for my next game. I reasoned a while back that preparing a game in the "World of Greyhawk" would be both
-          rewarding and less difficult than writing my own game. And yet I can't shake the nagging feeling that I should
-          be working on my own setting.
-        </p>
-        <p>
-          The why of it is pretty simple. As much as I love the D&D of my youth I find the settings a bit bland.
-          It&lsquo;s the old &ldquo;Humans in Funny Hats&rdquo; canard. If Elfs and Dwarfs and so forth don't have a
-          unique perspective on the world or meaningful cultural distinctions from humans then they are no different
-          from humans.
-        </p>
-        <p>
-          And I quite think the point applies elsewhere. Should all Clerics have power over the undead? Do all gods have
-          Paladins? Do Clerics and Paladins make sense in a fantasy world missing the Christian context these classes
-          seem to belong to? Should every race worship the same way? Should fantasy religions be divided by race or by
-          geography as real world mythology?
-        </p>
-        <p>I, of course, wouldn&lsquo;t be asking these questions if I was happy with the way things are.</p>
-        <p>
-          On the other hand I do want to get back to running games. Doing so in a world of my own invention would be far
-          more difficult than preparing a module. Sadly my heart just isn't in it, module preparation that is.
-        </p>
-        <p>
-          So the right thing to do is explore some ideas that might hold my interest and build around that regardless of
-          effort.
-        </p>
-        <p>&hellip;More to Come&hellip;</p>
-      </article>
+      <!-- Archive Link -->
+      <section class="blog-archive">
+        <h2>Explore More</h2>
+        <div class="archive-links">
+          <a href="/dungeons-and-dragons/posts/" class="archive-link">View All Posts</a>
+          <!-- <a href="/dungeons-and-dragons/reference/" class="archive-link">Reference Materials</a> -->
+          <!-- <a href="/dungeons-and-dragons/archive/" class="archive-link">Archive</a> -->
+        </div>
+      </section>
     </main>
+
     <footer></footer>
   </body>
 </html>
