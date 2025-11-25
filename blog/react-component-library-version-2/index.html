@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="How we migrated our React component library from styled-components to CSS Modules using Vite. Includes compound component patterns, accessibility improvements, and risk-based migration strategies."
+    />
+    <title>James Krayer | Blog | React Component Library Version 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/core.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="https://jameskrayer.com/blog/react-component-library-version-2/" />
+  </head>
+  <body>
+    <main id="anchor-top">
+      <header class="root-header">
+        <div class="root-logo">
+          <a href="/" class="logo-link">James Krayer</a>
+        </div>
+
+        <!-- Hidden checkbox for mobile menu toggle -->
+        <input type="checkbox" id="root-navigation-check" />
+
+        <!-- Navigation menu -->
+        <nav class="root-navigation">
+          <a href="/#anchor-about" class="root-navigation-link">Home</a>
+          <a href="/blog" class="root-navigation-link">Blog</a>
+          <a
+            href="https://www.linkedin.com/in/james-krayer-65808715/"
+            class="root-navigation-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/jkrayer" class="root-navigation-link" target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </nav>
+
+        <!-- Hamburger menu for mobile -->
+        <label for="root-navigation-check" class="hamburger-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </header>
+
+      <article class="article-full-width">
+        <aside>
+          <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            React Component Library Version 2
+          </nav>
+        </aside>
+
+        <header>
+          <hgroup>
+            <h1>React Component Library Version 2</h1>
+          </hgroup>
+          <time datetime="2025-11-24">November 24, 2025</time>
+        </header>
+
+        <p>
+          Despite the fact that CSS-in-JS has been falling out of favor for a while, I've opted to continue using
+          styled-components due to the cost of migrating to another solution. Cost is measured in time to refactor code
+          invisible to business stakeholders with no measurable benefit to the product&mdash;time that could otherwise
+          be spent building user-facing features that provide clear value.
+        </p>
+
+        <p>
+          To be perfectly honest, I've always had mixed feelings about CSS-in-JS. The juice never quite seemed worth the
+          squeeze to me. Which is to say that the advantages of co-locating styles and scoping classes never seemed
+          worth the performance cost and likely style bloat (below). I believe this is especially true in light of other
+          solutions to writing complex styles: <a href="https://smacss.com/">S.M.A.C.S.S.</a> and
+          <a href="https://getbem.com/introduction/">B.E.M.</a> among them. But I'm not one to completely refactor a
+          working system based on my beliefs alone.
+        </p>
+
+        <p>
+          During my last semiannual review of ITN Portal's UI dependencies, I read Evan Jacobson's article &ldquo;<a
+            href="https://opencollective.com/styled-components/updates/thank-you"
+            >Thank You</a
+          >.&rdquo; When the author of styled-components says,
+          <q>&hellip;I would not recommend adopting styled-components&hellip;,</q>
+          it seemed like a validation of my earlier concerns. Given the timing of my discovery and what seems like a
+          long timeline until styled-components no longer works in React, the timing was right to start evaluating
+          alternatives. A long deprecation timeline allows us to take a measured approach to choosing our future
+          direction.
+        </p>
+
+        <h2 class="h3">Evaluating Our Needs</h2>
+
+        <p>
+          The first step was to evaluate replacements for styled-components and determine if a replacement could live
+          alongside the current build. My initial criteria for evaluating replacements follow.
+        </p>
+
+        <ol>
+          <li>
+            Build Time or Run Time
+            <ol>
+              <li>Prefer Build Time for better performance</li>
+              <li>Does it work with Webpack?</li>
+            </ol>
+          </li>
+          <li>
+            Ease of Transition
+            <ol>
+              <li>How close to Styled Components is it?</li>
+              <li>How will it work with our architecture?</li>
+            </ol>
+          </li>
+
+          <li>
+            Ease of Use
+            <ol>
+              <li>How difficult will it be for the Team to adopt?</li>
+            </ol>
+          </li>
+        </ol>
+
+        <p>
+          The first point is important because build-time solutions are generally faster and more efficient than runtime
+          solutions. The second, because we want to minimize the time required to transition to a new solution. The
+          third, to ensure the new solution is easy for the team to adopt.
+        </p>
+
+        <p>
+          After researching alternatives to styled-components, I decided to evaluate 11 solutions:
+          <a href="https://linaria.dev/">Linaria</a>, <a href="https://vanilla-extract.style/">Vanilla Extract</a>,
+          <a href="https://tailwindcss.com/">Tailwind</a>,
+          <a href="https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/">CSS Modules</a>,
+          <a href="https://panda-css.com/">Panda</a>, <a href="https://github.com/mui/pigment-css">Pigment CSS</a>,
+          <a href="https://css-blocks.com/">CSS Blocks</a>, <a href="https://stitches.dev/">Stitches</a>,
+          <a href="https://styletron.org/">Styletron</a>, <a href="https://emotion.sh/docs/introduction">Emotion</a>,
+          and <a href="https://fela.js.org/">Fela</a>. Evaluating 11 solutions was a lot, so I decided to narrow this
+          list based on weekly downloads according to NPM and my initial impression of each library's docs. Downloads
+          would give some information about support, and if the initial impression was bad, then I knew I wouldn't be
+          happy completing the work.
+        </p>
+
+        <p>
+          This narrowed my list from 11 to 3: Vanilla Extract, Tailwind, and CSS Modules<sup
+            ><a href="#footnote-1">1</a></sup
+          >. Each of these was subjected to my original criteria. At the time of evaluation, I felt a combination of
+          Vanilla Extract and Tailwind would be the best solution. As you'll see, the need to address other concerns led
+          me to start a new component library with a Vite build. Ultimately, CSS Modules won due to Vite's built-in
+          handling of them<sup><a href="#footnote-2">2</a></sup
+          >.
+        </p>
+
+        <p>
+          I spent an afternoon trying to add vanilla-extract to our webpack build alongside styled-components with the
+          hope that I could add Tailwind later. Getting the two to play nicely with each other was not an insignificant
+          challenge. Rather than spending more time trying to bend builds to my requirements, I decided to step back and
+          evaluate the other needs of our component library.
+        </p>
+
+        <p>
+          I reasoned that if we formed a more complete picture of where our current component library stood, we could
+          make informed decisions about how best to move forward&mdash;whether that meant investing more time into our
+          current component library or starting a new one. I'm no different from other developers in that I'm always
+          excited about new projects, so the temptation to start over was real. But starting again comes at a cost that
+          needed to be measured before it could be justified. To that end, I asked some questions of the team.
+        </p>
+
+        <p>
+          <strong>Had we eliminated dead code?</strong> We had made the effort, but as with so many long-lived
+          libraries, there's just some code we deemed &ldquo;unsafe&rdquo; to remove. In other cases, there were plugins
+          that were hanging on because they still handled that one lingering need. Neither of these were insurmountable,
+          but they could cause interruptions to other development goals.
+        </p>
+
+        <p>
+          <strong>Had our styles become bloated?</strong> Our styles have become bloated over time, and we need to
+          refactor them. Again, this was not an insurmountable problem, but it did need to be addressed.
+        </p>
+
+        <p>
+          <strong>Did any of our components encapsulate business logic?</strong> Some components do encapsulate business
+          logic. No surprise here—Portal started with a single user-facing project. At that time, mixing business logic
+          with components was &ldquo;safe.&rdquo;
+        </p>
+
+        <p>
+          <strong>Could our component interfaces be improved?</strong> Yes. Gradual development over time is a sensible
+          strategy but has led to some inconsistencies in our component interfaces. For example, different components
+          use different props for color and theme.
+        </p>
+
+        <p>
+          <strong>Could we <em>React</em> better?</strong> Some legacy components manipulate children unnecessarily.
+          Legacy components could be improved by using context for shared state and hooks for better code reuse. Other
+          legacy components were meant to be used together without it being made explicit; these could benefit from
+          being implemented as compound components.
+        </p>
+
+        <p>
+          <strong>Could we <em>TypeScript</em> better?</strong> Yes, our current (now legacy) component library uses
+          <code>any</code> far too often. Many functions are not typed at all, and many components could be improved by
+          the use of generic types and type constraints. In theory, all of these issues can be addressed in place, but
+          we found through experience that making these improvements meant we couldn't always guarantee backward
+          compatibility. This wasn't so much a shortcoming of TS but rather a consequence of learning while doing over a
+          period of 5 years.
+        </p>
+
+        <p>
+          <strong>Could we manage ourselves better?</strong> Yes. The component library would benefit from a clear
+          structure and contribution guide.
+        </p>
+
+        <p>
+          <strong>Was our bundle size getting too large?</strong> Yes. This was mostly due to plugins and the continued
+          use of libraries that were being phased out. We also needed to set up tree shaking correctly in our current
+          builds. At the time of this writing, the production bundle for the original component library is 781k vs. 118k
+          for the second component library. This isn't entirely fair since the second component library is incomplete,
+          but I'm solidly convinced we can beat 781k.
+        </p>
+
+        <p>
+          At this point, I was still conflicted about whether to invest more time into our current component library or
+          start a new one. Starting over is always tempting, so I tend to mistrust the instinct, but some amount of time
+          had to be sunk either into taming the build of the current component library or testing a new one. I felt
+          adding one more webpack config to support vanilla-extract would be possible, but if I miscalculated, the
+          result would be wasted time.
+        </p>
+
+        <p>Before sinking more time into code, I decided to evaluate the benefits of starting fresh.</p>
+
+        <h2 class="h3">The Benefits of a New Component Library</h2>
+
+        <p>
+          Leaving aside the pure joy of starting fresh, it was important to consider the practical benefits before
+          choosing a path forward. Proper evaluation takes far less time than writing code, so a little more time
+          planning would save us a lot of time later.
+        </p>
+
+        <h3 class="h4">Down Time</h3>
+
+        <p>
+          At the point I had stepped away from modifying the current component library's webpack build, I felt it was
+          possible to get vanilla-extract and styled-components building together, but I wasn't 100% certain. If I was
+          wrong, there could be a large amount of time that would need to be spent all at once to factor out
+          styled-components. Transitioning away from styled-components is just not urgent enough to invest all of that
+          time up front.
+        </p>
+
+        <p>
+          Starting a new component library would keep the current one intact while allowing the team to work on the
+          minimal viable product (MVP) of a new component library.
+        </p>
+
+        <h3 class="h4">Breaking Changes</h3>
+
+        <p>
+          It would be far easier to update our component interfaces, fix our TS, and create compound components if we
+          could make breaking changes. Doing so in our current component library is possible, but it would create the
+          need for a lot of downstream changes, which would in turn require additional testing resources, larger
+          releases, and overall more risk. There's also the human element, which is to say that falling back to a known
+          solution sometimes happens. We wanted to ensure a single path to the adoption of new components.
+        </p>
+
+        <p>A new component library would address all of these needs without affecting existing implementations.</p>
+
+        <h3 class="h4">Testing</h3>
+
+        <p>
+          While we certainly want our tester involved in the component library, there's a lot we could do with unit and
+          snapshot tests. The current component library has few of the former and none of the latter. That can of course
+          be addressed in place, but I've rarely seen teams commit the time to testing code that works when there are
+          competing priorities.
+        </p>
+
+        <p>
+          A new component library could be built from day 1 with unit and snapshot tests required at the time of
+          component creation.
+        </p>
+
+        <h3 class="h4">Storybook</h3>
+
+        <p>
+          Though the current component library uses Storybook, it has been neglected as a place to test and document.
+          There are opportunities here to retrain ourselves to manually test our components before integrating them into
+          our applications, use Storybook's accessibility testing tools, more thoroughly document our components, and in
+          the future, use the visual test feature with Cypress.
+        </p>
+
+        <p>
+          It's been a convenience over the past several years to neglect Storybook as a place to test and instead
+          release new components into our ecosystem then test there. This has worked to date due to the small number of
+          projects that rely on the component library and the length of service of our developers, but it's not
+          sustainable as we add more verticals or head count. Emphasis on building, refactoring, and testing components
+          in isolation will be important to prevent releasing bugs in the future.
+        </p>
+
+        <p>
+          Component documentation has, for the most part, been whatever Storybook can provide automatically. While
+          decent, there's room to improve the documentation by actually writing it. Storybook should be a tool for the
+          entire team, not just the front-end folks. We should use the documentation to explain how components work, how
+          their interfaces are meant to be used, how the interfaces may have changed from the previous version, and
+          document other front-end decisions that are difficult to discern from the outside. We'll document not just how
+          color is used but also when to use it, breakpoints, typography, and so forth.
+        </p>
+
+        <h3 class="h4">Style Guide</h3>
+
+        <p>
+          While we're on the subject of testing, I think it's worth mentioning that the existing component library
+          doesn't provide a guide or rules for contributing. This has led to a lot of variance based on the individual
+          contributing code, which is another one of those &ldquo;could fix in place&rdquo; problems that I've also seen
+          teams fail to address when there are competing priorities.
+        </p>
+
+        <h3 class="h4">Adoption</h3>
+
+        <p>
+          This is perhaps the strongest argument for a new component library, with the possible exception of Down Time
+          mentioned above. Adoption of a new component library can be gradual, planned, and tested without breaking
+          existing implementations or disrupting ongoing projects. Components from both the legacy and new libraries can
+          be mixed and matched. Legacy components that are fully replaced in our applications can be removed from the
+          legacy component library, which keeps the team on the path to adopting the new one.
+        </p>
+
+        <h3 class="h4">Timeline</h3>
+
+        <p>
+          Migrating away from styled-components isn't urgent so adoption will necessarily be gradual. If an urgent need
+          arises development of a new component library can simply be paused while the team focuses on the urgent need.
+          When time permits development can resume on the new component library. We'll have plenty of time for proper
+          testing and validation without having a negative impact on the team's velocity.
+        </p>
+
+        <h3 class="h4">Triage</h3>
+
+        <p>
+          Components can be migrated according to risk, difficulty, or any other criteria. To assess risk, we counted
+          (with a script, of course) the actual number of uses of our current components. Some weren't used at all;
+          others only a few times; still others a few hundred. We also considered who uses certain components on certain
+          screens—just our team, just our company, or external users—and how critical each of the screens is to revenue.
+          We measured difficulty less by how much code we'd need to change in a new component library and more by how
+          much code we'd need to change in our applications. In other words, the difficulty to update a single use of a
+          component.
+        </p>
+
+        <p>
+          Assessing just these two factors allowed for the creation of a simple risk matrix where components were
+          grouped into 1 of 4 categories: Low Risk, Moderate Risk, Risky, and Danger Zone. Low-risk components were
+          display-only components that were used infrequently, such as badges. Moderate-risk components were also
+          display-only but used frequently and could disrupt the application, such as layout components. Risky
+          components were those used very frequently that could affect the way users view and enter data—tables and
+          forms, for example. Danger Zone components were those that were used everywhere that could break the
+          application—Validation components, for example.
+        </p>
+
+        <p>
+          The difficulty of migrating components for the developer was a larger factor in creating the risk list because
+          migration is a two-step process. First, a component would need to be migrated from the legacy component
+          library to the MKII library, where it would be tested. Then the legacy component would need to be replaced
+          with the new component across our applications. The first step is a one-time cost that can be measured by the
+          amount of code that needs to be changed in the component library. The second step is where we decide which
+          application to affect first based on users and revenue impact.
+        </p>
+
+        <p>
+          Finally, there needs to be a strategy to move fully from legacy components to MKII components. We wanted to
+          ensure a single path to the adoption of the new components. To do this, each moved component requires the
+          creation of 1 or more Jira tasks to perform the actual migration. When all legacy components have been
+          migrated, the legacy component is replaced with an error message letting developers know they can't use it and
+          which new component replaces it.
+        </p>
+
+        <h3 class="h4">Build Tools</h3>
+
+        <p>
+          Builds are working fine for us, so this is truly the least of our considerations, but there were some
+          advantages to using Vite instead of Webpack. We classified this as a nice-to-have but not a deciding factor.
+        </p>
+
+        <h3 class="h4">Accessibility Improvements</h3>
+
+        <p>
+          The legacy component library had several accessibility issues that needed to be addressed in the new version.
+          These included missing ARIA labels, incorrect label associations, and keyboard navigation problems. By
+          focusing on these areas, we aimed to create a more inclusive and user-friendly experience for all users.
+        </p>
+
+        <h2 class="h3">Technical</h2>
+
+        <p>
+          The following sections detail some of the technical improvements we made in Component Library MKII, focusing
+          on compound components, styling strategies, and accessibility enhancements.
+        </p>
+
+        <h3 class="h4">Compound Components</h3>
+
+        <p>
+          The move towards compound components was the result of addressing the challenges presented by earlier
+          components. Version 1 of the text input manipulated its <code>children</code>, improperly used the HTML
+          <code>label</code> element, and required importing multiple components.
+        </p>
+
+        <pre>
+&lt;Text value={text} onChange={() => {}}&gt;
+  &lt;Label&gt;Component&lt;/Label&gt;
+  &lt;ErrorLabel&gt;Error&lt;/ErrorLabel&gt;
+&lt;/Text&gt;</pre
+        >
+
+        <p>
+          In version 2, we stopped manipulating <code>children</code>, corrected the use of <code>label</code>s, then
+          reduced the number of imports with the hope of speeding up development.
+        </p>
+
+        <pre><code>&lt;InputEl label="Component" error="Error" value={text} onChange={() => {}} /&gt;</code></pre>
+
+        <p>
+          This all-in-one approach used higher-order components to handle the logic of rendering labels and errors,
+          simplifying the importing and setup of components that rendered HTML <code>input</code> elements. When these
+          HOCs were used with custom form inputs, complexity of implementation often increased. For example,
+          <code>Select</code> elements needed properties to suppress errors for inline forms.
+        </p>
+
+        <p>
+          When it came time to create version 3, implemented in Component Library MKII, we wanted to address the
+          limitations of both earlier approaches while standardizing the implementation of all form inputs. This was
+          also an opportunity to address accessibility concerns, fix bad HTML and CSS, and add good IDs to simplify our
+          tests.
+        </p>
+
+        <pre>
+&lt;Field.Root id="my-field" required&gt;
+  &lt;Field.Label&gt;Component&lt;/Field.Label&gt;
+  &lt;Field.Text value={text} onChange={() => {}} /&gt;
+  &lt;Field.Error&gt;Error&lt;/Field.Error&gt;
+&lt;/Field.Root&gt;</pre
+        >
+
+        <p>
+          For this version, we created a Field compound component. Field's Root component provides a context that is
+          optionally consumed by its children: Label, Text, and Error in this case. The context provides correct IDs and
+          states. Each child consumes those to add labels and errors with the correct HTML and ARIA attributes without
+          the developer needing to do additional manual work.
+        </p>
+
+        <p>
+          This solution eliminates the need to manipulate children and import multiple components while allowing the
+          developer to simply leave out elements they don't need. For example, if a form doesn't need an error message,
+          the developer can simply omit the <code>Field.Error</code> component.
+        </p>
+
+        <h3 class="h4">Styles</h3>
+
+        <p>
+          So far, implementing CSS has been a mix of global and scoped approaches. The global styles provide color,
+          theme, space, and typography variables along with a small set of utility styles in the spirit of Tailwind.
+          Scoped styles live in <code>.module.css</code> files alongside the components they are scoped to.
+        </p>
+
+        <p>
+          Since Component Library 1 and Component Library 2 are both currently deployed to production, we're allowing
+          Component Library 1 to continue to control the global theme. This works as long as our Component Library 2
+          components don't set fixed-size fonts. For colors and spacing, Component Library 2 components use a mix of
+          global and scoped CSS.
+        </p>
+
+        <p>
+          Our current plan is to sustain this balance until we're approximately 75% transitioned to Component Library 2.
+          At that time, we'll rebuild a theme switcher in Component Library 2 and replace that functionality in
+          Component Library 1.
+        </p>
+
+        <h3 class="h4">Accessibility Improvements</h3>
+
+        <p>
+          Our pages are typically scored between 80 and 92 by Lighthouse. While this is an acceptable score, we're
+          striving for 100 across all pages. As such, Component Library 2 strives to improve accessibility first by
+          using semantic HTML and second by correctly using roles and ARIA attributes.
+        </p>
+
+        <p>
+          Revisiting our <code>Field</code> component from above highlights the improvements in accessibility and
+          usability we've achieved. By simply providing a correct <code>id</code> and <code>hasError</code> prop, the
+          Field component yields accessible code.
+        </p>
+
+        <pre>
+&lt;div class="field-wrapper"&gt;
+  &lt;label
+    for="my-field"
+    id="my-field-label"
+    &gt;Component
+    &lt;span class="label-required-indicator"&gt; *&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input
+    aria-describedby="my-field-error"
+    aria-invalid
+    aria-labelledby="my-field-label"
+    type="text"
+    ...other input props
+  /&gt;
+  &lt;div id="my-field-error" role="alert" aria-live="polite"&gt;Error&lt;/div&gt;
+&lt;/div&gt;</pre
+        >
+
+        <p>
+          There are more accessibility improvements to make in the future as we migrate more complex components. But our
+          project relies so heavily on forms and tables that even small improvements such as these will have a large
+          impact.
+        </p>
+
+        <p>
+          The necessarily piecemeal nature of our migration makes it impossible to achieve perfect accessibility
+          immediately, but this is an area we'll continue to monitor and work to improve.
+        </p>
+
+        <h2 class="h3">Conclusions</h2>
+
+        <p>
+          Given our needs, the benefits of starting a new component library, and the cost in time to either start again
+          or tame multiple builds, we decided to start a new component library (Components MKII) as an MVP. It's
+          anecdotal to say, but I feel no less true, that starting a new Vite project took less time than trying to
+          refactor webpack builds. Vite's default inclusion of CSS modules obviated the need for additional CSS
+          handling. As much as I sincerely liked Vanilla Extract and Tailwind, it was simple and efficient to just use
+          CSS Modules.
+        </p>
+
+        <p>
+          From the first component migration, our MVP was able to hit all of our key goals. Styles were easy to manage.
+          Refactoring interfaces (props), TS, and React usage came at no cost to our current applications. Implementing
+          replacement components has been, thus far, very simple. I must grant that the new component library is still
+          in its infancy and the initial migration has been low-risk components, but what we have moved has been simple.
+        </p>
+
+        <p>
+          In the middle of moving low-risk components, we were asked to start moving our form components to address some
+          concerns in a new project. This shift in migration has been super easy to accommodate, further validating the
+          value of starting a new component library. Form fields have also been the place where compound components are
+          of most value. There's more to say here that I'll save for another post. But it's worth noting that adding
+          handling for IDs is already simplifying our end-to-end tests and correcting accessibility issues of our former
+          components.
+        </p>
+
+        <p>
+          I make no mention above about time frames, but the goal is gradual adoption of the new component library
+          (MKII) with minimal disruption to velocity by the end of 2027. My team works in more of a kanban style and as
+          such doesn't strictly track velocity, so in this case I've set an arbitrary goal of end of 2027 or before
+          React 20 is released. At the time of this writing, React 20 hasn't been announced, so this is an intentionally
+          relaxed pace.
+        </p>
+
+        <footer>
+          <h3>Footnotes</h3>
+          <ol class="footnotes">
+            <li id="footnote-1">
+              No judgment about the other libraries here, some of them may in fact be better solutions. But time was a
+              factor so I chose somewhat arbitrary filters.
+            </li>
+            <li id="footnote-2">
+              It's worth mentioning that I quite like both Vanilla Extract and Tailwind. My ultimate choice not to use
+              them was utilitarian rather than based on a negative opinion about either.
+            </li>
+          </ol>
+        </footer>
+
+        <aside class="commentbox"></aside>
+      </article>
+
+      <!-- DON'T FORGET TO UNCOMMENT BEFORE PUBLISHING -->
+      <!-- <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <script>
+        commentBox("5748375731306496-proj");
+      </script> -->
+    </main>
+    <style>
+      /* Global styles */
+      * {
+        pre,
+        code {
+          background-color: #f5f5f5;
+          padding: 10px;
+          border-radius: 5px;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+      }
+    </style>
+  </body>
+</html>
