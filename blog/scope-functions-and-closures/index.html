@@ -2,9 +2,7 @@
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width          access <code class="inline-code">add</code> or that <code class="inline-code">tenMinus</code> can access
-          <code class="inline-code">add</code>. A function can access its own scope and the scopes of its parent
-          context or contexts. Conversely a parent scope can't access the scope of a child or function. There is no waynitial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Learn JavaScript scope, first-class functions, and closures with practical examples. Understand function scope, lexical environments, the revealing module pattern, and how closures preserve function scope for powerful programming patterns."
@@ -116,8 +114,8 @@ add(1,2); // returns 3
         </p>
 
         <p>
-          <code class="inline-code">add</code> can access its own <em>function scope</em> and it can access its
-          parent's scope; in this case the global scope. Again we know this by habit.
+          <code class="inline-code">add</code> can access its own <em>function scope</em> and it can access its parent's
+          scope; in this case the global scope. Again we know this by habit.
         </p>
 
         <pre class="formatted-code">
@@ -193,8 +191,8 @@ function add (b) {
         </p>
 
         <p>
-          This is again something we probably "know" because we've typed it in hundreds of times but the implications are
-          far reaching.
+          This is again something we probably "know" because we've typed it in hundreds of times but the implications
+          are far reaching.
         </p>
 
         <pre class="formatted-code">
@@ -365,10 +363,10 @@ myInc.decrement(); // ?
           scopes, <code class="inline-code">incrementer</code> and <code class="inline-code">global</code> in this case.
           <code class="inline-code">incrementer</code> in turn can access its ancestor scope, the global scope. When we
           invoke <code class="inline-code">incrementer</code> the environment creates a new function scope for
-          <code class="inline-code">incrementer</code>, the value 2 is assigned to <code class="inline-code">i</code> the
-          <code class="inline-code">increment</code> and <code class="inline-code">decrement</code> functions are
-          created and then returned. But this time the function scope created by invoking
-          <code class="inline-code">incrementer</code> is not destroyed.
+          <code class="inline-code">incrementer</code>, the value 2 is assigned to
+          <code class="inline-code">i</code> the <code class="inline-code">increment</code> and
+          <code class="inline-code">decrement</code> functions are created and then returned. But this time the function
+          scope created by invoking <code class="inline-code">incrementer</code> is not destroyed.
         </p>
 
         <p>
