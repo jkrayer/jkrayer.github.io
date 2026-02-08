@@ -13,15 +13,15 @@ Excluding standard README.md, server and tooling files.
   └── thieves-of-capitol
     ├── index.html (campaign home)
     └── * (supporting files)
+├── house-rules
+  ├── index.html (current rules)
+  └── version-### (past versions)
+       └──index.html
 ├── index.html (d&d home)
 ├── posts (this is for random writing)
   └── year
      └── month
        └──*.html
-├── rules
-  ├── index.html (current rules)
-  └── version-### (past versions)
-       └──index.html
 ├── script
   └── *.js
 ├── settings
