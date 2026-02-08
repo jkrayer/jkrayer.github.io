@@ -11,22 +11,35 @@
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" /> -->
     <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
     <link rel="canonical" href="https://jameskrayer.com/dungeons-and-dragons/campaigns/" />
   </head>
   <body>
-    <header class="container-fluid">
-      <nav>
-        <ul>
-          <li><strong>Dungeons & Dragons</strong></li>
-        </ul>
-        <ul>
+    <header id="root-header">
+      <h1 id="root-title">Dungeons & Dragons</h1>
+
+      <input type="checkbox" id="root-navigation-check" />
+
+      <nav id="root-navigation">
+        <ul class="clear-list">
           <li><a href="/dungeons-and-dragons/">Home</a></li>
-          <li><a href="/dungeons-and-dragons/campaigns/">Campaigns</a></li>
-          <li><a href="/dungeons-and-dragons/house-rules/">House Rules</a></li>
+          <li>
+            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+            <ul class="clear-list">
+              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+            </ul>
+          </li>
+          <!-- but a version drop down -->
+          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
         </ul>
       </nav>
+
+      <label for="root-navigation-check" class="hamburger-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </label>
     </header>
 
     <main class="container-fluid">
