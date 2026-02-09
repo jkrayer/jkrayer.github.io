@@ -7,92 +7,56 @@
       name="description"
       content="Reflecting on the challenges of running published modules versus creating homebrew settings. Exploring why unique cultural perspectives and religious systems matter in D&D worldbuilding."
     />
-    <title>James Krayer | Dungeons & Dragons | Thoughts About My Next Game</title>
+    <title>Dungeons & Dragons | Thoughts About My Next Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="/core.css" />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/dungeons-and-dragons/style.css" />
+    <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
     <link
       rel="canonical"
       href="https://jameskrayer.com/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/"
     />
   </head>
   <body>
-    <main>
-      <header class="root-header">
-        <div class="root-logo">
-          <a href="/dungeons-and-dragons/" class="logo-link">Dungeons &amp; Dragons</a>
-        </div>
+    <header id="root-header" class="container">
+      <h1 id="root-title"><a href="/dungeons-and-dragons/">Dungeons & Dragons</a></h1>
 
-        <input type="checkbox" id="root-navigation-check" />
+      <input type="checkbox" id="root-navigation-check" />
 
-        <nav class="root-navigation">
-          <a href="/dungeons-and-dragons/" class="root-navigation-link">Home</a>
+      <nav id="root-navigation">
+        <ul class="clear-list">
+          <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
+          <li>
+            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+            <ul class="clear-list">
+              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+            </ul>
+          </li>
+          <!-- but a version drop down -->
+          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
+        </ul>
+      </nav>
 
-          <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/posts/" class="root-navigation-link dropdown-toggle">Blog</a>
-            <div class="dropdown-menu">
-              <a href="/dungeons-and-dragons/posts/" class="dropdown-link">All Posts</a>
-              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="dropdown-link"
-                >Campaign Planning</a
-              >
-              <a href="/dungeons-and-dragons/posts/category/house-rules/" class="dropdown-link">House Rules</a>
-              <a href="/dungeons-and-dragons/posts/category/proposals/" class="dropdown-link">Proposals</a>
-            </div>
-          </div>
+      <label for="root-navigation-check" class="hamburger-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </label>
+    </header>
 
-          <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle">Campaigns</a>
-            <div class="dropdown-menu">
-              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
-            </div>
-          </div>
-
-          <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
-        </nav>
-
-        <label for="root-navigation-check" class="hamburger-menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </label>
-      </header>
-
-      <article class="rules-wrapper">
-        <aside>
-          <nav class="breadcrumbs">
-            <a href="/">Home</a>
-            <a href="/dungeons-and-dragons/">D&D</a>
-            <a href="/dungeons-and-dragons/posts/">Blog Posts</a>
-            <a href="/dungeons-and-dragons/posts/2025/">2025</a>
-            <a href="/dungeons-and-dragons/posts/2025/07/">July</a>
-            Thoughts About My Next Game
-          </nav>
-        </aside>
-
-        <header>
-          <hgroup class="page-title-group">
-            <h1>Thoughts About My Next Game</h1>
-          </hgroup>
-
-          <div class="post-meta">
-            <time datetime="2025-07-26">July 26, 2025</time>
-            <span class="post-category">
+    <main class="container">
+      <article class="post">
+        <header class="post-header">
+          <hgroup>
+            <div class="post-category">
               <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
-            </span>
-          </div>
+            </div>
+            <h1 class="post-title">Thoughts About My Next Game</h1>
+          </hgroup>
+          <time class="post-date" datetime="2025-07-26">July 26, 2025</time>
         </header>
 
         <p>
@@ -123,56 +87,9 @@
         </p>
         <p>…More to Come…</p>
 
-        <!-- Post Footer with Tags and Categories -->
-        <footer class="post-footer">
-          <div class="post-taxonomy">
-            <div class="post-category-section">
-              <h3>Category</h3>
-              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="post-category-link"
-                >Campaign Planning</a
-              >
-            </div>
-
-            <div class="post-tags-section">
-              <h3>Tags</h3>
-              <div class="post-tags">
-                <a href="/dungeons-and-dragons/posts/tag/campaign-planning/" class="post-tag">#campaign-planning</a>
-                <a href="/dungeons-and-dragons/posts/tag/world-building/" class="post-tag">#world-building</a>
-                <a href="/dungeons-and-dragons/posts/tag/setting/" class="post-tag">#setting</a>
-                <a href="/dungeons-and-dragons/posts/tag/game-mastering/" class="post-tag">#game-mastering</a>
-                <a href="/dungeons-and-dragons/posts/tag/homebrew/" class="post-tag">#homebrew</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="post-navigation">
-            <div class="nav-links">
-              <a href="/dungeons-and-dragons/posts/" class="nav-link">← All Posts</a>
-              <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="nav-link"
-                >Next: Adventures in the City →</a
-              >
-            </div>
-          </div>
-
-          <div class="related-posts">
-            <h3>Related Content</h3>
-            <div class="related-links">
-              <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="related-link">
-                <strong>Adventures in the City, Maybe</strong>
-                <span>The next step in developing urban campaign ideas</span>
-              </a>
-              <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/" class="related-link">
-                <strong>Proposal: Thieves of Capitol</strong>
-                <span>The fully developed campaign proposal that grew from these thoughts</span>
-              </a>
-              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="related-link">
-                <strong>Campaign Planning Posts</strong>
-                <span>More thoughts on planning and running campaigns</span>
-              </a>
-            </div>
-          </div>
-        </footer>
+        <footer></footer>
       </article>
+      <footer></footer>
     </main>
   </body>
 </html>

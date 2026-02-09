@@ -3,227 +3,158 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="D&D blog featuring campaign logs, homebrew content, and game mastering thoughts"
-    />
-    <title>James Krayer | Dungeons & Dragons | Blog</title>
+    <meta name="description" content="Dungeons & Dragons Campaigns Overview" />
+    <title>Dungeons & Dragons</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="/core.css" />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/dungeons-and-dragons/style.css" />
-    <link rel="canonical" href="https://jameskrayer.com/dungeons-and-dragons/" />
+    <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
+    <link rel="canonical" href="https://jameskrayer.com/dungeons-and-dragons/campaigns/" />
   </head>
   <body>
-    <main>
-      <header class="root-header">
-        <div class="root-logo">
-          <a href="/dungeons-and-dragons/" class="logo-link">Dungeons &amp; Dragons</a>
-        </div>
+    <header id="root-header" class="container">
+      <h1 id="root-title"><a href="/dungeons-and-dragons/">Dungeons & Dragons</a></h1>
 
-        <input type="checkbox" id="root-navigation-check" />
+      <input type="checkbox" id="root-navigation-check" />
 
-        <nav class="root-navigation">
-          <a href="/dungeons-and-dragons/" class="root-navigation-link">Home</a>
+      <nav id="root-navigation">
+        <ul class="clear-list">
+          <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
+          <li>
+            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+            <ul class="clear-list">
+              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+            </ul>
+          </li>
+          <!-- but a version drop down -->
+          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
+        </ul>
+      </nav>
 
-          <!-- Blog with dropdown -->
-          <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/posts/" class="root-navigation-link dropdown-toggle"> Blog </a>
-            <div class="dropdown-menu">
-              <a href="/dungeons-and-dragons/posts/" class="dropdown-link">All Posts</a>
-              <a href="/dungeons-and-dragons/posts/category/campaign-planning/" class="dropdown-link"
-                >Campaign Planning</a
-              >
-              <a href="/dungeons-and-dragons/posts/category/house-rules/" class="dropdown-link">House Rules</a>
-              <a href="/dungeons-and-dragons/posts/category/proposals/" class="dropdown-link">Proposals</a>
+      <label for="root-navigation-check" class="hamburger-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </label>
+    </header>
+
+    <main class="container">
+      <article class="post-preview">
+        <header class="post-preview-header">
+          <hgroup>
+            <div class="post-category">
+              <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
             </div>
-          </div>
+            <h2 class="post-title">
+              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/chapter-002/">
+                Thieves of Capitol Chapter Two
+              </a>
+            </h2>
+          </hgroup>
+          <time class="post-date" datetime="2026-02-07">February 2, 2026</time>
+        </header>
 
-          <!-- Campaigns with dropdown -->
-          <div class="nav-dropdown">
-            <a href="/dungeons-and-dragons/campaigns/" class="root-navigation-link dropdown-toggle"> Campaigns </a>
-            <div class="dropdown-menu">
-              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="dropdown-link">Thieves of Capitol</a>
+        <p>
+          An amount of years before the war with the Elves, during the reign of Emperor Leto, the Undying, a group of
+          thieves tries to make a name for themselves in the bustling streets of Capitol. In this second chapter, the
+          player's fledgling crew, "The Baker's Dozen," expands and establishes themselves as independent actors. After
+          the loss of their patron, Joey Silver-Thumbs, and the flight of their friend Shel, "The Bakers Dozen,"
+          rebuilds their crew and forges a network of their own.
+        </p>
+
+        <footer>
+          <a class="post-more-link" href="/dungeons-and-dragons/campaigns/thieves-of-capitol/chapter-002/"
+            >Read More &rsaquo;</a
+          >
+        </footer>
+      </article>
+
+      <article class="post-preview">
+        <header class="post-preview-header">
+          <hgroup>
+            <div class="post-category">
+              <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
             </div>
-          </div>
-
-          <a href="/dungeons-and-dragons/house-rules/" class="root-navigation-link">House Rules</a>
-        </nav>
-        <label for="root-navigation-check" class="hamburger-menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </label>
-      </header>
-
-      <!-- Blog Header -->
-      <header class="blog-header">
-        <hgroup>
-          <h1>D&D Blog & Campaign Logs</h1>
-          <p class="blog-subtitle">Game mastering thoughts, campaign logs, and homebrew content</p>
-        </hgroup>
-      </header>
-
-      <!-- Recent Posts Section -->
-      <section class="recent-posts">
-        <h2>Recent Posts</h2>
-
-        <!-- Post 1: Latest -->
-        <article class="post-preview">
-          <header class="post-header">
-            <div class="post-meta">
-              <time datetime="2025-09-07">September 7, 2025</time>
-              <span class="post-category">
-                <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
-              </span>
-              <div class="post-tags">
-                <a href="/dungeons-and-dragons/posts/tag/thieves-of-capitol/" class="tag">#thieves-of-capitol</a>
-                <a href="/dungeons-and-dragons/posts/tag/campaign-proposal/" class="tag">#campaign-proposal</a>
-              </div>
-            </div>
-            <h3>
-              <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/" class="post-title-link">
+            <h2 class="post-title">
+              <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/">
                 Proposal: Thieves of Capitol
               </a>
-            </h3>
-          </header>
+            </h2>
+          </hgroup>
+          <time class="post-date" datetime="2025-09-07">September 7, 2025</time>
+        </header>
 
-          <div class="post-excerpt">
-            <p>
-              500 years before the war with the Elves during the reign of Emperor Leto, the Undying a group of thieves
-              tries to make a name for themselves in the bustling streets of Capitol. In this first chapter the player's
-              fledgling crew will become embroiled in a murder plot that they must resolve to survive.
-            </p>
-          </div>
+        <p>
+          500 years before the war with the Elves during the reign of Emperor Leto, the Undying a group of thieves tries
+          to make a name for themselves in the bustling streets of Capitol. In this first chapter the player's fledgling
+          crew will become embroiled in a murder plot that they must resolve to survive.
+        </p>
 
-          <footer class="post-footer">
-            <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/" class="read-more"
-              >Read More &rsaquo;</a
-            >
-          </footer>
-        </article>
+        <footer>
+          <a class="post-more-link" href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/"
+            >Read More &rsaquo;</a
+          >
+        </footer>
+      </article>
 
-        <!-- Post 2 -->
-        <article class="post-preview">
-          <header class="post-header">
-            <div class="post-meta">
-              <time datetime="2025-08-02">August 2, 2025</time>
-              <span class="post-category">
-                <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
-              </span>
-              <div class="post-tags">
-                <a href="/dungeons-and-dragons/posts/tag/city-adventures/" class="tag">#city-adventures</a>
-                <a href="/dungeons-and-dragons/posts/tag/homebrew/" class="tag">#homebrew</a>
-              </div>
+      <article class="post-preview">
+        <header class="post-preview-header">
+          <hgroup>
+            <div class="post-category">
+              <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
             </div>
-            <h3>
-              <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="post-title-link">
+            <h2 class="post-title">
+              <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/">
                 Adventures in the City, Maybe
               </a>
-            </h3>
-          </header>
+            </h2>
+          </hgroup>
+          <time class="post-date" datetime="2025-08-02">August 2, 2025</time>
+        </header>
 
-          <div class="post-excerpt">
-            <p>
-              My first instinct while I was writing the last was to create games that allow me to both play test rules
-              and develop parts of the setting through running games. This development is not merely geographic but also
-              temporal.
-            </p>
-          </div>
+        <p>
+          My first instinct while I was writing the last was to create games that allow me to both play test rules and
+          develop parts of the setting through running games. This development is not merely geographic but also
+          temporal.
+        </p>
 
-          <footer class="post-footer">
-            <a href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/" class="read-more"
-              >Read More &rsaquo;</a
-            >
-          </footer>
-        </article>
+        <footer>
+          <a class="post-more-link" href="/dungeons-and-dragons/posts/2025/08/adventures-in-the-city-maybe/"
+            >Read More &rsaquo;</a
+          >
+        </footer>
+      </article>
 
-        <!-- Post 3 -->
-        <article class="post-preview">
-          <header class="post-header">
-            <div class="post-meta">
-              <time datetime="2025-07-26">July 26, 2025</time>
-              <span class="post-category">
-                <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
-              </span>
-              <div class="post-tags">
-                <a href="/dungeons-and-dragons/posts/tag/homebrew/" class="tag">#homebrew</a>
-                <a href="/dungeons-and-dragons/posts/tag/setting/" class="tag">#setting</a>
-              </div>
+      <article class="post-preview">
+        <header class="post-preview-header">
+          <hgroup>
+            <div class="post-category">
+              <a href="/dungeons-and-dragons/posts/category/campaign-planning/">Campaign Planning</a>
             </div>
-            <h3>
-              <a href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/" class="post-title-link">
+            <h2 class="post-title">
+              <a href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/">
                 Thoughts About My Next Game
               </a>
-            </h3>
-          </header>
+            </h2>
+          </hgroup>
+          <time class="post-date" datetime="2025-07-26">July 26, 2025</time>
+        </header>
 
-          <div class="post-excerpt">
-            <p>
-              I've been working in fits and starts to prepare good old "T1-4 The Temple of Elemental Evil" for my next
-              game. I reasoned a while back that preparing a game in the "World of Greyhawk" would be both rewarding and
-              less difficult than writing my own game.
-            </p>
-          </div>
+        <p>
+          I've been working in fits and starts to prepare good old "T1-4 The Temple of Elemental Evil" for my next game.
+          I reasoned a while back that preparing a game in the "World of Greyhawk" would be both rewarding and less
+          difficult than writing my own game.
+        </p>
 
-          <footer class="post-footer">
-            <a href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/" class="read-more"
-              >Read More &rsaquo;</a
-            >
-          </footer>
-        </article>
-      </section>
-
-      <!-- Active Campaigns Section -->
-      <section class="active-campaigns">
-        <h2>Active Campaigns</h2>
-        <div class="campaign-grid">
-          <article class="campaign-card">
-            <header>
-              <h3>
-                <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a>
-              </h3>
-              <div class="campaign-meta">
-                <span class="campaign-status active">Active</span>
-                <span class="campaign-system">D&D 5e</span>
-              </div>
-            </header>
-            <p>
-              An urban heist campaign set in the bustling metropolis of Capitol. Follow the adventures of a fledgling
-              crew of thieves as they navigate the city's treacherous underworld.
-            </p>
-            <footer>
-              <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/" class="campaign-link"
-                >View Campaign Log &rsaquo;</a
-              >
-            </footer>
-          </article>
-        </div>
-      </section>
-
-      <!-- Archive Link -->
-      <section class="blog-archive">
-        <h2>Explore More</h2>
-        <div class="archive-links">
-          <a href="/dungeons-and-dragons/posts/" class="archive-link">View All Posts</a>
-          <!-- <a href="/dungeons-and-dragons/reference/" class="archive-link">Reference Materials</a> -->
-          <!-- <a href="/dungeons-and-dragons/archive/" class="archive-link">Archive</a> -->
-        </div>
-      </section>
+        <footer>
+          <a class="post-more-link" href="/dungeons-and-dragons/posts/2025/07/thoughts-about-my-next-game/"
+            >Read More &rsaquo;</a
+          >
+        </footer>
+      </article>
     </main>
-
-    <footer></footer>
   </body>
 </html>
