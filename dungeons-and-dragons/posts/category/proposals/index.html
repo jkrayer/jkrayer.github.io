@@ -11,54 +11,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
+    <link rel="stylesheet" href="https://jameskrayer.com/thefri/style.css" />
+    <link rel="stylesheet" href="/dungeons-and-dragons/style/main.css" />
     <link rel="canonical" href="https://jameskrayer.com/dungeons-and-dragons/posts/category/proposals/" />
   </head>
   <body>
-    <header id="root-header" class="container">
-      <h1 id="root-title"><a href="/dungeons-and-dragons/">Dungeons & Dragons</a></h1>
+    <header id="root-header">
+      <div class="grid">
+        <h1 id="root-title">
+          <a href="/dungeons-and-dragons">Dungeons & Dragons</a>
+        </h1>
 
-      <input type="checkbox" id="root-navigation-check" />
-
-      <nav id="root-navigation">
-        <ul class="clear-list">
-          <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
-          <li>
-            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
-            <ul class="clear-list">
-              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
-            </ul>
-          </li>
-          <!-- but a version drop down -->
-          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
-        </ul>
-      </nav>
-
-      <label for="root-navigation-check" class="hamburger-menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </label>
+        <button class="hamburger-menu" data-opens="main-navigation">
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+        </button>
+      </div>
     </header>
-    <main class="container">
+
+    <nav class="tray right" aria-label="Main Site Navigation" data-is="main-navigation">
+      <menu>
+        <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
+        <li>
+          <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+          <menu class="clear-list">
+            <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+          </menu>
+        </li>
+        <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
+      </menu>
+    </nav>
+
+    <main>
       <h1>Proposals</h1>
 
-      <article class="post-preview">
-        <header class="post-preview-header">
+      <article>
+        <header>
           <hgroup>
-            <div class="post-category">
+            <div>
               <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
             </div>
-            <h2 class="post-title">
+            <h2>
               <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/chapter-002/">
                 Thieves of Capitol Chapter Two: Season of Skullduggery
               </a>
             </h2>
           </hgroup>
-          <time class="post-date" datetime="2026-02-07">February 2, 2026</time>
+          <time datetime="2026-02-07">February 2, 2026</time>
         </header>
 
         <p>
@@ -70,25 +73,23 @@
         </p>
 
         <footer>
-          <a class="post-more-link" href="/dungeons-and-dragons/campaigns/thieves-of-capitol/chapter-002/"
-            >Read More &rsaquo;</a
-          >
+          <a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/chapter-002/">Read More &rsaquo;</a>
         </footer>
       </article>
 
-      <article class="post-preview">
-        <header class="post-preview-header">
+      <article>
+        <header>
           <hgroup>
-            <div class="post-category">
+            <div>
               <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
             </div>
-            <h2 class="post-title">
+            <h2>
               <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/">
                 Proposal: Thieves of Capitol
               </a>
             </h2>
           </hgroup>
-          <time class="post-date" datetime="2025-09-07">September 7, 2025</time>
+          <time datetime="2025-09-07">September 7, 2025</time>
         </header>
 
         <p>
@@ -98,12 +99,11 @@
         </p>
 
         <footer>
-          <a class="post-more-link" href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/"
-            >Read More &rsaquo;</a
-          >
+          <a href="/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/">Read More &rsaquo;</a>
         </footer>
       </article>
     </main>
     <footer></footer>
+    <script src="https://jameskrayer.com/thefri/core.js"></script>
   </body>
 </html>

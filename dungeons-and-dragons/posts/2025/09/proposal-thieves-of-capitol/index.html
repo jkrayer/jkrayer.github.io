@@ -11,52 +11,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
+    <link rel="stylesheet" href="https://jameskrayer.com/thefri/style.css" />
+    <link rel="stylesheet" href="/dungeons-and-dragons/style/main.css" />
     <link
       rel="canonical"
       href="https://jameskrayer.com/dungeons-and-dragons/posts/2025/09/proposal-thieves-of-capitol/"
     />
   </head>
   <body>
-    <header id="root-header" class="container">
-      <h1 id="root-title"><a href="/dungeons-and-dragons/">Dungeons & Dragons</a></h1>
+    <header id="root-header">
+      <div class="grid">
+        <h1 id="root-title">
+          <a href="/dungeons-and-dragons">Dungeons & Dragons</a>
+        </h1>
 
-      <input type="checkbox" id="root-navigation-check" />
-
-      <nav id="root-navigation">
-        <ul class="clear-list">
-          <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
-          <li>
-            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
-            <ul class="clear-list">
-              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
-            </ul>
-          </li>
-          <!-- but a version drop down -->
-          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
-        </ul>
-      </nav>
-
-      <label for="root-navigation-check" class="hamburger-menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </label>
+        <button class="hamburger-menu" data-opens="main-navigation">
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+        </button>
+      </div>
     </header>
 
-    <main class="container">
-      <article class="post">
-        <header class="post-header">
+    <nav class="tray right" aria-label="Main Site Navigation" data-is="main-navigation">
+      <menu>
+        <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
+        <li>
+          <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+          <menu class="clear-list">
+            <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+          </menu>
+        </li>
+        <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
+      </menu>
+    </nav>
+
+    <main>
+      <article>
+        <header>
           <hgroup>
-            <div class="post-category">
+            <div>
               <a href="/dungeons-and-dragons/posts/category/proposals/">Proposals</a>
             </div>
-            <h1 class="post-title">Proposal: Thieves of Capitol</h1>
+            <h1>Proposal: Thieves of Capitol</h1>
           </hgroup>
-          <time class="post-date" datetime="2025-09-07">September 7, 2025</time>
+          <time datetime="2025-09-07">September 7, 2025</time>
         </header>
 
         <p>
@@ -380,36 +382,32 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span>Any Evil</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 6</div>
-              <div><span class="pregen-attribute-title">Move:</span> 12</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span>Any Evil</div>
+              <div><span>Hit Points:</span> 6</div>
+              <div><span>Move:</span> 12</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 17 (+1/+1)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 11</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 18 (-4 AC)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 15 (+1 HP)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 7</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 17 (+1/+1)</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 11</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 18 (-4 AC)</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 15 (+1 HP)</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 7</div>
             </div>
             <div class="flex-row flex-wrap margin-vertical-1">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Common, Dwarvish, Gnomish, Thieves' Cant
-            </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Common, Dwarvish, Gnomish, Thieves' Cant</div>
             <div>
-              <span class="pregen-attribute-title">Equipment:</span>Leather Armor, 2 Daggers, Short Sword, Dark Clothes,
-              Disguise Kit, Low Soft Leather Boots, Cloak, 7 gp.
+              <span>Equipment:</span>Leather Armor, 2 Daggers, Short Sword, Dark Clothes, Disguise Kit, Low Soft Leather
+              Boots, Cloak, 7 gp.
             </div>
           </section>
 
@@ -423,38 +421,34 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any Neutral</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 6</div>
-              <div><span class="pregen-attribute-title">Move:</span> 12</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any Neutral</div>
+              <div><span>Hit Points:</span> 6</div>
+              <div><span>Move:</span> 12</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
 
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 12</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 9</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 15 (-1 AC)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 11</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 16</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 9</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 15 (-1 AC)</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 11</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 16</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Common, Halfling, Gnomish, Thieves' Cant
-            </div>
-            <div class="margin-vertical-1"><span class="pregen-attribute-title">Spell:</span> Message</div>
+            <div class="margin-vertical-1"><span>Languages:</span> Common, Halfling, Gnomish, Thieves' Cant</div>
+            <div class="margin-vertical-1"><span>Spell:</span> Message</div>
             <div>
-              <span class="pregen-attribute-title">Equipment:</span> Leather Armor, Lute, 2 Daggers, Flamboyant Clothes,
-              High Hard Leather Boots, Spell Book, Cloak, 9gp
+              <span>Equipment:</span> Leather Armor, Lute, 2 Daggers, Flamboyant Clothes, High Hard Leather Boots, Spell
+              Book, Cloak, 9gp
             </div>
           </section>
 
@@ -468,38 +462,34 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 8</div>
-              <div><span class="pregen-attribute-title">Move:</span> 12</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any</div>
+              <div><span>Hit Points:</span> 8</div>
+              <div><span>Move:</span> 12</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
 
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 16 (+1 Damage)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 8</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 8</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 11</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 12</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 11</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 16 (+1 Damage)</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 8</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 8</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 11</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 11</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 14
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 15</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 16</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 14</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 15</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 16</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 17</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 17</div>
+                <div><span>Breath Weapon:</span> 17</div>
+                <div><span>Spell:</span> 17</div>
               </div>
             </div>
             <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Equipment:</span>Studded Leather Armor, Club, Long Sword, Dark
-              Clothes, High Soft Leather Boots, Cloak, 14 gp.
+              <span>Equipment:</span>Studded Leather Armor, Club, Long Sword, Dark Clothes, High Soft Leather Boots,
+              Cloak, 14 gp.
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Common, Thieves' Cant
-            </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Common, Thieves' Cant</div>
           </section>
 
           <section class="pregen-wrapper margin-all-1">
@@ -512,36 +502,32 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any Lawful</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 3</div>
-              <div><span class="pregen-attribute-title">Move:</span> 9</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any Lawful</div>
+              <div><span>Hit Points:</span> 3</div>
+              <div><span>Move:</span> 9</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 12</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 8</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 17 (-3 AC)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 11</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 8</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 17 (-3 AC)</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 11</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Dwarvish, Common, Gnomish, Thieves' Cant
-            </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Dwarvish, Common, Gnomish, Thieves' Cant</div>
             <div>
-              <span class="pregen-attribute-title">Equipment:</span>Leather Armor, 2 Hand Axes, Dark Clothes, Thieves'
-              Tools, Low Soft Leather Boots, Cloak, 12 Iron Spikes, Spike Hammer, Cloak, 14 gp.
+              <span>Equipment:</span>Leather Armor, 2 Hand Axes, Dark Clothes, Thieves' Tools, Low Soft Leather Boots,
+              Cloak, 12 Iron Spikes, Spike Hammer, Cloak, 14 gp.
             </div>
           </section>
 
@@ -555,36 +541,32 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 5</div>
-              <div><span class="pregen-attribute-title">Move:</span> 9</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any</div>
+              <div><span>Hit Points:</span> 5</div>
+              <div><span>Move:</span> 9</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 12</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 13</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 14</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 15 (+1 HP)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 10</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 13</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 14</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 15 (+1 HP)</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 10</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Gnomish, Common, Thieves' Cant, Dwarvish</div>
             <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Gnomish, Common, Thieves' Cant, Dwarvish
-            </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Equipment:</span>Leather Armor, 2 Daggers, Dark Clothes, Thieves'
-              Tools, Low Soft Leather Boots, Cloak, 2 Flasks of Oil, Tinder Box, 14 gp.
+              <span>Equipment:</span>Leather Armor, 2 Daggers, Dark Clothes, Thieves' Tools, Low Soft Leather Boots,
+              Cloak, 2 Flasks of Oil, Tinder Box, 14 gp.
             </div>
             <p>
               <sup>*</sup>The Gnomish people are indentured to the Empire for 1,000 years in return for their liberation
@@ -603,36 +585,32 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any Chaotic</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 8</div>
-              <div><span class="pregen-attribute-title">Move:</span> 9</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any Chaotic</div>
+              <div><span>Hit Points:</span> 8</div>
+              <div><span>Move:</span> 9</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 5 (-2/-1)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 12</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 16</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 18 (-4 AC)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 16 (+2 HP)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 10</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 5 (-2/-1)</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 16</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 18 (-4 AC)</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 16 (+2 HP)</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 10</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Halfling, Common, Gnomish, Thieves' Cant
-            </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Halfling, Common, Gnomish, Thieves' Cant</div>
             <div>
-              <span class="pregen-attribute-title">Equipment:</span>Leather Armor, 3 Daggers, Short Sword, Dark Clothes,
-              Thieves' Tools, Low Soft Leather Boots, Cloak, 7 gp.
+              <span>Equipment:</span>Leather Armor, 3 Daggers, Short Sword, Dark Clothes, Thieves' Tools, Low Soft
+              Leather Boots, Cloak, 7 gp.
             </div>
           </section>
 
@@ -646,43 +624,39 @@
               </h3>
             </header>
             <div class="flex-row justify-between margin-vertical-1">
-              <div><span class="pregen-attribute-title">Alignment:</span> Any</div>
-              <div><span class="pregen-attribute-title">Hit Points:</span> 7</div>
-              <div><span class="pregen-attribute-title">Move:</span> 12</div>
-              <div><span class="pregen-attribute-title">THAC0:</span> 20</div>
+              <div><span>Alignment:</span> Any</div>
+              <div><span>Hit Points:</span> 7</div>
+              <div><span>Move:</span> 12</div>
+              <div><span>THAC0:</span> 20</div>
             </div>
             <div class="flex-row justify-between margin-vertical-1">
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Str:</span> 16 (+0/+1)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Int:</span> 9</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Wis:</span> 9</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Dex:</span> 17 (-3 AC)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Con:</span> 16 (+2 HP)</div>
-              <div class="flex-grow flex-shrink"><span class="pregen-attribute-title">Cha:</span> 12</div>
+              <div class="flex-grow flex-shrink"><span>Str:</span> 16 (+0/+1)</div>
+              <div class="flex-grow flex-shrink"><span>Int:</span> 9</div>
+              <div class="flex-grow flex-shrink"><span>Wis:</span> 9</div>
+              <div class="flex-grow flex-shrink"><span>Dex:</span> 17 (-3 AC)</div>
+              <div class="flex-grow flex-shrink"><span>Con:</span> 16 (+2 HP)</div>
+              <div class="flex-grow flex-shrink"><span>Cha:</span> 12</div>
             </div>
             <div class="flex-row flex-wrap">
-              <div class="flex-col-12">
-                <span class="pregen-attribute-title">Paralyzation, Poison or Death Magic:</span> 13
-              </div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Petrification or Polymorph:</span> 12</div>
-              <div class="flex-col-12"><span class="pregen-attribute-title">Rod, Staff or Wand:</span> 14</div>
+              <div class="flex-col-12"><span>Paralyzation, Poison or Death Magic:</span> 13</div>
+              <div class="flex-col-12"><span>Petrification or Polymorph:</span> 12</div>
+              <div class="flex-col-12"><span>Rod, Staff or Wand:</span> 14</div>
               <div class="flex-row justify-between flex-col-12">
-                <div><span class="pregen-attribute-title">Breath Weapon:</span> 16</div>
-                <div><span class="pregen-attribute-title">Spell:</span> 15</div>
+                <div><span>Breath Weapon:</span> 16</div>
+                <div><span>Spell:</span> 15</div>
               </div>
             </div>
-            <div class="margin-vertical-1">
-              <span class="pregen-attribute-title">Languages:</span> Common, Thieves' Cant
-            </div>
+            <div class="margin-vertical-1"><span>Languages:</span> Common, Thieves' Cant</div>
             <div>
-              <span class="pregen-attribute-title">Equipment:</span>Leather Armor, 1 Dagger, 1 Short Sword, Dark
-              Clothes, Thieves' Tools, Low Soft Leather Boots, Cloak, 50' rope, 14 gp.
+              <span>Equipment:</span>Leather Armor, 1 Dagger, 1 Short Sword, Dark Clothes, Thieves' Tools, Low Soft
+              Leather Boots, Cloak, 50' rope, 14 gp.
             </div>
           </section>
         </section>
 
-        <footer class="rules-wrapper">
+        <footer>
           <h3>Footnotes</h3>
-          <ol class="footnotes">
+          <ol>
             <li id="anchor-footnote-001">
               My calling the capitol city of the empire "Capitol" is not meant in any way to copy the work of
               <a href="https://www.youtube.com/@mcolville" rel="noopener noreferrer">Matt Colville</a>. I am a fan but I
@@ -704,5 +678,6 @@
       </article>
     </main>
     <footer></footer>
+    <script src="https://jameskrayer.com/thefri/core.js"></script>
   </body>
 </html>

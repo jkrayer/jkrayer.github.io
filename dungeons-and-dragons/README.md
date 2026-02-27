@@ -31,3 +31,9 @@ Excluding standard README.md, server and tooling files.
 └── style
   └── *.js
 ```
+
+## To Do
+
+1. ~~Declare Post Structure/Strategy~~
+2. Add Microformats
+3. RSS

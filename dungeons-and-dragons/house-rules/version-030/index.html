@@ -8,44 +8,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@700&family=Rosarivo:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/dungeons-and-dragons/style/style.css" />
+    <link rel="stylesheet" href="https://jameskrayer.com/thefri/style.css" />
+    <link rel="stylesheet" href="/dungeons-and-dragons/style/main.css" />
     <link rel="canonical" href="https://jameskrayer.com/dungeons-and-dragons/house-rules/version-030/" />
   </head>
   <body>
-    <header id="root-header" class="container">
-      <h1 id="root-title"><a href="/dungeons-and-dragons/">Dungeons & Dragons</a></h1>
+    <header id="root-header">
+      <div class="grid">
+        <h1 id="root-title">
+          <a href="/dungeons-and-dragons">Dungeons & Dragons</a>
+        </h1>
 
-      <input type="checkbox" id="root-navigation-check" />
-
-      <nav id="root-navigation">
-        <ul class="clear-list">
-          <li><a href="/dungeons-and-dragons/">Home</a></li>
-          <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
-          <li>
-            <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
-            <ul class="clear-list">
-              <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
-            </ul>
-          </li>
-          <!-- but a version drop down -->
-          <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
-        </ul>
-      </nav>
-
-      <label for="root-navigation-check" class="hamburger-menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </label>
+        <button class="hamburger-menu" data-opens="main-navigation">
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+          <div class="hamburger-line" rol="image"></div>
+        </button>
+      </div>
     </header>
 
-    <main class="container container-table">
-      <article class="layout-sidebar">
-        <aside class="sidebar">
-          <div class="sidebar-content">
+    <nav class="tray right" aria-label="Main Site Navigation" data-is="main-navigation">
+      <menu>
+        <li><a href="/dungeons-and-dragons/posts/">Posts</a></li>
+        <li>
+          <a href="/dungeons-and-dragons/campaigns/">Campaigns</a>
+          <menu class="clear-list">
+            <li><a href="/dungeons-and-dragons/campaigns/thieves-of-capitol/">Thieves of Capitol</a></li>
+          </menu>
+        </li>
+        <li><a href="/dungeons-and-dragons/house-rules/">Rules</a></li>
+      </menu>
+    </nav>
+
+    <main>
+      <article>
+        <aside>
+          <div>
             <h2>Table of Contents</h2>
 
             <ol>
@@ -210,7 +211,7 @@
           </div>
         </aside>
 
-        <section class="main">
+        <section>
           <header>
             <hgroup>
               <h1>House Rules</h1>
@@ -5135,5 +5136,6 @@
       </article>
     </main>
     <footer></footer>
+    <script src="https://jameskrayer.com/thefri/core.js"></script>
   </body>
 </html>
